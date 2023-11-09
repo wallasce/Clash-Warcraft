@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path
 
 from Game.views import game
+from GameSettings.views import setGameMode
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("game/", game),
+    path("game/", game, name = 'Game'),
+    path("settings/game-mode", setGameMode, name = 'Set Game Mode'),
 ]

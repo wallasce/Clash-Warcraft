@@ -7,7 +7,7 @@ for (let i = 0; i < buttons.length; i++) {
     
     button.onclick = function() {
         var xhhtp = new XMLHttpRequest();
-        xhhtp.open('POST', '', true);
+        xhhtp.open('POST', '/settings/game-mode', true);
         xhhtp.setRequestHeader('X-CSRFToken', csrftoken); 
         xhhtp.send(button.value);
     }
