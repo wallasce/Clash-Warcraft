@@ -1,0 +1,44 @@
+body {
+    background-image: url("../Image/ModeSelect/background.jpg");
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0)!important;
+    border: none;
+    display: inline-block;
+    position: relative;
+
+}
+
+h1 {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0)!important;
+    border: none;
+}
+
+.card img {
+    display: block;
+    height: auto;
+    max-height: 30rem;
+    max-width: 30rem;
+    width: 100%;
+}
+
+.card-text{
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.5rem;
+    left: 45%; 
+    padding: 10px 20px; 
+    position: absolute;
+    top: 85%; 
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%); 
+}
