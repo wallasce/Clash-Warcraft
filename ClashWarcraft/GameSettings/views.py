@@ -10,3 +10,11 @@ def setGameMode(request):
         settings.save()
 
     return HttpResponse(request)
+
+def setFaction(request):
+    if (request.method == 'POST'):
+        settings = GameSettings.objects.first()
+        settings.faction = request.body.decode('utf-8')
+        settings.save()
+
+    return HttpResponse(request)
