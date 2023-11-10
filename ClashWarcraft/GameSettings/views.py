@@ -24,7 +24,7 @@ def modeSelect(request):
     return render(request, 'GameSettings/modeSelect.html', parameters)
 
 def factionSelect(request):
-    pathImageModeSelect = 'Game/Image/FactionSelect/'
+    pathImageModeSelect = 'GameSettings/Image/FactionSelect/'
 
     settings = GameSettings.objects.first() 
     if (settings.gameMode == 'pvp'):
