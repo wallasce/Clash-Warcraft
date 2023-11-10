@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path
 
 from Game.views import game
-from GameSettings.views import setFaction, setGameMode
+from GameSettings.views import passInitialScreen, setFaction, setGameMode
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("game/", game, name = 'Game'),
+    path("settings/pass-initial-screen", passInitialScreen, name = 'passInitialScreen'),
     path("settings/faction", setFaction, name = 'SetFaction'),
     path("settings/game-mode", setGameMode, name = 'SetGameMode'),
 ]
