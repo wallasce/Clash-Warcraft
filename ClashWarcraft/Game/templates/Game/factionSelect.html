@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'Website/gameBase.html' %}
+
+{% load static %}
+
+{% block title %} Choose Faction {% endblock %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "Game/CSS/factionSelect.css" %}">
+{% endblock %}
+
+{% block 'background-in-html' %}
+    style = "background-image: url('{% static  backgroundPath %}')"
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+
+    <h1> Choose Faction </h1>
+
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                {% for faction in factions %}
+                    <div class="col">
+                        <div class="card">
+                            <button value={{ faction.value }} type="submit">
+                                <img class="card-img-top" src="{% static faction.path %}">
+                            </button>    
+                            <div class="card-body">
+                            <p class="card-text">{{ faction.value }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "Game/JS/factionSelect.js" %}"></script>
+{% endblock %}
