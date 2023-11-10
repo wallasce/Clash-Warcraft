@@ -3,6 +3,17 @@ from django.shortcuts import render, HttpResponse
 from .models import GameSettings
 
 # Create your views here.
+def resetSettings(request):
+    print('chegay')
+    if (request.method == 'POST'):
+        settings = GameSettings.objects.first() 
+        settings.passHomeScreen = False
+        settings.gameMode = ""
+        settings.faction = ""
+        settings.save()
+
+    return HttpResponse(request)  
+
 def passInitialScreen(request):
     if (request.method == 'POST'):
         settings = GameSettings.objects.first() 
