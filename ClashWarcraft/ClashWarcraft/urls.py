@@ -19,8 +19,10 @@ from django.urls import path
 
 from Game.views import game
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode
+from Website.views import homePage
 
 urlpatterns = [
+    path("", homePage, name = 'HomePage'),
     path("admin/", admin.site.urls),
     path("game/", game, name = 'Game'),
     path("settings/faction", setFaction, name = 'SetFaction'),

@@ -36,11 +36,11 @@ def factionSelect(request):
         'backgroundPath' : backgroundImage,
         'factions' : [
             {
-                'value' : 'alliance',
-                'path' : pathImageModeSelect + 'alliance.png'
-            },{
                 'value' : 'horde',
                 'path' : pathImageModeSelect + 'horde.png'
+            },{
+                'value' : 'alliance',
+                'path' : pathImageModeSelect + 'alliance.png'
             }
         ]
     }
@@ -51,16 +51,12 @@ def InitialPage(request):
     return render(request, 'GameSettings/initialScreen.html')
 
 # API Functions
-def resetSettings(request):
-    print('chegay')
-    if (request.method == 'POST'):
-        settings = GameSettings.objects.first() 
-        settings.passHomeScreen = False
-        settings.gameMode = ""
-        settings.faction = ""
-        settings.save()
-
-    return HttpResponse(request)  
+def resetSettings():
+    settings = GameSettings.objects.first() 
+    settings.passHomeScreen = False
+    settings.gameMode = ""
+    settings.faction = ""
+    settings.save()
 
 def passInitialScreen(request):
     if (request.method == 'POST'):
