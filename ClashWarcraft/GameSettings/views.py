@@ -8,7 +8,7 @@ from GameSettings.models import GameSettings
 
 # Create your views here.
 def modeSelect(request):
-    pathImageModeSelect = 'Game/Image/ModeSelect/'
+    pathImageModeSelect = 'GameSettings/Image/ModeSelect/'
 
     parameters = {
         'types' : [
