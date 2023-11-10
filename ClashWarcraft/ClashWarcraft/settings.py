@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "Game",
     "GameSettings",
     "Website",
+    "WebsiteConfig",
 ]
 
 MIDDLEWARE = [
