@@ -2,7 +2,55 @@ from django.shortcuts import render, HttpResponse
 
 from .models import GameSettings
 
+# Views Functios
+from django.shortcuts import render
+from GameSettings.models import GameSettings
+
 # Create your views here.
+def modeSelect(request):
+    pathImageModeSelect = 'Game/Image/ModeSelect/'
+
+    parameters = {
+        'types' : [
+            {
+                'value' : 'pvp',
+                'path' : pathImageModeSelect + 'pvp.png',
+            },{
+                'value' : 'pve',
+                'path' : pathImageModeSelect + 'pve.png',
+            },
+        ]        
+    }
+    return render(request, 'GameSettings/modeSelect.html', parameters)
+
+def factionSelect(request):
+    pathImageModeSelect = 'Game/Image/FactionSelect/'
+
+    settings = GameSettings.objects.first() 
+    if (settings.gameMode == 'pvp'):
+        backgroundImage = pathImageModeSelect + 'pvpBackground.jpg'
+    elif (settings.gameMode == 'pve'):
+        backgroundImage = pathImageModeSelect + 'pveBackground.jpg'
+
+    parameters = {
+        'backgroundPath' : backgroundImage,
+        'factions' : [
+            {
+                'value' : 'alliance',
+                'path' : pathImageModeSelect + 'alliance.png'
+            },{
+                'value' : 'horde',
+                'path' : pathImageModeSelect + 'horde.png'
+            }
+        ]
+    }
+
+    return render(request, 'GameSettings/factionSelect.html', parameters)
+
+def InitialPage(request):
+    return render(request, 'GameSettings/initialScreen.html')
+
+# API Functions
 def resetSettings(request):
     print('chegay')
     if (request.method == 'POST'):

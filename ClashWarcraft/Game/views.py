@@ -1,46 +1,14 @@
 from django.shortcuts import render
 from GameSettings.models import GameSettings
+from GameSettings.views import modeSelect, factionSelect, InitialPage
 
 # Create your views here.
-def modeSelect(request):
-    pathImageModeSelect = 'Game/Image/ModeSelect/'
-
-    parameters = {
-        'types' : [
-            {
-                'value' : 'pvp',
-                'path' : pathImageModeSelect + 'pvp.png',
-            },{
-                'value' : 'pve',
-                'path' : pathImageModeSelect + 'pve.png',
-            },
-        ]        
-    }
-    return render(request, 'Game/modeSelect.html', parameters)
-
-def factionSelect(request):
-    pathImageModeSelect = 'Game/Image/FactionSelect/'
-
-    settings = GameSettings.objects.first() 
-    if (settings.gameMode == 'pvp'):
-        backgroundImage = pathImageModeSelect + 'pvpBackground.jpg'
-    elif (settings.gameMode == 'pve'):
-        backgroundImage = pathImageModeSelect + 'pveBackground.jpg'
-
-    parameters = {
-        'backgroundPath' : backgroundImage,
-        'factions' : [
-            {
-                'value' : 'alliance',
-                'path' : pathImageModeSelect + 'alliance.png'
-            },{
-                'value' : 'horde',
-                'path' : pathImageModeSelect + 'horde.png'
-            }
-        ]
-    }
-
-    return render(request, 'Game/factionSelect.html', parameters)
-
 def game(request):
-    return render(request, 'Game/initialScreen.html')
+    settings = GameSettings.objects.first() 
+
+    if not settings.passHomeScreen:
+        return InitialPage(request)
+    elif settings.gameMode == '':
+        return modeSelect(request)
+    elif settings.faction == '':
+        return factionSelect(request)
