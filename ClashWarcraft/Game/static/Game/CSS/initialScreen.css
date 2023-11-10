@@ -1,0 +1,23 @@
+body {
+    background-image: url("../Image/InitialScreen/background.jpg");
+}
+
+h1 {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 4rem;
+    text-align: center;
+}
+
+h3{
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.5rem;
+    left: 52%; 
+    padding: 10px 20px; 
+    position: absolute;
+    top: 85%; 
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%); 
+}

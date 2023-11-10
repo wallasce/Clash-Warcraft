@@ -18,7 +18,7 @@ def modeSelect(request):
     }
     return render(request, 'Game/modeSelect.html', parameters)
 
-def game(request):
+def factionSelect(request):
     pathImageModeSelect = 'Game/Image/FactionSelect/'
 
     settings = GameSettings.objects.first() 
@@ -41,3 +41,6 @@ def game(request):
     }
 
     return render(request, 'Game/factionSelect.html', parameters)
+
+def game(request):
+    return render(request, 'Game/initialScreen.html')
