@@ -36,10 +36,10 @@ def factionSelect(request):
         'backgroundPath' : backgroundImage,
         'factions' : [
             {
-                'value' : 'horde',
+                'value' : 'Horde',
                 'path' : pathImageModeSelect + 'horde.png'
             },{
-                'value' : 'alliance',
+                'value' : 'Alliance',
                 'path' : pathImageModeSelect + 'alliance.png'
             }
         ]

@@ -3,8 +3,9 @@ from Character.models import Character
 from .models import characterSelect
 
 def selectCharacter(request, factionRequired, typeRequired):
+    print(factionRequired)
     backgroundPath = 'CharacterSelect/Image/' + factionRequired + 'Background.jpg'
-    characterOptions = Character.objects.all().filter(faction = factionRequired.capitalize() , type = typeRequired)
+    characterOptions = Character.objects.all().filter(faction = factionRequired , type = typeRequired)
     
     options = [characterOption.name for characterOption in characterOptions]
     options = []
