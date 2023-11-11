@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Character, Attributes, Path
+
+admin.site.register(Character)
+admin.site.register(Attributes)
+admin.site.register(Path)
