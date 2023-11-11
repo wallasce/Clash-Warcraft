@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "Character",
+    "CharacterSelect",
     "Game",
     "GameSettings",
     "Website",
