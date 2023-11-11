@@ -34,6 +34,8 @@ def setCharacter(request):
             setTank(character, teams)
         elif (type == 'Melee'):
             setMelee(character, teams)
+        elif (type == 'Ranged'):
+            setRanged(character, teams)
 
 
     return HttpResponse(request)  

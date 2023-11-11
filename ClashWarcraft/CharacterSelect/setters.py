@@ -13,4 +13,8 @@ def setMelee(name : str, teams : BaseManager[characterSelect]) -> None:
             team.melee = name
             team.save()
 
-            
+def setRanged(name : str, teams : BaseManager[characterSelect]) -> None:
+    for team in teams:
+        if team.ranged == '':
+            team.ranged = name
+            team.save()
