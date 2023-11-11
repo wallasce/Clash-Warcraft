@@ -18,3 +18,9 @@ def setRanged(name : str, teams : BaseManager[characterSelect]) -> None:
         if team.ranged == '':
             team.ranged = name
             team.save()
+
+def setHeal(name : str, teams : BaseManager[characterSelect]) -> None:
+    for team in teams:
+        if team.heal == '':
+            team.heal = name
+            team.save()

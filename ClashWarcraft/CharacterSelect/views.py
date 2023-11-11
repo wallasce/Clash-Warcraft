@@ -36,6 +36,8 @@ def setCharacter(request):
             setMelee(character, teams)
         elif (type == 'Ranged'):
             setRanged(character, teams)
+        elif (type == 'Heal'):
+            setHeal(character, teams)
 
 
     return HttpResponse(request)  

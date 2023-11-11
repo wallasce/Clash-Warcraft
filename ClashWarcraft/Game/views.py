@@ -27,3 +27,5 @@ def game(request):
         return selectCharacter(request, faction, 'Melee')
     elif playersCharacter[player1].ranged == '':
         return selectCharacter(request, faction, 'Ranged')
+    elif playersCharacter[player1].heal == '':
+        return selectCharacter(request, faction, 'Heal')
