@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from CharacterSelect.views import setCharacter
 from Game.views import game
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode
 from Website.views import homePage
@@ -29,4 +30,5 @@ urlpatterns = [
     path("settings/game-mode", setGameMode, name = 'SetGameMode'),
     path("settings/pass-initial-screen", passInitialScreen, name = 'passInitialScreen'),
     path("settings/reset", resetSettings, name = 'ResetSettings'),
+    path("settings/setCharacter", setCharacter, name = 'Set Character'),
 ]
