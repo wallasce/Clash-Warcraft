@@ -32,6 +32,8 @@ def setCharacter(request):
         
         if (type == 'Tank'):
             setTank(character, teams)
+        elif (type == 'Melee'):
+            setMelee(character, teams)
 
 
     return HttpResponse(request)  

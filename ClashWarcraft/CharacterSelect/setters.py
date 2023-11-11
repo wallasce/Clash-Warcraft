@@ -6,3 +6,11 @@ def setTank(name : str, teams : BaseManager[characterSelect]) -> None:
         if team.tank == '':
             team.tank = name
             team.save()
+
+def setMelee(name : str, teams : BaseManager[characterSelect]) -> None:
+    for team in teams:
+        if team.melee == '':
+            team.melee = name
+            team.save()
+
+            

@@ -23,3 +23,5 @@ def game(request):
     player1 = 0
     if playersCharacter[player1].tank == '':
         return selectCharacter(request, faction, 'Tank')
+    elif playersCharacter[player1].melee == '':
+        return selectCharacter(request, faction, 'Melee')
