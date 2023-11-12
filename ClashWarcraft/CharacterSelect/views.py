@@ -12,14 +12,14 @@ def resetTeams() -> None:
         team.heal = ''
         team.save()
 
-def selectCharacter(request, factionRequired, typeRequired):
+def selectCharacter(request, factionRequired, typeRequired, player):
     backgroundPath = 'CharacterSelect/Image/' + factionRequired + 'Background.jpg'
     characterOptions = Character.objects.all().filter(faction = factionRequired , type = typeRequired)
     
     options = [characterOption.name for characterOption in characterOptions]
     options = []
     for characterOption in characterOptions:
-        path = 'Character/Image/' + characterOption.name + '.png'
+        path = 'Character/Image/' + formatName(characterOption.name) + '.png'
         options.append({
             'value' : characterOption.name,
             'path' : path
@@ -29,6 +29,7 @@ def selectCharacter(request, factionRequired, typeRequired):
         'backgroundPath' : backgroundPath,
         'type' : typeRequired,
         'options' : options,
+        'player' : player + 1,
     }
 
     return render(request, 'CharacterSelect/characterSelect.html', parameters)

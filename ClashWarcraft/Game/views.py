@@ -4,6 +4,21 @@ from CharacterSelect.views import selectCharacter
 from GameSettings.models import GameSettings
 from GameSettings.views import modeSelect, factionSelect, InitialPage
 
+def userSelectCharacter(request, faction, player):
+    playersCharacter = characterSelect.objects.all()
+
+    if playersCharacter[player].tank == '':
+        return selectCharacter(request, faction, 'Tank', player)
+    elif playersCharacter[player].melee == '':
+        return selectCharacter(request, faction, 'Melee', player)
+    elif playersCharacter[player].ranged == '':
+        return selectCharacter(request, faction, 'Ranged', player)
+    elif playersCharacter[player].heal == '':
+        return selectCharacter(request, faction, 'Heal', player)
+    else:
+        return None
+    
+
 def game(request):
     # Set Game Settings.
     settings = GameSettings.objects.first() 
@@ -14,18 +29,20 @@ def game(request):
         return modeSelect(request)
     elif settings.faction == '':
         return factionSelect(request)
-    
-    # Set Character.
-    playersCharacter = characterSelect.objects.all()
-    faction = settings.faction
 
-    # Player 1
+    # Player 1 Selection
+    faction = settings.faction
     player1 = 0
-    if playersCharacter[player1].tank == '':
-        return selectCharacter(request, faction, 'Tank')
-    elif playersCharacter[player1].melee == '':
-        return selectCharacter(request, faction, 'Melee')
-    elif playersCharacter[player1].ranged == '':
-        return selectCharacter(request, faction, 'Ranged')
-    elif playersCharacter[player1].heal == '':
-        return selectCharacter(request, faction, 'Heal')
+    userSelect = userSelectCharacter(request, faction, player1)
+    if (userSelect):
+        return userSelect
+    
+    # Player 2 Selection If PvP mode, else Computer Selection.
+    if (settings.gameMode == 'pvp'):
+        player2 = 1
+        factionOpposite = 'Horde' if faction == 'Alliance' else 'Alliance'
+
+        userSelect = userSelectCharacter(request, factionOpposite, player2)
+        if (userSelect):
+            return userSelect
+    
