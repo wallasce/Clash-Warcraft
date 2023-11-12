@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "CharacterSelect",
     "Game",
     "GameSettings",
+    "Mob",
     "Website",
     "WebsiteConfig",
 ]
