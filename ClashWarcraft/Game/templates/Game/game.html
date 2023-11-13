@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends 'WebsiteConfig/gameBase.html' %}
+
+{% load static %}
+
+{% block title %} Game {% endblock %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "Game/CSS/game.css" %}">
+{% endblock %}
+
+{% block 'background-in-html' %}
+    style = "background-image: url('{% static  backgroundPath %}')"
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+          <div class="col cards cards-left">
+                {% if leftSide|length == 4 %}
+                    <div class = "container">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{% static  leftSide.0 %}">
+                            </div>
+                            <div class="col">
+                                <img src="{% static  leftSide.2 %}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img src="{% static  leftSide.1 %}">
+                            </div>
+                            <div class="col">
+                                <img src="{% static  leftSide.3 %}">
+                            </div>
+                        </div>
+                    </div>
+              {%  endif %}
+          </div>
+          <div class="col cards cards-right">
+            {% if rightSide|length == 4 %}
+                    <div class = "container">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{% static  rightSide.0 %}">
+                            </div>
+                            <div class="col">
+                                <img src="{% static  rightSide.2 %}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img src="{% static  rightSide.1 %}">
+                            </div>
+                            <div class="col">
+                                <img src="{% static  rightSide.3 %}">
+                            </div>
+                        </div>
+                    </div>
+              {%  endif %}
+          </div>
+        </div>
+
+        <div class = "row">
+        </div>
+      </div>
+            
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
