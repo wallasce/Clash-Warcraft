@@ -3,6 +3,8 @@ from CharacterSelect.models import characterSelect
 from CharacterSelect.views import selectCharacter
 from GameSettings.models import GameSettings
 from GameSettings.views import modeSelect, factionSelect, InitialPage
+from PvESettings.models import PvESetting
+from PvESettings.views import setMobs
 
 def userSelectCharacter(request, faction, player):
     playersCharacter = characterSelect.objects.all()
@@ -45,4 +47,10 @@ def game(request):
         userSelect = userSelectCharacter(request, factionOpposite, player2)
         if (userSelect):
             return userSelect
+    elif (settings.gameMode == 'pve'):
+        settings = PvESetting.objects.first()
+        settings.raid += 1
+        settings.save()
+        
+        setMobs()
     
