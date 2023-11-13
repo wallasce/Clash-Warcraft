@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     "Game",
     "GameSettings",
     "Mob",
-    "PvESettings",
     "Skill",
+    "PvESettings",
     "Website",
     "WebsiteConfig",
 ]
