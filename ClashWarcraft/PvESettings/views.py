@@ -18,11 +18,9 @@ def setMobs():
     raid = settings.raid
 
     mobsRaid = Mob.objects.all().filter(raid = raid)
-    print(mobsRaid)
     settings.easyMob = mobsRaid.filter(level = 'Easy')[0].name
     settings.mediumMob = mobsRaid.filter(level = 'Medium')[0].name
     settings.hardMob = mobsRaid.filter(level = 'Hard')[0].name
     settings.bossMob = mobsRaid.filter(level = 'Boss')[0].name
 
     settings.save()
-    print(settings)
