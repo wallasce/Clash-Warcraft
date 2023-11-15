@@ -1,4 +1,5 @@
 from django.db import models
+from Skill.models import Skill
 
 # Create your models here.
 class Character(models.Model):
@@ -7,6 +8,7 @@ class Character(models.Model):
     kind = models.CharField(max_length=15)
     type = models.CharField(max_length=6)
     attributes = models.ForeignKey("Attributes", on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
