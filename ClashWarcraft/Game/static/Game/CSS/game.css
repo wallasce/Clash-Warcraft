@@ -4,3 +4,12 @@
     max-height: 15rem;
     max-width: 9.5rem;
 }
+
+.skills {
+    margin: 1rem auto 1rem auto;
+    max-width: fit-content;
+}
+
+.skills .col {
+    max-width: fit-content;
+}
