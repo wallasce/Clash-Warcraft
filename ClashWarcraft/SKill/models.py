@@ -6,3 +6,6 @@ class Skill(models.Model):
     type = models.CharField(max_length=25, blank=True)
     cooldown = models.IntegerField(blank=True)
     baseEffect = models.FloatField(blank=True)
+
+    def __str__(self) -> str:
+        return self.skillOff + ' ' + str(self.level)
