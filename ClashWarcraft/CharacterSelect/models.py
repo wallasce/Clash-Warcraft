@@ -8,4 +8,4 @@ class characterSelect(models.Model):
     heal = models.CharField(max_length=50, blank=True)
 
     def __str__(self) -> str:
-        return "Character Selected"
+        return "Character Selected for Player " + str(self.id)
