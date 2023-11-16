@@ -6,3 +6,6 @@ class PvESetting(models.Model):
     mediumMob = models.CharField(max_length=55, blank=True)
     hardMob = models.CharField(max_length=55, blank=True)
     bossMob = models.CharField(max_length=55, blank=True)
+
+    def __str__(self) -> str:
+        return "PvE Settings"
