@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import GameSettings
+from .models import GameSetting
 # Register your models here.
-admin.site.register(GameSettings)
+admin.site.register(GameSetting)

@@ -1,10 +1,9 @@
 from django.shortcuts import render, HttpResponse
 
-from .models import GameSettings
+from .models import GameSetting
 
 # Views Functios
 from django.shortcuts import render
-from GameSettings.models import GameSettings
 
 # Create your views here.
 def modeSelect(request):
@@ -26,7 +25,7 @@ def modeSelect(request):
 def factionSelect(request):
     pathImageModeSelect = 'GameSettings/Image/FactionSelect/'
 
-    settings = GameSettings.objects.first() 
+    settings = GameSetting.objects.first() 
     if (settings.gameMode == 'pvp'):
         backgroundImage = pathImageModeSelect + 'pvpBackground.jpg'
     elif (settings.gameMode == 'pve'):
@@ -52,7 +51,7 @@ def InitialPage(request):
 
 # API Functions
 def resetSettings():
-    settings = GameSettings.objects.first() 
+    settings = GameSetting.objects.first() 
     settings.passHomeScreen = False
     settings.gameMode = ""
     settings.faction = ""
@@ -60,7 +59,7 @@ def resetSettings():
 
 def passInitialScreen(request):
     if (request.method == 'POST'):
-        settings = GameSettings.objects.first() 
+        settings = GameSetting.objects.first() 
         settings.passHomeScreen = True
         settings.save()
 
@@ -68,7 +67,7 @@ def passInitialScreen(request):
 
 def setGameMode(request):
     if (request.method == 'POST'):
-        settings = GameSettings.objects.first() 
+        settings = GameSetting.objects.first() 
         settings.gameMode = request.body.decode('utf-8')
         settings.save()
 
@@ -76,7 +75,7 @@ def setGameMode(request):
 
 def setFaction(request):
     if (request.method == 'POST'):
-        settings = GameSettings.objects.first()
+        settings = GameSetting.objects.first()
         settings.faction = request.body.decode('utf-8')
         settings.save()
 

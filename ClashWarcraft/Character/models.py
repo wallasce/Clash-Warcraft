@@ -7,13 +7,13 @@ class Character(models.Model):
     faction = models.CharField(max_length=8)
     kind = models.CharField(max_length=15)
     type = models.CharField(max_length=6)
-    attributes = models.ForeignKey("Attributes", on_delete=models.CASCADE)
+    attributes = models.ForeignKey("Attribute", on_delete=models.CASCADE)
     skill = models.ManyToManyField(Skill)
 
     def __str__(self) -> str:
         return self.name
 
-class Attributes(models.Model):
+class Attribute(models.Model):
     attributesOf = models.CharField(max_length=50, default="")
     armor = models.FloatField()
     power = models.FloatField()

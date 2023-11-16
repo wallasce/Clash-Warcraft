@@ -1,6 +1,6 @@
 from CharacterSelect.models import characterSelect
 from CharacterSelect.views import selectCharacter
-from GameSettings.models import GameSettings
+from GameSettings.models import GameSetting
 from PvESettings.models import PvESetting
 
 # Return a screen to select player characters
@@ -25,7 +25,7 @@ def setParametersGame() -> dict:
     parameters = {}
     parameters['leftSide'] = getPlayerParameters(0)
 
-    settings = GameSettings.objects.first()
+    settings = GameSetting.objects.first()
     if (settings.gameMode == 'pve'):
         settingsPvE = PvESetting.objects.first()
         parameters['rightSide'] = getMobParameters(settingsPvE)

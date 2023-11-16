@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from GameSettings.models import GameSettings
+from GameSettings.models import GameSetting
 from GameSettings.views import modeSelect, factionSelect, InitialPage
 from PvESettings.models import PvESetting
 from PvESettings.views import setMobs
@@ -7,7 +7,7 @@ from .wrapper import setParametersGame, userSelectCharacter
 
 def game(request):
     # Set Game Settings.
-    settings = GameSettings.objects.first() 
+    settings = GameSetting.objects.first() 
 
     if not settings.passHomeScreen:
         return InitialPage(request)
