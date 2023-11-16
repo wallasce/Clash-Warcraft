@@ -8,7 +8,7 @@ class Character(models.Model):
     kind = models.CharField(max_length=15)
     type = models.CharField(max_length=6)
     attributes = models.ForeignKey("Attributes", on_delete=models.CASCADE)
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, blank=True, null=True)
+    skill = models.ManyToManyField(Skill)
 
     def __str__(self) -> str:
         return self.name
