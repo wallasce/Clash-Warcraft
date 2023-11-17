@@ -20,12 +20,14 @@ from django.urls import path
 from CharacterSelect.views import setCharacter
 from Game.views import game
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode
+from Skill.views import getSkillFromCharacterSelected
 from Website.views import homePage
 
 urlpatterns = [
     path("", homePage, name = 'HomePage'),
     path("admin/", admin.site.urls),
     path("game/", game, name = 'Game'),
+    path("api/get-skill", getSkillFromCharacterSelected, name = 'GetSkill'),
     path("settings/faction", setFaction, name = 'SetFaction'),
     path("settings/game-mode", setGameMode, name = 'SetGameMode'),
     path("settings/pass-initial-screen", passInitialScreen, name = 'passInitialScreen'),

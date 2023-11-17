@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from .wrapper import getCharacterNames, getPathSkill
 
-# Create your views here.
+def getSkillFromCharacterSelected(request):
+    charactersName = getCharacterNames()
+    
+    response = {}
+    for characterName in charactersName:
+        response[characterName] = getPathSkill(characterName)
+    
+    return HttpResponse(response)
+        
