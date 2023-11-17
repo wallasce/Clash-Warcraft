@@ -6,6 +6,8 @@ from PvESettings.models import PvESetting
 from PvESettings.views import setMobs
 from .wrapper import setParametersGame, userSelectCharacter, sortCharacters
 
+import json
+
 def game(request):
     # Set Game Settings.
     settings = GameSetting.objects.first() 
@@ -55,8 +57,8 @@ def getCharacterName(request):
     
     characters = sortCharacters(characters1, characters2)
     
-    response = {
+    response = json.dumps({
         'names' : characters,
-    }
+    })
 
     return HttpResponse(response)
