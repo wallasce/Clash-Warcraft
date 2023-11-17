@@ -70,3 +70,22 @@ def getMobParameters(settingsPvE : PvESetting) -> list:
     ]
 
     return pathsMob
+
+# Create a vector by alternating between the two vectors.
+def sortCharacters(characters1 : list[str], characters2: list[str]) -> list[str]:
+    characters = []
+    countChar1 = 0
+    countChar2 = 0
+    count = 0
+    
+    while (count < 8):
+        if (count % 2 == 0):
+            characters.append(characters1[countChar1])
+            countChar1 += 1
+        else:
+            characters.append(characters2[countChar2])
+            countChar2 += 1
+        
+        count += 1
+
+    return characters

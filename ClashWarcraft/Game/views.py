@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
 from GameSettings.views import modeSelect, factionSelect, InitialPage
 from PvESettings.models import PvESetting
 from PvESettings.views import setMobs
-from .wrapper import setParametersGame, userSelectCharacter
+from .wrapper import setParametersGame, userSelectCharacter, sortCharacters
 
 def game(request):
     # Set Game Settings.
@@ -42,3 +43,20 @@ def game(request):
     parameters = setParametersGame()
     return render(request, 'Game/game.html', parameters)
     
+def getCharacterName(request):
+    characters1 = characterSelect.objects.first().getCharactersName()
+    characters2 = []
+
+    gameMode = GameSetting.objects.first().gameMode
+    if (gameMode == 'pvp'):
+        characters2 = characterSelect.objects.last().getCharactersName()
+    elif(gameMode == 'pve'):
+        characters2 = PvESetting.objects.first().getMobsName()
+    
+    characters = sortCharacters(characters1, characters2)
+    
+    response = {
+        'names' : characters,
+    }
+
+    return HttpResponse(response)

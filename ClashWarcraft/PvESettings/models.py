@@ -9,3 +9,16 @@ class PvESetting(models.Model):
 
     def __str__(self) -> str:
         return "PvE Settings"
+    
+    def getMobsName(self) -> list[str]:
+        if (self.easyMob == ''):
+            return None
+        
+        names = [
+            self.easyMob,
+            self.mediumMob,
+            self.hardMob,
+            self.bossMob,
+        ] 
+
+        return names
