@@ -16,24 +16,32 @@
 {% block content %}
     {% csrf_token %}
     <div class="container">
-        <div class="row">
+        <div class="row row-cards">
           <div class="col cards cards-left">
                 {% if leftSide|length == 4 %}
                     <div class = "container">
                         <div class="row">
                             <div class="col">
-                                <img src="{% static  leftSide.0 %}">
+                                <button value={{ leftSide.0.name }} type="submit">
+                                    <img src="{% static  leftSide.0.path %}">
+                                </button>
                             </div>
                             <div class="col">
-                                <img src="{% static  leftSide.2 %}">
+                                <button value={{ leftSide.2.name }} type="submit">
+                                    <img src="{% static  leftSide.2.path %}">
+                                </button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <img src="{% static  leftSide.1 %}">
+                                <button value={{ leftSide.1.name }} type="submit">
+                                    <img src="{% static  leftSide.1.path %}">
+                                </button>
                             </div>
                             <div class="col">
-                                <img src="{% static  leftSide.3 %}">
+                                <button value={{ leftSide.3.name }} type="submit">
+                                    <img src="{% static  leftSide.3.path %}">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -44,18 +52,26 @@
                     <div class = "container">
                         <div class="row">
                             <div class="col">
-                                <img src="{% static  rightSide.0 %}">
+                                <button value={{ rightSide.0.name }} type="submit">
+                                    <img src="{% static  rightSide.0.path %}">
+                                </button>
                             </div>
                             <div class="col">
-                                <img src="{% static  rightSide.2 %}">
+                                <button value={{ rightSide.2.name }} type="submit">
+                                    <img src="{% static  rightSide.2.path %}">
+                                </button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <img src="{% static  rightSide.1 %}">
+                                <button value={{ rightSide.1.name }} type="submit">
+                                    <img src="{% static  rightSide.1.path %}">
+                                </button>
                             </div>
                             <div class="col">
-                                <img src="{% static  rightSide.3 %}">
+                                <button value={{ rightSide.3.name }} type="submit">
+                                    <img src="{% static  rightSide.3.path %}">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -65,13 +81,19 @@
 
         <div class = "row skills">
             <div class = "col">
-                <img class="skill" hidden src="">
+                <button value="" type="submit">
+                    <img class="skill" hidden src="">
+                </button>
             </div class = "col">
             <div class = "col">
-                <img class="skill" hidden src="">
+                <button value="" type="submit">
+                    <img class="skill" hidden src="">
+                </button>
             </div class = "col">
             <div class = "col">
-                <img class="skill" hidden src="">
+                <button value="" type="submit">
+                    <img class="skill" hidden src="">
+                </button>
             </div class = "col">
         </div>
       </div>

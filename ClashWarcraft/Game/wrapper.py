@@ -48,12 +48,21 @@ def getPlayerParameters(player : int) -> list:
     characters = characterSelect.objects.all()[player]
 
     frontCharacters  = [
-        path + formatName(characters.tank) + '.png',
-        path + formatName(characters.melee) + '.png',
+        {   'name' : characters.tank,
+            'path' : path + formatName(characters.tank) + '.png'
+        },{
+            'name' : characters.melee,
+            'path' : path + formatName(characters.melee) + '.png',
+        }
     ]
     behindCharacters = [
-        path + formatName(characters.ranged) + '.png',
-        path + formatName(characters.heal) + '.png',
+        {
+            'name' : characters.ranged,
+            'path' : path + formatName(characters.ranged) + '.png',
+        },{
+            'name' : characters.heal,
+            'path' : path + formatName(characters.heal) + '.png',
+        }
     ]
 
     pathsPlayer = behindCharacters + frontCharacters if player == 0 else frontCharacters + behindCharacters 
@@ -63,10 +72,19 @@ def getPlayerParameters(player : int) -> list:
 def getMobParameters(settingsPvE : PvESetting) -> list:
     path = 'Game/Image/Cards/'
     pathsMob = [
-        path + formatName(settingsPvE.easyMob) + '.png',
-        path + formatName(settingsPvE.mediumMob) + '.png',
-        path + formatName(settingsPvE.hardMob) + '.png',
-        path + formatName(settingsPvE.bossMob) + '.png',
+        {
+            'name' : settingsPvE.easyMob,
+            'path' : path + formatName(settingsPvE.easyMob) + '.png',
+        },{
+            'name' : settingsPvE.mediumMob,
+            'path' : path + formatName(settingsPvE.mediumMob) + '.png',
+        },{
+            'name' : settingsPvE.hardMob,
+            'path' : path + formatName(settingsPvE.hardMob) + '.png',
+        },{
+            'name' : settingsPvE.bossMob,
+            'path' : path + formatName(settingsPvE.bossMob) + '.png',
+        }
     ]
 
     return pathsMob
