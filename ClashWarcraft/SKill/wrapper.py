@@ -17,6 +17,6 @@ def getPathSkill(characterName : str) -> list[str]:
     
     paths = []
     for skill in characterSkills:
-        paths.append('Skill/Image/'+ skill.replace(' ', '') + '.png')
+        paths.append('/static/Skill/Image/'+ skill.replace(' ', '') + '.png')
 
     return paths

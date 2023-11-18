@@ -65,13 +65,13 @@
 
         <div class = "row skills">
             <div class = "col">
-                <img hidden src="{% static "Skill/Image/Hunter1.png" %}">
+                <img class="skill" hidden src="">
             </div class = "col">
             <div class = "col">
-                <img hidden src="{% static "Skill/Image/Hunter2.png" %}">
+                <img class="skill" hidden src="">
             </div class = "col">
             <div class = "col">
-                <img hidden src="{% static "Skill/Image/Hunter3.png" %}">
+                <img class="skill" hidden src="">
             </div class = "col">
         </div>
       </div>
@@ -79,5 +79,6 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'Game/JS/game.js' %}"></script>
+    <script src="{% static 'Game/JS/ajax.js' %}" type="module"></script>
+    <script src="{% static 'Game/JS/game.js' %}" type="module"></script>
 {% endblock %}
