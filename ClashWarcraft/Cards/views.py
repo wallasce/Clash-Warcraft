@@ -1,3 +1,39 @@
 from django.shortcuts import render
+from .models import Card
+from Character.models import Character
+from CharacterSelect.models import characterSelect
+from GameSettings.models import GameSetting
+from PvESettings.models import PvESetting
 
-# Create your views here.
+def createCards() -> None:
+    count = Card.objects.count()
+    if (count == 8):
+        return
+    elif (count > 0):
+        deleteCards()
+    
+    nameCharacters = characterSelect.objects.first().getCharactersName()
+
+    gameMode = GameSetting.objects.first().gameMode
+    if (gameMode == 'pvp'):
+        nameCharacters += characterSelect.objects.last().getCharactersName()
+    elif(gameMode == 'pve'):
+        nameCharacters += PvESetting.objects.first().getMobsName()
+
+    for nameCharacter in nameCharacters:
+        character = Character.objects.all().filter(name = nameCharacter)[0]
+        Card.objects.create(characterCard = character)
+
+    cards = Card.objects.all()
+    for card in cards:
+        attributes = card.characterCard.attributes
+        card.currentArmor = attributes.armor
+        card.currentPower = attributes.power
+        card.currentStamina = attributes.stamina
+
+        card.save()
+
+def deleteCards() -> None:
+    cards = Card.objects.all()
+    for card in cards:
+        card.delete()

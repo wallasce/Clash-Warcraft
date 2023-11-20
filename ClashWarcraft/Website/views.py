@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from Cards.views import deleteCards
 from CharacterSelect.views import resetTeams
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
@@ -8,4 +9,5 @@ def homePage(request):
     resetSettings()
     resetTeams()
     resetPve()
+    deleteCards()
     return render(request, 'WebSite/homePage.html')

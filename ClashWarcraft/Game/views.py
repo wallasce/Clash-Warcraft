@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from Cards.views import createCards, deleteCards
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
 from GameSettings.views import modeSelect, factionSelect, InitialPage
@@ -40,6 +41,9 @@ def game(request):
         settingsPvE.save()
         
         setMobs()
+
+    # Create Cards
+    createCards()
 
     # Render Game Screen.
     parameters = setParametersGame()
