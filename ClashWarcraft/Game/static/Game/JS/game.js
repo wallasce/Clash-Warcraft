@@ -2,30 +2,35 @@ import * as ajax from "./ajax.js";
 import * as screenControl from "./screenControl.js"
 
 var round = 0
-window.onload = (event) => {
-    var names;
-    var skills;
+var skillsNames;
+var cardsName;
 
+window.onload = (event) => {
     ajax.makeRequest('GET', '/api/get-names')
     .then(function (result) {
-        names = JSON.parse(result).names;
+        cardsName = JSON.parse(result).names;
     })
     .then(ajax.makeRequest("GET", "/api/get-skill")
         .then(function(result) {
-            skills = JSON.parse(result);
+            skillsNames = JSON.parse(result);
         })
         .then(function() {
-            let skillsImg = document.getElementsByClassName('skill');
-            for (let count = 0; count < skillsImg.length; count += 1) {
-                skillsImg[count].src = skills[names[round]][count];
-                skillsImg[count].hidden = false;
-                screenControl.changeCardsDisableValueTo(true)
-            }
+            updateSkillImageSrc()
         })
     )
 }
 
-function addEventOnClickinSkill(){
+function updateSkillImageSrc() {
+    let skillsImg = document.getElementsByClassName('skill');
+    
+    for (let count = 0; count < skillsImg.length; count += 1) {
+        skillsImg[count].src = skillsNames[cardsName[round]][count];
+        skillsImg[count].hidden = false;
+        screenControl.changeCardsDisableValueTo(true)
+    }
+}
+
+function addEventOnClickinSkill() {
     let div = document.getElementsByClassName('skills');
     let skills = div[0].getElementsByTagName('button');
 
@@ -52,7 +57,8 @@ function addEventOnClickinCards() {
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
 
-            round = round < 8 ? (round + 1) : 0
+            round = round < 7 ? (round + 1) : 0
+            updateSkillImageSrc()
         };
     }
 }
