@@ -1,0 +1,30 @@
+{% load static %}
+
+{% if side|length == 4 %}
+    <div class = "container">
+        <div class="row">
+            <div class="col">
+                <button class="card-button" value={{ side.0.name }} type="submit">
+                    <img src="{% static  side.0.path %}">
+                </button>
+            </div>
+            <div class="col">
+                <button class="card-button" value={{ side.2.name }} type="submit">
+                    <img src="{% static  side.2.path %}">
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="card-button" value={{ side.1.name }} type="submit">
+                    <img src="{% static  side.1.path %}">
+                </button>
+            </div>
+            <div class="col">
+                <button class="card-button" value={{ side.3.name }} type="submit">
+                    <img src="{% static  side.3.path %}">
+                </button>
+            </div>
+        </div>
+    </div>
+{% endif %}

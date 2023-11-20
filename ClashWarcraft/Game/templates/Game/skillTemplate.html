@@ -1,0 +1,9 @@
+{% load static %}
+
+{% for i in '123'|make_list %}
+    <div class = "col">
+        <button value={{ i }} type="submit">
+            <img class="skill" hidden src="">
+        </button>
+    </div class = "col">
+{% endfor %}
