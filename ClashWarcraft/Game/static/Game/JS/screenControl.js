@@ -1,6 +1,6 @@
-export function changeCardsDisableValueTo(value, sideToChange) {
-    let side = document.getElementsByClassName('cards-' + sideToChange);
-    let cards = side[0].getElementsByTagName('button');
+export function changeCardsDisableValueTo(value, sideToChange = 'all') {
+    let classCards = (sideToChange == 'all') ? '.card-button' : '.cards-' + sideToChange + ' .card-button';
+    let cards = document.querySelectorAll(classCards);
 
     for (let i = 0; i < cards.length; i+=1) {
         cards[i].disabled = value;
