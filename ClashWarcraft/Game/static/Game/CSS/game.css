@@ -4,6 +4,10 @@ button {
     padding: 0;
 }
 
+.bar {
+    margin: 0!important;
+}
+
 .cards {
     margin-left: 4rem;
     margin-right: 4rem;
@@ -11,7 +15,7 @@ button {
 
 .cards img {
     display: block;
-    margin: 0.5rem auto 0.5rem auto;
+    margin: 0.5rem auto 0rem auto;
     max-height: 15rem;
     max-width: 9.5rem;
 }
