@@ -16,11 +16,18 @@ class Card(models.Model):
         target = Card.objects.all().filter(characterCard__name = target).first()
         skillUsed = self.characterCard.skill.all().filter(level = skillNumber).first()
 
-        if (skillUsed.type == 'Damage'):
+        if (skillUsed.type == 'Damage'): 
             target.currentStamina -= skillUsed.baseEffect * self.currentPower * (100 - target.currentArmor) * 0.0001
+            if (target.currentStamina < 0):
+                target.currentStamina = 0
+
             target.save()
         elif (skillUsed.type == 'Heal'):
+            maxStamina = target.characterCard.attributes.stamina
             target.currentStamina += skillUsed.baseEffect * self.currentPower * 0.01
+            if (target.currentStamina > maxStamina):
+                target.currentStamina = maxStamina
+
             target.save()
 
     def getLifeInPercentage(self) -> int:
