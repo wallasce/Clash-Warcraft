@@ -1,6 +1,8 @@
 export var names;
 
-export function makeRequest(method, url) {
+var csrftoken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+
+export function makeRequestWithPromise(method, url) {
     return new Promise(function (resolve) {
         var xhttp = new XMLHttpRequest();
         xhttp.open(method, url, true);
@@ -11,4 +13,11 @@ export function makeRequest(method, url) {
         };
         xhttp.send();
     });
+}
+
+export function makePostRequest(url, value) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open('POST', url, true);
+  xhttp.setRequestHeader("X-CSRFToken", csrftoken); 
+  xhttp.send(value);
 }

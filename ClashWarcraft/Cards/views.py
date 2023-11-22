@@ -1,9 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import Card
 from Character.models import Character
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
 from PvESettings.models import PvESetting
+
+import json
+
+def applySkill(request) :
+    requestDict = json.loads(request.body.decode())
+    currentCard = Card.objects.all().filter(characterCard__name = requestDict['currentCard'])[0]
+    currentCard.applySkill(requestDict['skillNumber'], requestDict['targetCard'])
+
+    return HttpResponse(request)
 
 def createCards() -> None:
     count = Card.objects.count()

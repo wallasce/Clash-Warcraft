@@ -4,13 +4,14 @@ import * as screenControl from "./screenControl.js"
 var round = 0
 var skillsNames;
 var cardsName;
+var skillClicked;
 
 window.onload = (event) => {
-    ajax.makeRequest('GET', '/api/get-names')
+    ajax.makeRequestWithPromise('GET', '/api/get-names')
     .then(function (result) {
         cardsName = JSON.parse(result).names;
     })
-    .then(ajax.makeRequest("GET", "/api/get-skill")
+    .then(ajax.makeRequestWithPromise("GET", "/api/get-skill")
         .then(function(result) {
             skillsNames = JSON.parse(result);
         })
@@ -36,6 +37,7 @@ function addEventOnClickinSkill() {
 
     for (let i = 0; i < skills.length; i+=1) {
         skills[i].onclick = function() {
+            skillClicked = this.value;
             screenControl.changeSkillDisableValueTo(true)
 
             if (round % 2 == 0) {
@@ -54,6 +56,13 @@ function addEventOnClickinCards() {
 
     for (let i = 0; i < cards.length; i+=1) {
         cards[i].onclick = function() {
+            let parameters = JSON.stringify({
+                'currentCard' : cardsName[round],
+                'skillNumber' : skillClicked,
+                'targetCard' : this.value,
+            });
+            ajax.makePostRequest('/api/apply-skill', parameters);
+
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
 

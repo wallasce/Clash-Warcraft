@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from Cards.views import applySkill
 from CharacterSelect.views import setCharacter
 from Game.views import game, getCharacterName
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode
@@ -27,6 +28,7 @@ urlpatterns = [
     path("", homePage, name = 'HomePage'),
     path("admin/", admin.site.urls),
     path("game/", game, name = 'Game'),
+    path("api/apply-skill", applySkill, name = 'ApplySkill'),
     path("api/get-names", getCharacterName, name = 'GetName'),
     path("api/get-skill", getSkillFromCharacterSelected, name = 'GetSkill'),
     path("settings/faction", setFaction, name = 'SetFaction'),
