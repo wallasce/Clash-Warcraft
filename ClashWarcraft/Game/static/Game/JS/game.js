@@ -62,6 +62,7 @@ function addEventOnClickinCards() {
                 'targetCard' : this.value,
             });
             ajax.makePostRequest('/api/apply-skill', parameters);
+            screenControl.updateBar(this.value)
 
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);

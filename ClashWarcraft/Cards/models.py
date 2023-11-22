@@ -19,3 +19,28 @@ class Card(models.Model):
         if (skillUsed.type == 'Damage'):
             target.currentStamina -= skillUsed.baseEffect * self.currentPower * (100 - target.currentArmor) * 0.0001
             target.save()
+
+    def getLifeInPercentage(self) -> int:
+        percentage = self.currentStamina * 100 / self.characterCard.attributes.stamina
+        if (percentage > 95):
+            return 100
+        elif (percentage > 85):
+            return 90
+        elif (percentage > 75):
+            return 80
+        elif (percentage > 65):
+            return 70
+        elif (percentage > 55):
+            return 60
+        elif (percentage > 45):
+            return 50
+        elif (percentage > 35):
+            return 40
+        elif (percentage > 25):
+            return 30
+        elif (percentage > 15):
+            return 20
+        elif (percentage > 0):
+            return 10
+        else:
+            return 0

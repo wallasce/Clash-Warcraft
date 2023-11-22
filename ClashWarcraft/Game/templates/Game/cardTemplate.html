@@ -7,13 +7,13 @@
                 <button class="card-button" value={{ side.0.name }} type="submit">
                     <img src="{% static  side.0.path %}">
                 </button>
-                <img class="bar" src={% static "Game/Image/Bars/100.png" %} >
+                <img class="bar bar-{{ side.0.name }}" src={% static "Game/Image/Bars/100.png" %} >
             </div>
             <div class="col">
                 <button class="card-button" value={{ side.2.name }} type="submit">
                     <img src="{% static  side.2.path %}">
                 </button>
-                <img class="bar" src={% static "Game/Image/Bars/100.png" %} >
+                <img class="bar bar-{{ side.2.name }}" src={% static "Game/Image/Bars/100.png" %} >
             </div>
         </div>
         <div class="row">
@@ -21,13 +21,13 @@
                 <button class="card-button" value={{ side.1.name }} type="submit">
                     <img src="{% static  side.1.path %}">
                 </button>
-                <img class="bar" src={% static "Game/Image/Bars/100.png" %} >
+                <img class="bar bar-{{ side.1.name }}" src={% static "Game/Image/Bars/100.png" %} >
             </div>
             <div class="col">
                 <button class="card-button" value={{ side.3.name }} type="submit">
                     <img src="{% static  side.3.path %}">
                 </button>
-                <img class="bar" src={% static "Game/Image/Bars/100.png" %} >
+                <img class="bar bar-{{ side.3.name }}" src={% static "Game/Image/Bars/100.png" %} >
             </div>
         </div>
     </div>

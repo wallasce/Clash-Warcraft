@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from Cards.views import createCards, deleteCards
+from Cards.models import Card
+from Cards.views import createCards
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
 from GameSettings.views import modeSelect, factionSelect, InitialPage
@@ -65,4 +66,13 @@ def getCharacterName(request):
         'names' : characters,
     })
 
+    return HttpResponse(response)
+
+def getPercentage(request):
+    cardToUpdate = Card.objects.all().filter(characterCard__name = request.GET.get('from')).first()
+    percentage = cardToUpdate.getLifeInPercentage()
+
+    response = json.dumps({
+        'percentage' : percentage
+    })
     return HttpResponse(response)
