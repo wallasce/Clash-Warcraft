@@ -22,21 +22,15 @@ window.onload = (event) => {
 }
 
 function addEventOnClickinSkill() {
-    let div = document.getElementsByClassName('skills');
-    let skills = div[0].getElementsByTagName('button');
+    let skillsBtn = document.getElementsByClassName('skill-btn');
 
-    for (let i = 0; i < skills.length; i+=1) {
-        skills[i].onclick = function() {
+    for (let i = 0; i < skillsBtn.length; i+=1) {
+        skillsBtn[i].onclick = function() {
             skillClicked = this.value;
             screenControl.changeSkillDisableValueTo(true)
 
-            if (round % 2 == 0) {
-                screenControl.changeCardsDisableValueTo(true, 'left');
-                screenControl.changeCardsDisableValueTo(false, 'right');
-            } else {
-                screenControl.changeCardsDisableValueTo(false, 'left');
-                screenControl.changeCardsDisableValueTo(true, 'right');
-            }
+            let skillType = this.className.split(' ')[1]
+            screenControl.enablesCardsToRound(round, skillType)
         };
     }
 }

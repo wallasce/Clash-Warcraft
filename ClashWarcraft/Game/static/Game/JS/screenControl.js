@@ -42,3 +42,29 @@ export function updateBar(from) {
     }
     xhttp.send();
 }
+
+function enableRight() {
+    changeCardsDisableValueTo(true, 'left');
+    changeCardsDisableValueTo(false, 'right');
+}
+
+function enableLeft() {
+    changeCardsDisableValueTo(false, 'left');
+    changeCardsDisableValueTo(true, 'right');
+}
+
+export function enablesCardsToRound(round, typeSkill) {
+    if (round % 2 == 0) {
+        if (typeSkill == 'skill-type-damage') {
+            enableRight()
+        } else {
+            enableLeft()
+        }
+    } else {
+        if (typeSkill == 'skill-type-damage') {
+            enableLeft()
+        } else {
+            enableRight()
+        }
+    }
+}
