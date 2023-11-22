@@ -16,19 +16,9 @@ window.onload = (event) => {
             skillsNames = JSON.parse(result);
         })
         .then(function() {
-            updateSkillImageSrc()
+            screenControl.updateSkillImageSrc(skillsNames, cardsName[round])
         })
     )
-}
-
-function updateSkillImageSrc() {
-    let skillsImg = document.getElementsByClassName('skill');
-    
-    for (let count = 0; count < skillsImg.length; count += 1) {
-        skillsImg[count].src = skillsNames[cardsName[round]][count];
-        skillsImg[count].hidden = false;
-        screenControl.changeCardsDisableValueTo(true)
-    }
 }
 
 function addEventOnClickinSkill() {
@@ -68,7 +58,7 @@ function addEventOnClickinCards() {
             screenControl.changeSkillDisableValueTo(false);
 
             round = round < 7 ? (round + 1) : 0
-            updateSkillImageSrc()
+            screenControl.updateSkillImageSrc(skillsNames, cardsName[round])
         };
     }
 }

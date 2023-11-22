@@ -1,3 +1,13 @@
+export function updateSkillImageSrc(skillsNames, cardName) {
+    let skillsImg = document.getElementsByClassName('skill');
+    
+    for (let count = 0; count < skillsImg.length; count += 1) {
+        skillsImg[count].src = skillsNames[cardName][count];
+        skillsImg[count].hidden = false;
+        changeCardsDisableValueTo(true)
+    }
+}
+
 export function changeCardsDisableValueTo(value, sideToChange = 'all') {
     let classCards = (sideToChange == 'all') ? '.card-button' : '.cards-' + sideToChange + ' .card-button';
     let cards = document.querySelectorAll(classCards);
@@ -24,7 +34,6 @@ export function updateBar(from) {
             let bar = document.getElementsByClassName('bar-' + from)[0];
             let responseDict = JSON.parse(this.response);
             bar.src = '/static/Game/Image/Bars/'+ responseDict.percentage + '.png';
-            console.log(bar)
         }
     }
     xhttp.send();
