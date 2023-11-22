@@ -13,11 +13,11 @@ class Character(models.Model):
     def __str__(self) -> str:
         return self.name
     
-    def getSkillNames(self) -> list[str]:
+    def getSkillInformate(self) -> list[tuple]:
         skillName = []
         
         for skill in self.skill.all():
-            skillName.append(str(skill))
+            skillName.append((str(skill), skill.type))
         
         return skillName
 

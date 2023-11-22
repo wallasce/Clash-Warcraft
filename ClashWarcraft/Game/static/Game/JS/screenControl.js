@@ -1,9 +1,13 @@
-export function updateSkillImageSrc(skillsNames, cardName) {
-    let skillsImg = document.getElementsByClassName('skill');
+export function updateSkillImageSrc(skillsNames) {
+    let skillsBtn = document.getElementsByClassName('skill-btn');
     
-    for (let count = 0; count < skillsImg.length; count += 1) {
-        skillsImg[count].src = skillsNames[cardName][count];
-        skillsImg[count].hidden = false;
+    for (let count = 0; count < skillsBtn.length; count += 1) {
+        let classType = 'skill-type-'+ skillsNames.type[count].replace(' ', '-').toLowerCase();
+        skillsBtn[count].className = 'skill-btn ' + classType;
+
+        let skillImg = skillsBtn[count].getElementsByClassName('skill-img')
+        skillImg[0].src = skillsNames.path[count];
+        skillImg[0].hidden = false;
         changeCardsDisableValueTo(true)
     }
 }

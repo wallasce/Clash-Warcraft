@@ -12,11 +12,13 @@ def getCharacterNames() -> list[str]:
 
     return characterName
 
-def getPathSkill(characterName : str) -> list[str]:
-    characterSkills = Character.objects.all().filter(name = characterName)[0].getSkillNames()
+def getSkillData(characterName : str) -> list[str]:
+    characterSkills = Character.objects.all().filter(name = characterName)[0].getSkillInformate()
     
     paths = []
+    types = []
     for skill in characterSkills:
-        paths.append('/static/Skill/Image/'+ skill.replace(' ', '') + '.png')
+        paths.append('/static/Skill/Image/'+ skill[0].replace(' ', '') + '.png')
+        types.append(skill[1])
 
-    return paths
+    return paths, types

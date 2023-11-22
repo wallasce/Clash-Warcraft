@@ -16,7 +16,7 @@ window.onload = (event) => {
             skillsNames = JSON.parse(result);
         })
         .then(function() {
-            screenControl.updateSkillImageSrc(skillsNames, cardsName[round])
+            screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
         })
     )
 }
@@ -58,7 +58,7 @@ function addEventOnClickinCards() {
             screenControl.changeSkillDisableValueTo(false);
 
             round = round < 7 ? (round + 1) : 0
-            screenControl.updateSkillImageSrc(skillsNames, cardsName[round])
+            screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
         };
     }
 }

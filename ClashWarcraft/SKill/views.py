@@ -1,5 +1,5 @@
 from django.shortcuts import HttpResponse
-from .wrapper import getCharacterNames, getPathSkill
+from .wrapper import getCharacterNames, getSkillData
 
 import json
 
@@ -8,8 +8,11 @@ def getSkillFromCharacterSelected(request):
     
     response = {}
     for characterName in charactersName:
-        response[characterName] = getPathSkill(characterName)
-
+        paths, types = getSkillData(characterName)
+        response[characterName] = {
+            'path' : paths,
+            'type' : types,
+        }
     response = json.dumps(response)
     return HttpResponse(response)
         
