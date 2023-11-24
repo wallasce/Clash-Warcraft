@@ -1,11 +1,7 @@
 from django.shortcuts import render, HttpResponse
-
 from .models import GameSetting
 
 # Views Functios
-from django.shortcuts import render
-
-# Create your views here.
 def modeSelect(request):
     pathImageModeSelect = 'GameSettings/Image/ModeSelect/'
 

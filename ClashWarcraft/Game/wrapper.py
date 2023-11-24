@@ -1,3 +1,5 @@
+from .models import Winner
+
 from CharacterSelect.models import characterSelect
 from CharacterSelect.views import selectCharacter
 from GameSettings.models import GameSetting
@@ -33,6 +35,33 @@ def setParametersGame() -> dict:
     elif (settings.gameMode == 'pvp'):
         parameters['rightSide'] = getPlayerParameters(1)
         parameters['backgroundPath'] = 'Game/Image/Background/pvpBackground.jpg'
+
+    return parameters
+
+# Set Parameters Result Game.
+def setParametersResult() -> dict:
+    parameters = {}
+
+    settings = GameSetting.objects.first()
+    parameters['mode'] = settings.gameMode
+
+    winner = Winner.objects.first().sideWinner
+    if (parameters['mode'] == 'pvp'):
+        parameters['result'] = winner + ' wins'
+
+        factionPlayer1 = GameSetting.objects.first().faction
+        factionPlayer2 = 'Alliance' if factionPlayer1 == 'Horde' else 'Horde'
+
+        factionWinner = factionPlayer1 if winner == 'Player 1' else factionPlayer2
+        parameters['backgroundPath'] = 'Game/Image/Background/' + factionWinner.lower() + 'WinsBackground.png'
+    elif (parameters['mode'] == 'pve'):
+        if (winner == 'Player 1'):
+            raid = PvESetting.objects.first().raid
+            parameters['result'] = 'You Win'
+            parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+ raid +'.jpg'
+        elif (winner == 'Player 2'):
+            parameters['result'] = 'You Lose'
+            parameters['backgroundPath'] = 'Game/Image/Background/pveLoseBackground.jpg'
 
     return parameters
 

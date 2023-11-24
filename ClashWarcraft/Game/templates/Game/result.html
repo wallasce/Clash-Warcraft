@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'WebsiteConfig/gameBase.html' %}
+
+{% load static %}
+
+{% block title %} Game Result {% endblock %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "Game/CSS/result.css" %}">
+{% endblock %}
+
+{% block 'background-in-html' %}
+    style = "background-image: url('{% static  backgroundPath %}')"
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="container">
+    <h1 class = "text-{{ mode }}"> {{ result }} </h1>
+    <div class="col buttons">
+        {% if mode == 'pvp' or result == 'You Lose' %}
+            {% include "Game/buttonTemplate.html" with value='playAgain' path='Game/Image/Buttons/buttonAgain.png' %}
+        {% elif result == 'You Win' %}
+            {% include "Game/buttonTemplate.html" with value='continue' path='Game/Image/Buttons/buttonContinue.png' %}
+        {% endif %}
+        {% include "Game/buttonTemplate.html" with value='main' path='Game/Image/Buttons/buttonMain.png' %}
+        {% include "Game/buttonTemplate.html" with value='exit' path='Game/Image/Buttons/buttonExit.png' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'Game/JS/result.js' %}" type="module"></script>
+{% endblock %}

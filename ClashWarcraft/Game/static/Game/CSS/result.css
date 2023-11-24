@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+
+.text-pvp {
+    color: rgba(255, 255, 255, 1);
+}
+
+.text-pve {
+    color: rgba(0, 0, 0, 1);
+}
+
+.buttons {
+    margin-top: 15%;
+}
+
+.buttons, .row, .btn {
+    max-width: fit-content;
+    max-height: fit-content;
+}

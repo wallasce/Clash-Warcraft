@@ -45,6 +45,7 @@ async function addEventOnClickinCards() {
             let isDead = await screenControl.changeCardToDead(this);
             if (isDead) {
                 setCardNameToDeath(this.value);
+                await checkEndGame()
             }
 
             screenControl.changeCardsDisableValueTo(true);
@@ -59,6 +60,17 @@ async function addEventOnClickinCards() {
 function setCardNameToDeath(name) {
     let index = cardsName.indexOf(name);
     cardsName[index] = 'Dead';
+}
+
+async function checkEndGame() {
+    let sides = ['left', 'right'];
+    for (let count = 0; count < sides.length; count++) {
+        let sidDiv = document.querySelectorAll('.cards-' + sides[count] + ' .card-dead');
+        if (sidDiv.length == 4) {
+            await ajax.makeRequest('POST', '/settings/set-winner', sides[count]);
+            window.location.href = ''
+        }
+    }
 }
 
 function updateRound() {

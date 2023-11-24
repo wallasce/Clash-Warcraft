@@ -1,12 +1,14 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from Cards.models import Card
-from Cards.views import createCards
+from Cards.views import createCards, deleteCards
 from CharacterSelect.models import characterSelect
+from CharacterSelect.views import resetTeams
 from GameSettings.models import GameSetting
-from GameSettings.views import modeSelect, factionSelect, InitialPage
+from GameSettings.views import modeSelect, factionSelect, InitialPage, resetSettings
 from PvESettings.models import PvESetting
-from PvESettings.views import setMobs
-from .wrapper import setParametersGame, userSelectCharacter, sortCharacters
+from PvESettings.views import setMobs, resetPve
+from .models import Winner
+from .wrapper import setParametersGame, setParametersResult, userSelectCharacter, sortCharacters
 
 import json
 
@@ -43,12 +45,18 @@ def game(request):
         
         setMobs()
 
-    # Create Cards
-    createCards()
 
-    # Render Game Screen.
-    parameters = setParametersGame()
-    return render(request, 'Game/game.html', parameters)
+    winner = Winner.objects.first()
+    if (winner.sideWinner == ''):
+        # Create Cards
+        createCards()
+
+        # Render Game Screen.
+        parameters = setParametersGame()
+        return render(request, 'Game/game.html', parameters)
+    else:
+        parameters = setParametersResult()
+        return render(request, 'Game/result.html', parameters)
     
 def getCharacterName(request):
     characters1 = characterSelect.objects.first().getCharactersName()
@@ -76,3 +84,34 @@ def getPercentage(request):
         'percentage' : percentage
     })
     return HttpResponse(response)
+
+def setWinner(request):
+    if (request.method == 'POST'):
+        loser = request.body.decode('utf-8') 
+        
+        winner = Winner.objects.first()
+        winner.sideWinner = 'Player 1' if loser == 'right' else 'Player 2'
+        winner.save()
+        redirect('/game')
+
+    return HttpResponse(request)
+
+def resultRequest(request):
+    if (request.method == 'POST'):
+        action = request.body.decode('utf-8') 
+        if action == 'playAgain':
+            deleteCards()
+            resetWinner()
+        elif action == 'main':
+            resetSettings()
+            resetTeams()
+            resetPve()
+            deleteCards()
+            resetWinner()
+
+    return HttpResponse(request)
+
+def resetWinner():
+    winner = Winner.objects.first()
+    winner.sideWinner = ''
+    winner.save()
