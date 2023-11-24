@@ -35,26 +35,46 @@ function addEventOnClickinSkill() {
     }
 }
 
-function addEventOnClickinCards() {
+async function addEventOnClickinCards() {
     let cards = document.getElementsByClassName('card-button');
 
     for (let i = 0; i < cards.length; i+=1) {
-        cards[i].onclick = function() {
+        cards[i].onclick = async function() {
             let parameters = JSON.stringify({
                 'currentCard' : cardsName[round],
                 'skillNumber' : skillClicked,
                 'targetCard' : this.value,
             });
-            ajax.makePostRequest('/api/apply-skill', parameters);
-            screenControl.updateBar(this.value)
+            await ajax.makeRequest('POST', '/api/apply-skill', parameters);
+            screenControl.updateBar(this.value);
+            let isDead = await screenControl.changeCardToDead(this);
+            if (isDead) {
+                setCardNameToDeath(this.value);
+            }
 
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
 
-            round = round < 7 ? (round + 1) : 0
+            updateRound()
             screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
         };
     }
+}
+
+function setCardNameToDeath(name) {
+    let index = cardsName.indexOf(name);
+    cardsName[index] = 'Dead';
+}
+
+function checkEndGame() {
+    player1 = [0, 2, 4, 6]
+    player2 = [1, 3, 5, 7]
+}
+
+function updateRound() {
+    do {
+        round = round < 7 ? (round + 1) : 0;
+    } while (cardsName[round] == 'Dead');
 }
 
 addEventOnClickinCards()

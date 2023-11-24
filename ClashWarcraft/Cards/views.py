@@ -14,6 +14,15 @@ def applySkill(request) :
 
     return HttpResponse(request)
 
+def isDead(request):
+    cardToCheck = Card.objects.all().filter(characterCard__name = request.GET.get('character')).first()
+    isDead = True if cardToCheck.currentStamina == 0 else False
+
+    response = json.dumps({
+        'isDead' : isDead
+    })
+    return HttpResponse(response)
+
 def createCards() -> None:
     count = Card.objects.count()
     if (count == 8):

@@ -2,7 +2,36 @@ export var names;
 
 var csrftoken = document.getElementsByName('csrfmiddlewaretoken')[0].value
 
-export function makeRequestWithPromise(method, url) {
+export function makeRequest(method, url, parameters = null) {
+  return new Promise(function (resolve, reject) {
+      let xhttp = new XMLHttpRequest();
+      xhttp.open(method, url);
+      xhttp.onload = function () {
+          if (this.status >= 200 && this.status < 300) {
+              resolve(xhttp.response);
+          } else {
+              reject({
+                  status: this.status,
+                  statusText: xhttp.statusText
+              });
+          }
+      };
+      xhttp.onerror = function () {
+          reject({
+              status: this.status,
+              statusText: xhttp.statusText
+          });
+      };
+      if (parameters) {
+        xhttp.setRequestHeader("X-CSRFToken", csrftoken); 
+        xhttp.send(parameters);
+      } else {
+        xhttp.send();
+      }
+  });
+}
+
+export function makeRequestWithPromise(method, url, parameters = null) {
     return new Promise(function (resolve) {
         var xhttp = new XMLHttpRequest();
         xhttp.open(method, url, true);
@@ -11,7 +40,12 @@ export function makeRequestWithPromise(method, url) {
             resolve(xhttp.response);
           } 
         };
-        xhttp.send();
+        if (parameters) {
+          xhttp.setRequestHeader("X-CSRFToken", csrftoken); 
+          xhttp.send(parameters);
+        } else {
+          xhttp.send();
+        }
     });
 }
 

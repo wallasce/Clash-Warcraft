@@ -1,3 +1,5 @@
+import * as ajax from "./ajax.js";
+
 export function updateSkillImageSrc(skillsNames) {
     let skillsBtn = document.getElementsByClassName('skill-btn');
     
@@ -17,7 +19,11 @@ export function changeCardsDisableValueTo(value, sideToChange = 'all') {
     let cards = document.querySelectorAll(classCards);
 
     for (let i = 0; i < cards.length; i+=1) {
-        cards[i].disabled = value;
+        if(cards[i].className.includes('card-dead')){
+            cards[i].disabled = true;
+        }else{
+            cards[i].disabled = value;
+        }
     }
 }
 
@@ -41,6 +47,20 @@ export function updateBar(from) {
         }
     }
     xhttp.send();
+}
+
+export async function changeCardToDead(card) {
+    let response = await ajax.makeRequest('GET', '/api/is-dead?character=' + card.value);
+    let responseDict = JSON.parse(response);
+    if (responseDict.isDead) {
+        card.classList.add('card-dead');
+        
+        let cardImg = card.firstElementChild;
+        cardImg.src = '/static/Game/Image/Cards/Dead.png';
+        
+        return true
+    }
+    return false
 }
 
 function enableRight() {
