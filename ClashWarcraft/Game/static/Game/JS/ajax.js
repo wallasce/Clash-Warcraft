@@ -31,24 +31,6 @@ export function makeRequest(method, url, parameters = null) {
   });
 }
 
-export function makeRequestWithPromise(method, url, parameters = null) {
-    return new Promise(function (resolve) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open(method, url, true);
-        xhttp.onload = function () {
-          if (this.status == 200) {
-            resolve(xhttp.response);
-          } 
-        };
-        if (parameters) {
-          xhttp.setRequestHeader("X-CSRFToken", csrftoken); 
-          xhttp.send(parameters);
-        } else {
-          xhttp.send();
-        }
-    });
-}
-
 export function makePostRequest(url, value) {
   var xhttp = new XMLHttpRequest();
   xhttp.open('POST', url, true);

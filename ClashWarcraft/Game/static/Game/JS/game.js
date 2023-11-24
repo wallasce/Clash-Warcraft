@@ -6,19 +6,14 @@ var skillsNames;
 var cardsName;
 var skillClicked;
 
-window.onload = (event) => {
-    ajax.makeRequestWithPromise('GET', '/api/get-names')
-    .then(function (result) {
-        cardsName = JSON.parse(result).names;
-    })
-    .then(ajax.makeRequestWithPromise("GET", "/api/get-skill")
-        .then(function(result) {
-            skillsNames = JSON.parse(result);
-        })
-        .then(function() {
-            screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
-        })
-    )
+window.onload = async function() {
+    let response = await ajax.makeRequest('GET', '/api/get-names'); 
+    cardsName = JSON.parse(response).names;
+
+    response = await ajax.makeRequest('GET', '/api/get-skill'); 
+    skillsNames = JSON.parse(response);
+
+    screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
 }
 
 function addEventOnClickinSkill() {
@@ -64,11 +59,6 @@ async function addEventOnClickinCards() {
 function setCardNameToDeath(name) {
     let index = cardsName.indexOf(name);
     cardsName[index] = 'Dead';
-}
-
-function checkEndGame() {
-    player1 = [0, 2, 4, 6]
-    player2 = [1, 3, 5, 7]
 }
 
 function updateRound() {
