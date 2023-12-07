@@ -5,6 +5,7 @@ var round = 0
 var skillsNames;
 var cardsName;
 var skillClicked;
+var gameMode;
 
 window.onload = async function() {
     let response = await ajax.makeRequest('GET', '/api/get-names'); 
@@ -12,6 +13,10 @@ window.onload = async function() {
 
     response = await ajax.makeRequest('GET', '/api/get-skill'); 
     skillsNames = JSON.parse(response);
+
+    response = await ajax.makeRequest('GET', '/api/get-game-mode');
+    gameMode = JSON.parse(response).mode;
+    console.log(gameMode)
 
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
 }

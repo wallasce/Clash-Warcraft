@@ -85,6 +85,15 @@ def getPercentage(request):
     })
     return HttpResponse(response)
 
+def getGameMode(request):
+    gameSetting = GameSetting.objects.first()
+
+    response = json.dumps({
+        'mode' : gameSetting.gameMode
+    })
+
+    return HttpResponse(response)
+
 def setWinner(request):
     if (request.method == 'POST'):
         loser = request.body.decode('utf-8') 
