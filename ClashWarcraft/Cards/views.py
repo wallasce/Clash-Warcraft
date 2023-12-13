@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.db.models import Q
 from .models import Card
 from .wrapper import createCardCharacter, createCardMob
 from Character.models import Character
@@ -10,13 +11,15 @@ import json
 
 def applySkill(request) :
     requestDict = json.loads(request.body.decode())
-    currentCard = Card.objects.all().filter(characterCard__name = requestDict['currentCard'])[0]
+    cardName = requestDict['currentCard']
+    currentCard = Card.objects.all().filter(Q(characterCard__name = cardName) | Q(mobCard__name = cardName)).first()
     currentCard.applySkill(requestDict['skillNumber'], requestDict['targetCard'])
 
     return HttpResponse(request)
 
 def isDead(request):
-    cardToCheck = Card.objects.all().filter(characterCard__name = request.GET.get('character')).first()
+    card = request.GET.get('character')
+    cardToCheck = Card.objects.all().filter(Q(characterCard__name = card) | Q(mobCard__name = card)).first()
     isDead = True if cardToCheck.currentStamina == 0 else False
 
     response = json.dumps({

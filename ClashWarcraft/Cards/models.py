@@ -1,6 +1,5 @@
 from django.db import models
-
-from django.db import models
+from django.db.models import Q
 from Character.models import Character
 from Mob.models import Mob
 
@@ -12,7 +11,10 @@ class Card(models.Model):
     currentStamina = models.FloatField(blank=True, default=0)
 
     def __str__(self) -> str:
-        return 'Card of ' + self.characterCard.name
+        if (self.characterCard):
+            return 'Card of ' + self.characterCard.name
+        elif (self.mobCard):
+            return 'Card of ' + self.mobCard.name
     
     def initialize(self) -> None:
         if (self.characterCard):
@@ -23,10 +25,26 @@ class Card(models.Model):
         self.currentArmor = attributes.armor
         self.currentPower = attributes.power
         self.currentStamina = attributes.stamina
+
+    def getStaminaBase(self) -> float:
+        if (self.characterCard):
+            attributes = self.characterCard.attributes
+        elif (self.mobCard):
+            attributes = self.mobCard.attributes
+
+        return attributes.stamina
+    
+    def getSkillUsed(self, skillNumber : int):
+        if (self.characterCard):
+            return self.characterCard.skill.all().filter(level = skillNumber).first()
+        elif (self.mobCard):
+            return self.mobCard.skill.all().filter(level = skillNumber).first()
     
     def applySkill(self, skillNumber : int, target : str) -> None:
-        target = Card.objects.all().filter(characterCard__name = target).first()
-        skillUsed = self.characterCard.skill.all().filter(level = skillNumber).first()
+        print(target)
+        target = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()
+        print(target)
+        skillUsed = self.getSkillUsed(skillNumber)
 
         if (skillUsed.type == 'Damage'): 
             target.currentStamina -= skillUsed.baseEffect * self.currentPower * (100 - target.currentArmor) * 0.0001
@@ -35,7 +53,7 @@ class Card(models.Model):
 
             target.save()
         elif (skillUsed.type == 'Heal'):
-            maxStamina = target.characterCard.attributes.stamina
+            maxStamina = target.getStaminaBase()
             target.currentStamina += skillUsed.baseEffect * self.currentPower * 0.01
             if (target.currentStamina > maxStamina):
                 target.currentStamina = maxStamina
@@ -43,7 +61,7 @@ class Card(models.Model):
             target.save()
 
     def getLifeInPercentage(self) -> int:
-        percentage = self.currentStamina * 100 / self.characterCard.attributes.stamina
+        percentage = self.currentStamina * 100 / self.getStaminaBase()
         if (percentage > 95):
             return 100
         elif (percentage > 85):

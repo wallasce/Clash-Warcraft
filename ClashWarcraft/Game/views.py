@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.db.models import Q
 from Cards.models import Card
 from Cards.views import createCards, deleteCards
 from CharacterSelect.models import characterSelect
@@ -77,7 +78,8 @@ def getCharacterName(request):
     return HttpResponse(response)
 
 def getPercentage(request):
-    cardToUpdate = Card.objects.all().filter(characterCard__name = request.GET.get('from')).first()
+    card = request.GET.get('from')
+    cardToUpdate = Card.objects.all().filter(Q(characterCard__name = card) | Q(mobCard__name = card)).first()
     percentage = cardToUpdate.getLifeInPercentage()
 
     response = json.dumps({
