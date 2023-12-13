@@ -5,7 +5,7 @@ from Mob.models import Mob
 def resetPve():
     settings = PvESetting.objects.first()
 
-    settings.raid = 0
+    settings.raid = 1
     settings.easyMob = ''
     settings.mediumMob = ''
     settings.hardMob = ''
