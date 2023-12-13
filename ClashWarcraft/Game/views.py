@@ -40,10 +40,6 @@ def game(request):
         if (userSelect):
             return userSelect
     elif (settings.gameMode == 'pve'):
-        settingsPvE = PvESetting.objects.first()
-        settingsPvE.raid += 1
-        settingsPvE.save()
-        
         setMobs()
 
 
@@ -119,6 +115,15 @@ def resultRequest(request):
             resetPve()
             deleteCards()
             resetWinner()
+        elif action == 'continue':
+            deleteCards()
+            resetWinner()
+
+            settingsPvE = PvESetting.objects.first()
+            settingsPvE.raid += 1
+            settingsPvE.save()
+
+
 
     return HttpResponse(request)
 
