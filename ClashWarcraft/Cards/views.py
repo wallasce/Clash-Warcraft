@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import Card
+from .wrapper import createCardCharacter, createCardMob
 from Character.models import Character
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
@@ -29,26 +30,24 @@ def createCards() -> None:
         return
     elif (count > 0):
         deleteCards()
+
+    # Create Cards to Player 1.
+    namesPlayer1Character = characterSelect.objects.first().getCharactersName()
+    createCardCharacter(namesPlayer1Character)
     
-    nameCharacters = characterSelect.objects.first().getCharactersName()
-
     gameMode = GameSetting.objects.first().gameMode
+    # Create Cards to Player 2 or Mobs to Computer.
     if (gameMode == 'pvp'):
-        nameCharacters += characterSelect.objects.last().getCharactersName()
+        namesPlayer2Character = characterSelect.objects.last().getCharactersName()
+        createCardCharacter(namesPlayer2Character)
     elif(gameMode == 'pve'):
-        nameCharacters += PvESetting.objects.first().getMobsName()
+        nameMobs = PvESetting.objects.first().getMobsName()
+        createCardMob(nameMobs)
 
-    for nameCharacter in nameCharacters:
-        character = Character.objects.all().filter(name = nameCharacter)[0]
-        Card.objects.create(characterCard = character)
-
+    # Initialize Cards.
     cards = Card.objects.all()
     for card in cards:
-        attributes = card.characterCard.attributes
-        card.currentArmor = attributes.armor
-        card.currentPower = attributes.power
-        card.currentStamina = attributes.stamina
-
+        card.initialize()
         card.save()
 
 def deleteCards() -> None:

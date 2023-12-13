@@ -2,15 +2,27 @@ from django.db import models
 
 from django.db import models
 from Character.models import Character
+from Mob.models import Mob
 
 class Card(models.Model):
-    characterCard = models.ForeignKey(Character, on_delete=models.CASCADE)
+    characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
+    mobCard = models.ForeignKey(Mob, on_delete=models.CASCADE, null=True)
     currentArmor = models.FloatField(blank=True, default=0)
     currentPower = models.FloatField(blank=True, default=0)
     currentStamina = models.FloatField(blank=True, default=0)
 
     def __str__(self) -> str:
         return 'Card of ' + self.characterCard.name
+    
+    def initialize(self) -> None:
+        if (self.characterCard):
+            attributes = self.characterCard.attributes
+        elif (self.mobCard):
+            attributes = self.mobCard.attributes
+
+        self.currentArmor = attributes.armor
+        self.currentPower = attributes.power
+        self.currentStamina = attributes.stamina
     
     def applySkill(self, skillNumber : int, target : str) -> None:
         target = Card.objects.all().filter(characterCard__name = target).first()
