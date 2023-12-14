@@ -17,7 +17,7 @@ window.onload = async function() {
     response = await ajax.makeRequest('GET', '/api/get-game-mode');
     gameMode = JSON.parse(response).mode;
 
-    screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
+    screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
 }
 
 async function applySkill(cardClicked, parameters) {
@@ -37,10 +37,10 @@ function addEventOnClickinSkill() {
     for (let i = 0; i < skillsBtn.length; i+=1) {
         skillsBtn[i].onclick = function() {
             skillClicked = this.value;
-            screenControl.changeSkillDisableValueTo(true)
+            screenControl.changeSkillDisableValueTo(true);
 
-            let skillType = this.className.split(' ')[1]
-            screenControl.enablesCardsToRound(round, skillType)
+            let skillType = this.className.split(' ')[1];
+            screenControl.enablesCardsToRound(round, skillType);
         };
     }
 }
@@ -60,8 +60,8 @@ async function addEventOnClickinCards() {
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
 
-            updateRound()
-            screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
+            updateRound();
+            screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
         };
     }
 }
@@ -77,7 +77,7 @@ async function checkEndGame() {
         let sidDiv = document.querySelectorAll('.cards-' + sides[count] + ' .card-dead');
         if (sidDiv.length == 4) {
             await ajax.makeRequest('POST', '/settings/set-winner', sides[count]);
-            window.location.href = ''
+            window.location.href = '';
         }
     }
 }
@@ -92,5 +92,5 @@ function updateRound() {
     } while (cardsName[round] == 'Dead');
 }
 
-addEventOnClickinCards()
-addEventOnClickinSkill()
+addEventOnClickinCards();
+addEventOnClickinSkill();
