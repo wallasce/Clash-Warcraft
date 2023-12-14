@@ -20,6 +20,17 @@ window.onload = async function() {
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
 }
 
+async function applySkill(cardClicked, parameters) {
+    console.log(parameters)
+    await ajax.makeRequest('POST', '/api/apply-skill', parameters);
+    screenControl.updateBar(cardClicked.value);
+    let isDead = await screenControl.changeCardToDead(cardClicked);
+    if (isDead) {
+        setCardNameToDeath(cardClicked.value);
+        await checkEndGame();
+    }
+}
+
 function addEventOnClickinSkill() {
     let skillsBtn = document.getElementsByClassName('skill-btn');
 
@@ -44,13 +55,7 @@ async function addEventOnClickinCards() {
                 'skillNumber' : skillClicked,
                 'targetCard' : this.value,
             });
-            await ajax.makeRequest('POST', '/api/apply-skill', parameters);
-            screenControl.updateBar(this.value);
-            let isDead = await screenControl.changeCardToDead(this);
-            if (isDead) {
-                setCardNameToDeath(this.value);
-                await checkEndGame()
-            }
+            await applySkill(this, parameters);
 
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
