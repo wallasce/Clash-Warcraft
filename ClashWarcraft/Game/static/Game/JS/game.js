@@ -16,7 +16,6 @@ window.onload = async function() {
 
     response = await ajax.makeRequest('GET', '/api/get-game-mode');
     gameMode = JSON.parse(response).mode;
-    console.log(gameMode)
 
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]])
 }
@@ -80,7 +79,11 @@ async function checkEndGame() {
 
 function updateRound() {
     do {
-        round = round < 7 ? (round + 1) : 0;
+        if (gameMode == 'pvp') {
+            round = round < 7 ? (round + 1) : 0;
+        } else if (gameMode == 'pve') {
+            round = round < 6 ? (round + 2) : 0;
+        }
     } while (cardsName[round] == 'Dead');
 }
 
