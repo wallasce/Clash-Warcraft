@@ -41,9 +41,7 @@ class Card(models.Model):
             return self.mobCard.skill.all().filter(level = skillNumber).first()
     
     def applySkill(self, skillNumber : int, target : str) -> None:
-        print(target)
         target = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()
-        print(target)
         skillUsed = self.getSkillUsed(skillNumber)
 
         if (skillUsed.type == 'Damage'): 
