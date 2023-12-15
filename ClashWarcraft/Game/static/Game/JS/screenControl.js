@@ -14,6 +14,17 @@ export function updateSkillImageSrc(skillsNames) {
     }
 }
 
+// This functions disable all elements in screen to computer play.
+export function disablePlayerControl() {
+    let skillsBtn = document.getElementsByClassName('skill-btn');
+    
+    for (let count = 0; count < skillsBtn.length; count += 1) {
+        let skillImg = skillsBtn[count].getElementsByClassName('skill-img')
+        skillImg[0].hidden = true;
+        changeCardsDisableValueTo(true)
+    }
+}
+
 export function changeCardsDisableValueTo(value, sideToChange = 'all') {
     let classCards = (sideToChange == 'all') ? '.card-button' : '.cards-' + sideToChange + ' .card-button';
     let cards = document.querySelectorAll(classCards);
