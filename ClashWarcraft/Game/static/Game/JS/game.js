@@ -1,5 +1,6 @@
 import * as ajax from "./ajax.js";
 import * as screenControl from "./screenControl.js"
+import * as pve from "./pve.js"
 
 var round = 0
 var skillsNames;
@@ -21,7 +22,6 @@ window.onload = async function() {
 }
 
 async function applySkill(cardClicked, parameters) {
-    console.log(parameters)
     await ajax.makeRequest('POST', '/api/apply-skill', parameters);
     screenControl.updateBar(cardClicked.value);
     let isDead = await screenControl.changeCardToDead(cardClicked);
@@ -60,7 +60,7 @@ async function addEventOnClickinCards() {
             screenControl.changeCardsDisableValueTo(true);
             screenControl.changeSkillDisableValueTo(false);
 
-            updateRound();
+            await updateRound();
             screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
         };
     }
@@ -82,14 +82,26 @@ async function checkEndGame() {
     }
 }
 
-function updateRound() {
+function checkCompurterTurn(round) {
+    let roundMob = [1,3,5,7];
+    return (gameMode == 'pve' && roundMob.includes(round));
+}
+
+function wait(time) {
+    return new Promise(resolve => {
+        setTimeout(resolve, time);
+    });
+}
+
+async function updateRound() {
     do {
-        if (gameMode == 'pvp') {
-            round = round < 7 ? (round + 1) : 0;
-        } else if (gameMode == 'pve') {
-            round = round < 6 ? (round + 2) : 0;
-        }
-    } while (cardsName[round] == 'Dead');
+        round = round < 7 ? (round + 1) : 0;
+        if (checkCompurterTurn(round)) {
+            screenControl.disablePlayerControl();
+            await wait(4000)
+            pve.computerPlay();
+        } 
+    } while (cardsName[round] == 'Dead' || checkCompurterTurn(round));
 }
 
 addEventOnClickinCards();
