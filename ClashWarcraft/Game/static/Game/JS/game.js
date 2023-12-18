@@ -20,6 +20,7 @@ window.onload = async function() {
     gameMode = JSON.parse(response).mode;
 
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
+    effect.initiateTurn(cardsName[round]);
 }
 
 async function applySkill(cardClicked, parameters) {
@@ -98,14 +99,19 @@ function wait(time) {
 }
 
 async function updateRound() {
+    effect.endTurn();
     do {
         round = round < 7 ? (round + 1) : 0;
+        // Computer play.
         if (checkCompurterTurn(round)) {
+            effect.initiateTurn(cardsName[round]);
             screenControl.disablePlayerControl();
             await wait(4000)
             pve.computerPlay();
+            effect.endTurn();
         } 
     } while (cardsName[round] == 'Dead' || checkCompurterTurn(round));
+    effect.initiateTurn(cardsName[round]);
 }
 
 addEventOnClickinCards();
