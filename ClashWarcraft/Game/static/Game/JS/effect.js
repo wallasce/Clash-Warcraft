@@ -7,12 +7,12 @@ function removeActive(element) {
 }
 
 export function activeSkill(skill) {
-    skill.classList.add('active');
+    addActive(skill);
 }
 
 export function deactiveSkill() {
     let skill = document.querySelector('.skill-btn.active');
-    skill.classList.remove('active');
+    removeActive(skill);
 }
 
 export function initiateTurn(cardName) {
