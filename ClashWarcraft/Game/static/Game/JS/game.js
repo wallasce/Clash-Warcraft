@@ -1,4 +1,5 @@
 import * as ajax from "./ajax.js";
+import * as effect from "./effect.js"
 import * as screenControl from "./screenControl.js"
 import * as pve from "./pve.js"
 
@@ -36,6 +37,8 @@ function addEventOnClickinSkill() {
 
     for (let i = 0; i < skillsBtn.length; i+=1) {
         skillsBtn[i].onclick = function() {
+            effect.activeSkill(this);
+
             skillClicked = this.value;
             screenControl.changeSkillDisableValueTo(true);
 
@@ -50,6 +53,7 @@ async function addEventOnClickinCards() {
 
     for (let i = 0; i < cards.length; i+=1) {
         cards[i].onclick = async function() {
+            effect.deactiveSkill();
             let parameters = JSON.stringify({
                 'currentCard' : cardsName[round],
                 'skillNumber' : skillClicked,
