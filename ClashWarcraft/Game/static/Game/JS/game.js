@@ -103,7 +103,7 @@ async function updateRound() {
     do {
         round = round < 7 ? (round + 1) : 0;
         // Computer play.
-        if (checkCompurterTurn(round)) {
+        if (checkCompurterTurn(round) && cardsName[round] != 'Dead') {
             effect.initiateTurn(cardsName[round]);
             screenControl.disablePlayerControl();
             await wait(4000)
