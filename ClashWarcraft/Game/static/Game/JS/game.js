@@ -19,6 +19,10 @@ window.onload = async function() {
     response = await ajax.makeRequest('GET', '/api/get-game-mode');
     gameMode = JSON.parse(response).mode;
 
+    if (gameMode == 'pve') {
+        pve.initializeThreats(cardsName);
+    }
+
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
     effect.initiateTurn(cardsName[round]);
     screenControl.changeSkillDisableValueTo(false);
