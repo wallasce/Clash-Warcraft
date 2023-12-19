@@ -36,3 +36,11 @@ export function removeClassToHoverOnSkill(skills) {
         skills[count].classList.remove('clickable')
     }
 }
+
+export function changeHoverPropertyOnCard(card, disable) {
+    if (disable) {
+        card.classList.remove('clickable');
+    } else {
+        card.classList.add('clickable');
+    }
+}

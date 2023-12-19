@@ -1,0 +1,19 @@
+.cards {
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.cards img {
+    display: block;
+    margin: 0rem auto 0rem auto;
+    max-height: 15rem;
+    max-width: 9.5rem;
+}
+
+.card-button.active {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 128, 0, 1);
+}
+
+.card-button.clickable:hover {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 0, 128, 1);
+}

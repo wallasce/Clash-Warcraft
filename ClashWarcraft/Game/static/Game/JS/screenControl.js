@@ -35,8 +35,10 @@ export function changeCardsDisableValueTo(value, sideToChange = 'all') {
     for (let i = 0; i < cards.length; i+=1) {
         if(cards[i].className.includes('card-dead')){
             cards[i].disabled = true;
+            effect.changeHoverPropertyOnCard(cards[i], true);
         }else{
             cards[i].disabled = value;
+            effect.changeHoverPropertyOnCard(cards[i], value);
         }
     }
 }
