@@ -29,7 +29,15 @@ window.onload = async function() {
 }
 
 async function applySkill(cardClicked, parameters) {
-    await ajax.makeRequest('POST', '/api/apply-skill', parameters);
+    if (gameMode == 'pve') {
+        if (round != 6) {
+            pve.increaseThreat(parameters.currentCard, round, parameters.targetCard)
+        } else {
+            pve.increaseThreat(parameters.currentCard, round)
+        }
+    }
+
+    await ajax.makeRequest('POST', '/api/apply-skill', JSON.stringify(parameters));
     screenControl.updateBar(cardClicked.value);
     let isDead = await screenControl.changeCardToDead(cardClicked);
     if (isDead) {
@@ -60,11 +68,11 @@ async function addEventOnClickinCards() {
     for (let i = 0; i < cards.length; i+=1) {
         cards[i].onclick = async function() {
             effect.deactiveSkill();
-            let parameters = JSON.stringify({
+            let parameters = {
                 'currentCard' : cardsName[round],
                 'skillNumber' : skillClicked,
                 'targetCard' : this.value,
-            });
+            };
             await applySkill(this, parameters);
 
             screenControl.changeCardsDisableValueTo(true);

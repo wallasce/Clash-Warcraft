@@ -18,3 +18,21 @@ export function initializeThreats(cardsName) {
         }
     }
 }
+
+export function increaseThreat(playerToIncrease, typePlayer, mobThreat = null) {
+    // Value to increase threat depends of card Type
+    const valueToIncrease = {
+        0 : 4,
+        2 : 2,
+        4 : 3,
+        6 : 1,
+    };
+
+    if (mobThreat) {
+        threats[mobThreat][playerToIncrease] += valueToIncrease[typePlayer];
+    } else {
+        for (const [key, value] of Object.entries(threats)) {
+            threats[key][playerToIncrease] += valueToIncrease[typePlayer]
+        }
+    }
+}
