@@ -21,6 +21,7 @@ window.onload = async function() {
 
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
     effect.initiateTurn(cardsName[round]);
+    screenControl.changeSkillDisableValueTo(false);
 }
 
 async function applySkill(cardClicked, parameters) {

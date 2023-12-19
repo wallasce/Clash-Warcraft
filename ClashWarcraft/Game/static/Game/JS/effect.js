@@ -25,15 +25,11 @@ export function endTurn() {
     removeActive(card)
 }
 
-export function addClassToHoverOnSkill(skills) {
-    for (let count = 0; count < skills.length; count += 1) {
-        skills[count].classList.add('clickable')
-    }
-}
-
-export function removeClassToHoverOnSkill(skills) {
-    for (let count = 0; count < skills.length; count += 1) {
-        skills[count].classList.remove('clickable')
+export function changeHoverPropertyOnSkill(skill, disable) {
+    if (disable) {
+        skill.classList.remove('clickable');
+    } else {
+        skill.classList.add('clickable');
     }
 }
 

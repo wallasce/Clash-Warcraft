@@ -1,20 +1,26 @@
 import * as ajax from "./ajax.js";
 import * as effect from "./effect.js"
 
+function removeClassSkillType(skillBtn) {
+    let classTypes = ['damage', 'heal', 'armor-buff', 'power-buff'];
+    for (let count = 0; count < classTypes.length; count++) {
+        skillBtn.classList.remove('skill-type-' + classTypes[count]);
+    }
+}
+
 export function updateSkillImageSrc(skillsNames) {
     let skillsBtn = document.getElementsByClassName('skill-btn');
     
     for (let count = 0; count < skillsBtn.length; count += 1) {
         let classType = 'skill-type-'+ skillsNames.type[count].replace(' ', '-').toLowerCase();
-        skillsBtn[count].className = 'skill-btn ' + classType;
+        removeClassSkillType(skillsBtn[count]);
+        skillsBtn[count].classList.add(classType);
 
         let skillImg = skillsBtn[count].getElementsByClassName('skill-img')
         skillImg[0].src = skillsNames.path[count];
         skillImg[0].hidden = false;
         changeCardsDisableValueTo(true)
     }
-
-    effect.addClassToHoverOnSkill(skillsBtn);
 }
 
 // This functions disable all elements in screen to computer play.
@@ -49,11 +55,7 @@ export function changeSkillDisableValueTo(value) {
 
     for (let i = 0; i < skills.length; i+=1) {
         skills[i].disabled = value;
-    }
-
-    if (value) {
-        console.log(skills)
-        effect.removeClassToHoverOnSkill(skills);
+        effect.changeHoverPropertyOnSkill(skills[i], value);
     }
 }
 
