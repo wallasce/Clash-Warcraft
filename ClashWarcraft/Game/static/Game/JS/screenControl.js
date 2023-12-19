@@ -1,4 +1,5 @@
 import * as ajax from "./ajax.js";
+import * as effect from "./effect.js"
 
 export function updateSkillImageSrc(skillsNames) {
     let skillsBtn = document.getElementsByClassName('skill-btn');
@@ -12,6 +13,8 @@ export function updateSkillImageSrc(skillsNames) {
         skillImg[0].hidden = false;
         changeCardsDisableValueTo(true)
     }
+
+    effect.addClassToHoverOnSkill(skillsBtn);
 }
 
 // This functions disable all elements in screen to computer play.
@@ -44,6 +47,11 @@ export function changeSkillDisableValueTo(value) {
 
     for (let i = 0; i < skills.length; i+=1) {
         skills[i].disabled = value;
+    }
+
+    if (value) {
+        console.log(skills)
+        effect.removeClassToHoverOnSkill(skills);
     }
 }
 

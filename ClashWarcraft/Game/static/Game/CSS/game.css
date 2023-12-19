@@ -29,10 +29,6 @@ button {
     min-height: 39.12rem;
 }
 
-.skill-btn.active {
-    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(128, 0, 128, 1);
-}
-
 .card-button.active {
     box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 128, 0, 1);
 }
@@ -46,9 +42,4 @@ button {
     margin: 1rem auto 1rem auto;
     max-width: fit-content;
     max-height: fit-content;
-}
-
-.skills {
-    margin: 0.5rem auto 0.5rem auto;
-    max-width: fit-content;
 }

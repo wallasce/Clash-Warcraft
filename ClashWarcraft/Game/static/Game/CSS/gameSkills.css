@@ -1,0 +1,12 @@
+.skill-btn.active {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(128, 0, 128, 1);
+}
+
+.skill-btn.clickable:hover {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 0, 128, 1);
+}
+
+.skills {
+    margin: 0.5rem auto 0.5rem auto;
+    max-width: fit-content;
+}

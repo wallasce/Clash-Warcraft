@@ -24,3 +24,15 @@ export function endTurn() {
     let card = document.querySelector('.card-button.active');
     removeActive(card)
 }
+
+export function addClassToHoverOnSkill(skills) {
+    for (let count = 0; count < skills.length; count += 1) {
+        skills[count].classList.add('clickable')
+    }
+}
+
+export function removeClassToHoverOnSkill(skills) {
+    for (let count = 0; count < skills.length; count += 1) {
+        skills[count].classList.remove('clickable')
+    }
+}
