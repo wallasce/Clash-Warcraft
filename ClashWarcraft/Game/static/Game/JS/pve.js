@@ -1,7 +1,15 @@
 var threats = {};
 
-export function computerPlay() {
-    console.log(threats);
+export function generateComputerParameters(mobOfTurn) {
+    let target = getBiggerThreatFor(mobOfTurn);
+
+    let parameters = {
+        'currentCard' : mobOfTurn,
+        'skillNumber' : 0,
+        'targetCard' : target,
+    };
+
+    return parameters;
 }
 
 export function initializeThreats(cardsName) {
@@ -35,4 +43,17 @@ export function increaseThreat(playerToIncrease, typePlayer, mobThreat = null) {
             threats[key][playerToIncrease] += valueToIncrease[typePlayer]
         }
     }
+}
+
+function getBiggerThreatFor(mobName) {
+    let maxKey, maxValue = 0;
+
+    for(const [key, value] of Object.entries(threats[mobName])) {
+        if(value >= maxValue) {
+            maxValue = value;
+            maxKey = key;
+        }
+    }
+
+    return maxKey;
 }

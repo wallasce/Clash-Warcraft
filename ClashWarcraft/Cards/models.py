@@ -58,6 +58,9 @@ class Card(models.Model):
 
             target.save()
 
+    def skillWithoutCD(self) -> int:
+        return 1
+
     def getLifeInPercentage(self) -> int:
         percentage = self.currentStamina * 100 / self.getStaminaBase()
         if (percentage > 95):

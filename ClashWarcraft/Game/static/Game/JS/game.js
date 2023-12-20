@@ -29,7 +29,7 @@ window.onload = async function() {
 }
 
 async function applySkill(cardClicked, parameters) {
-    if (gameMode == 'pve') {
+    if (gameMode == 'pve' && !([1,3,5,7].includes(round))) {
         if (round != 6) {
             pve.increaseThreat(parameters.currentCard, round, parameters.targetCard)
         } else {
@@ -120,7 +120,10 @@ async function updateRound() {
             effect.initiateTurn(cardsName[round]);
             screenControl.disablePlayerControl();
             await wait(4000)
-            pve.computerPlay();
+
+            let parameters = pve.generateComputerParameters(cardsName[round]);
+            let targetCard = document.querySelector('button[value="'+parameters.targetCard+'"]');
+            await applySkill(targetCard, parameters);
             effect.endTurn();
         } 
     } while (cardsName[round] == 'Dead' || checkCompurterTurn(round));
