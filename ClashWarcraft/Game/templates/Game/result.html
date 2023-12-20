@@ -20,7 +20,7 @@
     <div class="col buttons">
         {% if mode == 'pvp' or result == 'You Lose' %}
             {% include "Game/buttonTemplate.html" with value='playAgain' path='Game/Image/Buttons/buttonAgain.png' %}
-        {% elif result == 'You Win' %}
+        {% elif result == 'You Win' and raid != 4 %}
             {% include "Game/buttonTemplate.html" with value='continue' path='Game/Image/Buttons/buttonContinue.png' %}
         {% endif %}
         {% include "Game/buttonTemplate.html" with value='main' path='Game/Image/Buttons/buttonMain.png' %}

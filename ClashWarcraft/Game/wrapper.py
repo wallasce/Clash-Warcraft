@@ -59,6 +59,7 @@ def setParametersResult() -> dict:
             raid = PvESetting.objects.first().raid
             parameters['result'] = 'You Win'
             parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+ str(raid) +'.jpg'
+            parameters['raid'] = raid
         elif (winner == 'Player 2'):
             parameters['result'] = 'You Lose'
             parameters['backgroundPath'] = 'Game/Image/Background/pveLoseBackground.jpg'
