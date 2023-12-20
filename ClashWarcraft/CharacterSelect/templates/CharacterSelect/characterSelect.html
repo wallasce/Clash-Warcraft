@@ -16,6 +16,10 @@
 {% block content %}
     {% csrf_token %}
 
+    <audio autoplay loop>
+        <source src="{% static "Game/Sound/two.ogg" %}" type="audio/ogg">
+    </audio> 
+
     <h1> Player {{ player }}, choose your {{ type }} </h1>
 
     <div class="container">

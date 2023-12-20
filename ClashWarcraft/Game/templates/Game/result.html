@@ -14,6 +14,10 @@
 {% endblock %}
 
 {% block content %}
+    <audio autoplay loop>
+        <source src="{% static "Game/Sound/One.ogg" %}" type="audio/ogg">
+    </audio> 
+
 {% csrf_token %}
 <div class="container">
     <h1 class = "text-{{ mode }}"> {{ result }} </h1>

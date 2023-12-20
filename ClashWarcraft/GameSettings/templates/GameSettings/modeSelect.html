@@ -11,6 +11,9 @@
 
 {% block content %}
     {% csrf_token %}
+    <audio autoplay loop>
+        <source src="{% static "Game/Sound/one.ogg" %}" type="audio/ogg">
+    </audio> 
 
     <h1> Choose Game Mode </h1>
 

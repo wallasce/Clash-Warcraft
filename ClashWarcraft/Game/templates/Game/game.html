@@ -17,6 +17,10 @@
 
 {% block content %}
     {% csrf_token %}
+    <audio autoplay loop>
+      <source src="{% static "Game/Sound/three.ogg" %}" type="audio/ogg">
+    </audio> 
+
     <div class="container game-container">
         <div class="row row-cards">
           <div class="col cards cards-left">
