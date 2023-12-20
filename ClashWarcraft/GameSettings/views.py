@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import GameSetting
+from .wrapper import getLocalToTravel
 
 # Views Functios
 def modeSelect(request):
@@ -45,12 +46,38 @@ def factionSelect(request):
 def InitialPage(request):
     return render(request, 'GameSettings/initialScreen.html')
 
+def LoadPage(request):
+    settings = GameSetting.objects.first() 
+    
+    pathImageModeSelect = 'GameSettings/Image/LoadScreen/'
+    extensionJPG = 'Wait.jpg'
+    gameMode = settings.gameMode
+    if (gameMode == 'pvp'):
+        backgroundImage = pathImageModeSelect + gameMode +extensionJPG
+    elif (gameMode == 'pve'):
+        backgroundImage = pathImageModeSelect + settings.faction +extensionJPG
+
+    local = getLocalToTravel(gameMode)
+
+    parameters = {
+        'backgroundPath' : backgroundImage,
+        'local' : local,
+    }
+    return render(request, 'GameSettings/loadScreen.html', parameters)
+
+
 # API Functions
 def resetSettings():
     settings = GameSetting.objects.first() 
     settings.passHomeScreen = False
     settings.gameMode = ""
     settings.faction = ""
+    settings.passLoadScreen = False
+    settings.save()
+
+def resetLoadScreen():
+    settings = GameSetting.objects.first() 
+    settings.passLoadScreen = False
     settings.save()
 
 def passInitialScreen(request):
@@ -76,3 +103,12 @@ def setFaction(request):
         settings.save()
 
     return HttpResponse(request)
+
+def passLoadScreen(request):
+    if (request.method == 'POST'):
+        settings = GameSetting.objects.first()
+        settings.passLoadScreen = True
+        settings.save()
+
+    return HttpResponse(request)
+

@@ -5,7 +5,7 @@ from Cards.views import createCards, deleteCards
 from CharacterSelect.models import characterSelect
 from CharacterSelect.views import resetTeams
 from GameSettings.models import GameSetting
-from GameSettings.views import modeSelect, factionSelect, InitialPage, resetSettings
+from GameSettings.views import modeSelect, factionSelect, InitialPage, resetSettings, LoadPage, resetLoadScreen
 from PvESettings.models import PvESetting
 from PvESettings.views import setMobs, resetPve
 from .models import Winner
@@ -45,6 +45,9 @@ def game(request):
 
     winner = Winner.objects.first()
     if (winner.sideWinner == ''):
+        if not settings.passLoadScreen:
+            return LoadPage(request)
+        
         # Create Cards
         createCards()
 
@@ -107,6 +110,7 @@ def resultRequest(request):
     if (request.method == 'POST'):
         action = request.body.decode('utf-8') 
         if action == 'playAgain':
+            resetLoadScreen()
             deleteCards()
             resetWinner()
         elif action == 'main':
@@ -116,6 +120,7 @@ def resultRequest(request):
             deleteCards()
             resetWinner()
         elif action == 'continue':
+            resetLoadScreen()
             deleteCards()
             resetWinner()
 

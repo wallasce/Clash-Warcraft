@@ -20,7 +20,7 @@ from django.urls import path
 from Cards.views import applySkill, isDead
 from CharacterSelect.views import setCharacter
 from Game.views import game, getCharacterName, getPercentage, setWinner, resultRequest, getGameMode
-from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode
+from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode, passLoadScreen
 from Skill.views import getSkillFromCharacterSelected
 from Website.views import homePage
 
@@ -38,6 +38,7 @@ urlpatterns = [
     path("settings/faction", setFaction, name = 'SetFaction'),
     path("settings/game-mode", setGameMode, name = 'SetGameMode'),
     path("settings/pass-initial-screen", passInitialScreen, name = 'passInitialScreen'),
+    path("settings/load-screen", passLoadScreen, name = 'passLoadScreen'),
     path("settings/reset", resetSettings, name = 'ResetSettings'),
     path("settings/setCharacter", setCharacter, name = 'Set Character'),
     path("settings/set-winner", setWinner, name = 'SetWinner'),

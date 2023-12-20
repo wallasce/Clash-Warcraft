@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'WebsiteConfig/gameBase.html' %}
+
+{% load static %}
+
+{% block title %} Traveling {% endblock %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "GameSettings/CSS/loadScreen.css" %}">
+{% endblock %}
+
+{% block 'background-in-html' %}
+    style = "background-image: url('{% static  backgroundPath %}')"
+{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    <h1> Traveling to {{ local }} </h1>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "GameSettings/JS/loadScreen.js" %}"></script>
+    <script src="{% static "GameSettings/JS/resetSettings.js" %}"></script>
+{% endblock %}
