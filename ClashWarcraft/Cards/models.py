@@ -2,13 +2,18 @@ from django.db import models
 from django.db.models import Q
 from Character.models import Character
 from Mob.models import Mob
+from Skill.models import Skill
 
+class skillOfCard(models.Model):
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, null=True)
+    remainingCooldown = models.IntegerField(blank = True, default = 0)
 class Card(models.Model):
     characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
     mobCard = models.ForeignKey(Mob, on_delete=models.CASCADE, null=True)
     currentArmor = models.FloatField(blank=True, default=0)
     currentPower = models.FloatField(blank=True, default=0)
     currentStamina = models.FloatField(blank=True, default=0)
+    skills = models.ManyToManyField(skillOfCard, blank=True)
 
     def __str__(self) -> str:
         if (self.characterCard):
