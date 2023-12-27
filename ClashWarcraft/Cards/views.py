@@ -11,7 +11,6 @@ import json
 
 def applySkill(request) :
     requestDict = json.loads(request.body.decode())
-    print(requestDict)
     cardName = requestDict['currentCard']
     currentCard = Card.objects.all().filter(Q(characterCard__name = cardName) | Q(mobCard__name = cardName)).first()
     skillNumber = requestDict['skillNumber'] if requestDict['skillNumber'] != 0 else currentCard.skillWithoutCD()
