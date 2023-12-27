@@ -12,7 +12,7 @@ import json
 def applySkill(request) :
     requestDict = json.loads(request.body.decode())
     cardName = requestDict['currentCard']
-    currentCard = Card.objects.all().filter(Q(characterCard__name = cardName) | Q(mobCard__name = cardName)).first()
+    currentCard = getCardFromName(cardName)
     skillNumber = requestDict['skillNumber'] if requestDict['skillNumber'] != 0 else currentCard.skillWithoutCD()
     
     currentCard.applySkill(skillNumber, requestDict['targetCard'])
@@ -20,8 +20,8 @@ def applySkill(request) :
     return HttpResponse(request)
 
 def isDead(request):
-    card = request.GET.get('character')
-    cardToCheck = Card.objects.all().filter(Q(characterCard__name = card) | Q(mobCard__name = card)).first()
+    cardName = request.GET.get('character')
+    cardToCheck = getCardFromName(cardName)
     isDead = True if cardToCheck.currentStamina == 0 else False
 
     response = json.dumps({
@@ -30,8 +30,8 @@ def isDead(request):
     return HttpResponse(response)
 
 def getCooldowns(request):
-    name = request.GET.get('character')
-    cardToGet = Card.objects.all().filter(Q(characterCard__name = name) | Q(mobCard__name = name)).first()
+    cardName = request.GET.get('character')
+    cardToGet = getCardFromName(cardName)
     cooldowns = cardToGet.getCooldowns()
 
     response = {
