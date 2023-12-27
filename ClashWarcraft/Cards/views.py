@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.db.models import Q
 from .models import Card
-from .wrapper import createCardCharacter, createCardMob
+from .wrapper import createCardCharacter, createCardMob, deleteAllSkillOfCards
 from Character.models import Character
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
@@ -57,6 +57,7 @@ def createCards() -> None:
         card.save()
 
 def deleteCards() -> None:
+    deleteAllSkillOfCards()
     cards = Card.objects.all()
     for card in cards:
         card.delete()

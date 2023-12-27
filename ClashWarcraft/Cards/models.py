@@ -7,6 +7,10 @@ from Skill.models import Skill
 class skillOfCard(models.Model):
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE, null=True)
     remainingCooldown = models.IntegerField(blank = True, default = 0)
+
+    def __str__(self) -> str:
+        return self.skill.skillOff + "'s Skill Card " + str(self.skill.level)
+    
 class Card(models.Model):
     characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
     mobCard = models.ForeignKey(Mob, on_delete=models.CASCADE, null=True)
