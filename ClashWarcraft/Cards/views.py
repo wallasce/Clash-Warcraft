@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.db.models import Q
 from .models import Card
-from .wrapper import createCardCharacter, createCardMob, deleteAllSkillOfCards
+from .wrapper import createCardCharacter, createCardMob, deleteAllSkillOfCards, getCardFromName
 from Character.models import Character
 from CharacterSelect.models import characterSelect
 from GameSettings.models import GameSetting
@@ -41,6 +41,14 @@ def getCooldowns(request):
     
     response = json.dumps(response)
     return HttpResponse(response)
+
+def reduceCooldown(request):
+    requestDict = json.loads(request.body.decode())
+    cardName = requestDict['cardName']
+    
+    cardToReduce = getCardFromName(cardName)
+    cardToReduce.reduceAllCooldown()
+    return HttpResponse(request)
 
 def createCards() -> None:
     count = Card.objects.count()

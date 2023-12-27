@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.db.models.manager import BaseManager
 
 from .models import Card, skillOfCard
@@ -45,3 +46,7 @@ def deleteAllSkillOfCards() -> None:
     skills = skillOfCard.objects.all()
     for skill in skills:
         skill.delete()
+
+def getCardFromName(cardName : str) -> BaseManager[Card]:
+    card = Card.objects.all().filter(Q(characterCard__name = cardName) | Q(mobCard__name = cardName)).first()
+    return card

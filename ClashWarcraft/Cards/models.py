@@ -11,6 +11,10 @@ class skillOfCard(models.Model):
     def __str__(self) -> str:
         return self.skill.skillOff + "'s Skill Card " + str(self.skill.level)
     
+    def reduceCooldown(self) -> None:
+        self.remainingCooldown -= 1 if self.remainingCooldown > 0 else 0
+        self.save()
+    
 class Card(models.Model):
     characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
     mobCard = models.ForeignKey(Mob, on_delete=models.CASCADE, null=True)
@@ -56,6 +60,10 @@ class Card(models.Model):
             return self.characterCard.skill.all().filter(level = skillNumber).first()
         elif (self.mobCard):
             return self.mobCard.skill.all().filter(level = skillNumber).first()
+        
+    def reduceAllCooldown(self):
+        for skillCard in self.skills.all():
+            skillCard.reduceCooldown()
     
     def applySkill(self, skillNumber : int, target : str) -> None:
         target = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()

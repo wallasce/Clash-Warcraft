@@ -1,5 +1,6 @@
 import * as ajax from "./ajax.js";
 import * as effect from "./effect.js"
+import * as gameWrapper from "./gameWrapper.js"
 import * as screenControl from "./screenControl.js"
 import * as pve from "./pve.js"
 
@@ -23,8 +24,9 @@ window.onload = async function() {
         pve.initializeThreats(cardsName);
     }
 
-    let cooldowns = await getCooldown(cardsName[round]);
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
+    await gameWrapper.reduceCooldown(cardsName[round])
+    let cooldowns = await getCooldown(cardsName[round]);
     effect.initiateTurn(cardsName[round]);
     screenControl.changeSkillDisableValueTo(false, cooldowns);
 }
@@ -126,6 +128,7 @@ async function updateRound() {
         round = round < 7 ? (round + 1) : 0;
         // Computer play.
         if (checkCompurterTurn(round) && cardsName[round] != 'Dead') {
+            await gameWrapper.reduceCooldown(cardsName[round])
             effect.initiateTurn(cardsName[round]);
             screenControl.disablePlayerControl();
             await wait(4000)
@@ -136,6 +139,7 @@ async function updateRound() {
             effect.endTurn();
         } 
     } while (cardsName[round] == 'Dead' || checkCompurterTurn(round));
+    await gameWrapper.reduceCooldown(cardsName[round])
     effect.initiateTurn(cardsName[round]);
 }
 
