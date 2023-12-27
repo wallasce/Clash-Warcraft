@@ -35,6 +35,14 @@ class Card(models.Model):
         self.currentPower = attributes.power
         self.currentStamina = attributes.stamina
 
+    def getCooldowns(self) -> list[int]:
+        cooldowns = []
+        
+        for skillCard in self.skills.all():
+            cooldowns.append(skillCard.remainingCooldown)
+        
+        return cooldowns
+
     def getStaminaBase(self) -> float:
         if (self.characterCard):
             attributes = self.characterCard.attributes

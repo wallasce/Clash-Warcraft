@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Cards.views import applySkill, isDead
+from Cards.views import applySkill, getCooldowns, isDead
 from CharacterSelect.views import setCharacter
 from Game.views import game, getCharacterName, getPercentage, setWinner, resultRequest, getGameMode
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode, passLoadScreen
@@ -29,6 +29,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("game/", game, name = 'Game'),
     path("api/apply-skill", applySkill, name = 'ApplySkill'),
+    path("api/get-cooldown/", getCooldowns, name = 'GetCooldown'),
     path("api/get-names", getCharacterName, name = 'GetName'),
     path("api/get-game-mode", getGameMode, name = 'GetGameMode'),
     path("api/get-skill", getSkillFromCharacterSelected, name = 'GetSkill'),

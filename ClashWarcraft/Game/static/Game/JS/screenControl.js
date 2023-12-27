@@ -8,16 +8,16 @@ function removeClassSkillType(skillBtn) {
     }
 }
 
-export function updateSkillImageSrc(skillsNames) {
+export function updateSkillImageSrc(skillData) {
     let skillsBtn = document.getElementsByClassName('skill-btn');
     
     for (let count = 0; count < skillsBtn.length; count += 1) {
-        let classType = 'skill-type-'+ skillsNames.type[count].replace(' ', '-').toLowerCase();
+        let classType = 'skill-type-'+ skillData.type[count].replace(' ', '-').toLowerCase();
         removeClassSkillType(skillsBtn[count]);
         skillsBtn[count].classList.add(classType);
 
         let skillImg = skillsBtn[count].getElementsByClassName('skill-img')
-        skillImg[0].src = skillsNames.path[count];
+        skillImg[0].src = skillData.path[count];
         skillImg[0].hidden = false;
         changeCardsDisableValueTo(true)
     }
@@ -49,13 +49,21 @@ export function changeCardsDisableValueTo(value, sideToChange = 'all') {
     }
 }
 
-export function changeSkillDisableValueTo(value) {
+export function changeSkillDisableValueTo(value, cooldowns = null) {
     let div = document.getElementsByClassName('skills');
     let skills = div[0].getElementsByTagName('button');
 
     for (let i = 0; i < skills.length; i+=1) {
-        skills[i].disabled = value;
-        effect.changeHoverPropertyOnSkill(skills[i], value);
+        if (value == false && cooldowns) {
+            if (cooldowns[i] == 0) {
+                skills[i].disabled = value;    
+                effect.changeHoverPropertyOnSkill(skills[i], value);
+            } else {
+                skills[i].disabled = true;
+            }
+        } else {
+            effect.changeHoverPropertyOnSkill(skills[i], value);
+        }
     }
 }
 

@@ -23,9 +23,10 @@ window.onload = async function() {
         pve.initializeThreats(cardsName);
     }
 
+    let cooldowns = await getCooldown(cardsName[round]);
     screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
     effect.initiateTurn(cardsName[round]);
-    screenControl.changeSkillDisableValueTo(false);
+    screenControl.changeSkillDisableValueTo(false, cooldowns);
 }
 
 async function applySkill(cardClicked, parameters) {
@@ -76,12 +77,20 @@ async function addEventOnClickinCards() {
             await applySkill(this, parameters);
 
             screenControl.changeCardsDisableValueTo(true);
-            screenControl.changeSkillDisableValueTo(false);
+            let cooldowns = await getCooldown(cardsName[round]);
+            screenControl.changeSkillDisableValueTo(false, cooldowns);
 
             await updateRound();
             screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
         };
     }
+}
+
+async function getCooldown(character) {
+    let response = await ajax.makeRequest('GET', '/api/get-cooldown?character=' + character); 
+    let cooldowns = JSON.parse(response).cooldowns;
+
+    return cooldowns
 }
 
 function setCardNameToDeath(name) {

@@ -30,6 +30,18 @@ def isDead(request):
     })
     return HttpResponse(response)
 
+def getCooldowns(request):
+    name = request.GET.get('character')
+    cardToGet = Card.objects.all().filter(Q(characterCard__name = name) | Q(mobCard__name = name)).first()
+    cooldowns = cardToGet.getCooldowns()
+
+    response = {
+            'cooldowns' : cooldowns,
+        }
+    
+    response = json.dumps(response)
+    return HttpResponse(response)
+
 def createCards() -> None:
     count = Card.objects.count()
     if (count == 8):
