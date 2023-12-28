@@ -56,10 +56,8 @@ class Card(models.Model):
         return attributes.stamina
     
     def getSkillUsed(self, skillNumber : int):
-        if (self.characterCard):
-            return self.characterCard.skill.all().filter(level = skillNumber).first()
-        elif (self.mobCard):
-            return self.mobCard.skill.all().filter(level = skillNumber).first()
+        skillCard = self.skills.all().filter(skill__level = skillNumber).first()
+        return skillCard.skill
         
     def reduceAllCooldown(self):
         for skillCard in self.skills.all():
@@ -73,15 +71,13 @@ class Card(models.Model):
             target.currentStamina -= skillUsed.baseEffect * self.currentPower * (100 - target.currentArmor) * 0.0001
             if (target.currentStamina < 0):
                 target.currentStamina = 0
-
-            target.save()
         elif (skillUsed.type == 'Heal'):
             maxStamina = target.getStaminaBase()
             target.currentStamina += skillUsed.baseEffect * self.currentPower * 0.01
             if (target.currentStamina > maxStamina):
                 target.currentStamina = maxStamina
 
-            target.save()
+        target.save()
 
     def skillWithoutCD(self) -> int:
         return 1
