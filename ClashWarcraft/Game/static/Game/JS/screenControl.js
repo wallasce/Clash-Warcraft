@@ -15,6 +15,7 @@ export function updateSkillImageSrc(skillData) {
         let classType = 'skill-type-'+ skillData.type[count].replace(' ', '-').toLowerCase();
         removeClassSkillType(skillsBtn[count]);
         skillsBtn[count].classList.add(classType);
+        skillsBtn[count].title = skillData.type[count]
 
         let skillImg = skillsBtn[count].getElementsByClassName('skill-img')
         skillImg[0].src = skillData.path[count];
