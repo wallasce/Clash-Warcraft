@@ -14,6 +14,10 @@ class skillOfCard(models.Model):
     def reduceCooldown(self) -> None:
         self.remainingCooldown -= 1 if self.remainingCooldown > 0 else 0
         self.save()
+
+    def updateCooldown(self) -> None:
+        self.remainingCooldown = self.skill.cooldown
+        self.save()
     
 class Card(models.Model):
     characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
@@ -55,9 +59,9 @@ class Card(models.Model):
 
         return attributes.stamina
     
-    def getSkillUsed(self, skillNumber : int):
+    def getSkillCardUsed(self, skillNumber : int):
         skillCard = self.skills.all().filter(skill__level = skillNumber).first()
-        return skillCard.skill
+        return skillCard
         
     def reduceAllCooldown(self):
         for skillCard in self.skills.all():
@@ -65,8 +69,9 @@ class Card(models.Model):
     
     def applySkill(self, skillNumber : int, target : str) -> None:
         target = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()
-        skillUsed = self.getSkillUsed(skillNumber)
+        skillCardUsed = self.getSkillCardUsed(skillNumber)
 
+        skillUsed = skillCardUsed.skill
         if (skillUsed.type == 'Damage'): 
             target.currentStamina -= skillUsed.baseEffect * self.currentPower * (100 - target.currentArmor) * 0.0001
             if (target.currentStamina < 0):
@@ -78,6 +83,7 @@ class Card(models.Model):
                 target.currentStamina = maxStamina
 
         target.save()
+        skillCardUsed.updateCooldown()
 
     def skillWithoutCD(self) -> int:
         return 1
