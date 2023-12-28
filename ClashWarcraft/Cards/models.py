@@ -7,6 +7,8 @@ from Skill.models import Skill
 class skillOfCard(models.Model):
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE, null=True)
     remainingCooldown = models.IntegerField(blank = True, default = 0)
+    effectOn = models.CharField(max_length=50, blank=True)
+    remainingEffect = models.IntegerField(blank = True, default = 0)
 
     def __str__(self) -> str:
         return self.skill.skillOff + "'s Skill Card " + str(self.skill.level)
@@ -18,6 +20,29 @@ class skillOfCard(models.Model):
     def updateCooldown(self) -> None:
         self.remainingCooldown = self.skill.cooldown
         self.save()
+
+    def updateEffect(self, cardName : str) -> None:
+        self.effectOn = cardName
+        self.remainingEffect = self.skill.durationEffect
+        self.save()
+
+    def reduceEffect(self) -> None:
+        self.remainingEffect -= 1 if self.remainingEffect > 0 else 0
+
+        if (self.remainingEffect == 0 and self.effectOn != ''):
+            target = self.effectOn
+            card = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()
+            self.removeEffect(card)
+            self.effectOn = ''
+
+        self.save()
+
+    def removeEffect(self, card) -> None:
+        if (self.skill.type == 'Power Buff'):
+            card.currentPower -= self.skill.baseEffect
+        elif (self.skill.type == 'Armor Buff'):
+            card.currentArmor -= self.skill.baseEffect
+        card.save()
     
 class Card(models.Model):
     characterCard = models.ForeignKey(Character, on_delete=models.CASCADE, null=True)
@@ -43,6 +68,13 @@ class Card(models.Model):
         self.currentPower = attributes.power
         self.currentStamina = attributes.stamina
 
+    def getName(self) -> None:
+        if (self.characterCard):
+            attributes = self.characterCard.name
+        elif (self.mobCard):
+            attributes = self.mobCard.name
+        return attributes
+
     def getCooldowns(self) -> list[int]:
         cooldowns = []
         
@@ -66,6 +98,7 @@ class Card(models.Model):
     def reduceAllCooldown(self):
         for skillCard in self.skills.all():
             skillCard.reduceCooldown()
+            skillCard.reduceEffect()
     
     def applySkill(self, skillNumber : int, target : str) -> None:
         target = Card.objects.all().filter(Q(characterCard__name = target) | Q(mobCard__name = target)).first()
@@ -81,6 +114,12 @@ class Card(models.Model):
             target.currentStamina += skillUsed.baseEffect * self.currentPower * 0.01
             if (target.currentStamina > maxStamina):
                 target.currentStamina = maxStamina
+        elif (skillUsed.type == 'Power Buff'):
+            target.currentPower += skillUsed.baseEffect
+            skillCardUsed.updateEffect(target.getName())
+        elif (skillUsed.type == 'Armor Buff'):
+            target.currentArmor += skillUsed.baseEffect
+            skillCardUsed.updateEffect(target.getName())
 
         target.save()
         skillCardUsed.updateCooldown()

@@ -33,7 +33,7 @@ window.onload = async function() {
 
 async function applySkill(cardClicked, parameters) {
     if (gameMode == 'pve' && !([1,3,5,7].includes(round))) {
-        if (round != 6) {
+        if (round != 6 && parameters.skillNumber !=3) {
             pve.increaseThreat(parameters.currentCard, round, parameters.targetCard)
         } else {
             pve.increaseThreat(parameters.currentCard, round)
