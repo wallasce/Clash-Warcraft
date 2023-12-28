@@ -86,7 +86,11 @@ class Card(models.Model):
         skillCardUsed.updateCooldown()
 
     def skillWithoutCD(self) -> int:
-        return 1
+        skillLevels = [3, 2, 1]
+        for skillLevel in skillLevels:
+            skillCard = self.skills.all().filter(skill__level = skillLevel).first()
+            if (skillCard.remainingCooldown == 0):
+                return skillLevel
 
     def getLifeInPercentage(self) -> int:
         percentage = self.currentStamina * 100 / self.getStaminaBase()
