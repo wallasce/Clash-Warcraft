@@ -32,6 +32,12 @@ export function disablePlayerControl() {
         skillImg[0].hidden = true;
         changeCardsDisableValueTo(true)
     }
+
+    let cdsIcons = document.getElementsByClassName('cd');
+    for (let count = 0; count < cdsIcons.length; count += 1) {
+        cdsIcons[count].hidden = true;
+        
+    }
 }
 
 export function changeCardsDisableValueTo(value, sideToChange = 'all') {
@@ -52,13 +58,16 @@ export function changeCardsDisableValueTo(value, sideToChange = 'all') {
 export function changeSkillDisableValueTo(value, cooldowns = null) {
     let div = document.getElementsByClassName('skills');
     let skills = div[0].getElementsByTagName('button');
+    let cdsIcons = document.getElementsByClassName('cd');
     for (let i = 0; i < skills.length; i+=1) {
         if (value == false && cooldowns) {
             if (cooldowns[i] == 0) {
-                skills[i].disabled = value;    
+                skills[i].disabled = value;
+                cdsIcons[i].hidden = true
                 effect.changeHoverPropertyOnSkill(skills[i], value);
             } else {
                 skills[i].disabled = true;
+                cdsIcons[i].hidden = false
             }
         } else {
             skills[i].disabled = true;
