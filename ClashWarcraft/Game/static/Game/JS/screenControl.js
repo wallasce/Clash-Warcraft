@@ -52,7 +52,6 @@ export function changeCardsDisableValueTo(value, sideToChange = 'all') {
 export function changeSkillDisableValueTo(value, cooldowns = null) {
     let div = document.getElementsByClassName('skills');
     let skills = div[0].getElementsByTagName('button');
-
     for (let i = 0; i < skills.length; i+=1) {
         if (value == false && cooldowns) {
             if (cooldowns[i] == 0) {
@@ -62,6 +61,7 @@ export function changeSkillDisableValueTo(value, cooldowns = null) {
                 skills[i].disabled = true;
             }
         } else {
+            skills[i].disabled = true;
             effect.changeHoverPropertyOnSkill(skills[i], value);
         }
     }

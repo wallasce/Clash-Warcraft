@@ -77,12 +77,11 @@ async function addEventOnClickinCards() {
                 'targetCard' : this.value,
             };
             await applySkill(this, parameters);
-
+            await updateRound();
+            
             screenControl.changeCardsDisableValueTo(true);
             let cooldowns = await getCooldown(cardsName[round]);
             screenControl.changeSkillDisableValueTo(false, cooldowns);
-
-            await updateRound();
             screenControl.updateSkillImageSrc(skillsNames[cardsName[round]]);
         };
     }
