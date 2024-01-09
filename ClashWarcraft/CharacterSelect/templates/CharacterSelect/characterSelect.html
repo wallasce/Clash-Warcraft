@@ -26,11 +26,10 @@
         <div class="row">
             {% for option in options %}
                 <div class="col">
-                    <div class="card">
-                        <button value={{ option.value }} type="submit">
-                            <img class="card-img-top" src="{% static option.path %}">
-                        </button>    
-                    </div>
+                    <button class='card' value={{ option.name }} type="submit">
+                        <img class="class-icon" src="{% static option.pathClassImage %}">
+                        <img src="{% static option.pathImage %}">
+                    </button>    
                 </div>
             {% endfor %}
         </div>
