@@ -1,0 +1,25 @@
+.navbar {
+    background: rgba(36, 42, 58, 1);
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.nav-item {
+    border-color: rgba(255, 255, 255, 1);
+    border-left-style: solid;
+    border-width: 0.1rem;
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+.nav-link {
+    color: rgba(227, 164, 33, 1);
+    font-family: Semplicita Pro,Open Sans,Arial,Helvetica,sans-serif;
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    box-shadow: 0px 0.156rem 0.125rem -0.125rem rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1)!important;
+}
