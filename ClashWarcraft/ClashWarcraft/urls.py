@@ -22,11 +22,12 @@ from CharacterSelect.views import setCharacter
 from Game.views import game, getCharacterName, getPercentage, setWinner, resultRequest, getGameMode
 from GameSettings.views import passInitialScreen, resetSettings, setFaction, setGameMode, passLoadScreen
 from Skill.views import getSkillFromCharacterSelected
-from Website.views import homePage
+from Website.views import homePage, characterPage
 
 urlpatterns = [
     path("", homePage, name = 'HomePage'),
     path("admin/", admin.site.urls),
+    path("character/", characterPage, name = 'Character'),
     path("game/", game, name = 'Game'),
     path("api/apply-skill", applySkill, name = 'ApplySkill'),
     path("api/get-cooldown/", getCooldowns, name = 'GetCooldown'),

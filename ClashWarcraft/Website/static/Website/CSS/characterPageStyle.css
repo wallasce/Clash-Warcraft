@@ -1,0 +1,110 @@
+.button-faction {
+    background-color: rgba(0, 0, 0, 0)!important;
+    border: none;
+    display: inline-block;
+    left: 50%;
+    margin: 1rem auto 1rem auto;
+    padding: 0 1rem 0 1rem;
+    position: relative;
+    transform: translateX(-50%);
+}
+
+.button-faction::before {
+    background: linear-gradient(to bottom, transparent 0%, #4a5150 65%, transparent 100%);
+    content: " ";
+    height: 80%;
+    left: 0%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 1%;
+}
+
+.button-faction::after {
+    background: linear-gradient(to bottom, transparent 0%, #4a5150 65%, transparent 100%);
+    content: " ";
+    height: 80%;
+    left: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 1%;
+}
+
+.button-faction.button-Horde:hover, .button-faction.button-Horde.selected{
+    box-shadow: inset 0 0 5rem 0.5rem rgba(255, 0, 0, 0.5), inset 0 2px 1px 1px rgba(255,255,255,0.9), inset 0 -2px 1px rgba(0,0,0,0.25);
+    transition: all 0.3s ease 0s;
+}
+
+.button-faction.button-Alliance:hover, .button-faction.button-Alliance.selected {
+    box-shadow: inset 0 0 5rem 0.5rem rgba(0,0,255, 0.5), inset 0 2px 1px 1px rgba(255,255,255,0.9), inset 0 -2px 1px rgba(0,0,0,0.25);
+    transition: all 0.3s ease 0s;
+}
+
+.button-faction img {
+    display: block;
+    max-height: 12rem;
+    max-width: 10rem;
+    position: relative;
+}
+
+.container-list {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+.character-link {
+    display: block;
+    max-width: 17%;
+    height: 20rem;
+    margin: 1rem 1rem 0 0;
+    position: relative;
+    overflow: hidden;
+    width: 17%;
+}
+
+.character-link::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 20%;
+    padding-top: 20%;
+    background-color: rgba(20, 6, 19, 1);
+    transition: transform 0.5s ease 0s;
+    transform: translate(50%, -50%) rotate(45deg);
+}
+
+.character-link:hover::after {
+    transform: translate(100%, -100%) rotate(45deg);
+}
+
+.character-link:hover {
+    .character-name {
+        background-color: rgba(0, 102, 128, 1);
+        color: rgba(227, 164, 33, 1);
+    }
+
+    .character-img {
+        transform: scale3d(1.005, 1.005, 1);
+    }
+}
+
+.character-img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.character-name {
+    position: absolute;
+    background-color: rgb(6, 28, 37);
+    padding: 6% 8%;
+    top: 100%;
+    transition: background-color 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    transform: translateY(-100%);
+    width: 100%;
+}

@@ -4,6 +4,7 @@ from CharacterSelect.views import resetTeams
 from Game.views import resetWinner
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
+from .wrapper import getCharacterParameters
 
 # Create your views here.
 def homePage(request):
@@ -13,3 +14,24 @@ def homePage(request):
     deleteCards()
     resetWinner()
     return render(request, 'WebSite/homePage.html')
+
+def characterPage(request):
+    pathImageFaction = 'GameSettings/Image/FactionSelect/'
+    
+    hordeParameters = getCharacterParameters('Horde')
+    allianceParameters = getCharacterParameters('Alliance')
+    parameters = {
+        'factions' : [
+            {
+                'value' : 'Horde',
+                'path' : pathImageFaction + 'horde.png'
+            },{
+                'value' : 'Alliance',
+                'path' : pathImageFaction + 'alliance.png'
+            }
+        ],
+        'hordeCharacters' : hordeParameters,
+        'allianceCharacters' : allianceParameters,
+    }
+
+    return render(request, 'WebSite/characterPage.html', parameters)

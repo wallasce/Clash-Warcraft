@@ -1,0 +1,53 @@
+{% extends 'WebsiteConfig/contentPageBase.html' %}
+
+{% load static %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "WebSite/CSS/characterPageStyle.css" %}">
+    <link rel="stylesheet" href="{% static "WebSite/CSS/characterPageFontStyle.css" %}">
+{% endblock %}
+
+{% block title %} Character {% endblock %}
+
+{% block content %}
+    <h1>
+        <span class="subtitle">Choose Your</span>
+        <span class="title">Character</span>
+    </h1>
+    <div class="container-faction">
+        <div class="row">
+            {% for faction in factions %}
+                <div class="col">
+                    <button class="button-faction button-{{faction.value}}" value={{ faction.value }} type="submit">
+                        <img src="{% static faction.path %}">
+                        <h3>
+                            <span class="button-faction-text"> {{ faction.value }} </span>
+                        </h3>
+                    </button>         
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container-list container-Horde-list">
+        {% for hordeCharacter in hordeCharacters %}
+            <a class="character-link" delay=0 href="">
+                <img class="character-img" src="{% static hordeCharacter.pathImg %}">
+                <span class="character-name"> {{ hordeCharacter.name }} </span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="container-list container-Alliance-list">
+        {% for allianceCharacter in allianceCharacters %}
+            <a class="character-link" delay=0 href="">
+                <img class="character-img" src="{% static allianceCharacter.pathImg %}">
+                <span class="character-name"> {{ allianceCharacter.name }} </span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "Website/JS/characterPage.js" %}"></script>
+{% endblock %}
