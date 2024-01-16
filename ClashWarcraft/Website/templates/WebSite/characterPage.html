@@ -31,7 +31,7 @@
 
     <div class="container-list container-Horde-list">
         {% for hordeCharacter in hordeCharacters %}
-            <a class="character-link" delay=0 href="">
+            <a class="character-link" delay=0 href="{{hordeCharacter.name}}">
                 <img class="character-img" src="{% static hordeCharacter.pathImg %}">
                 <span class="character-name"> {{ hordeCharacter.name }} </span>
             </a>
@@ -40,7 +40,7 @@
 
     <div class="container-list container-Alliance-list">
         {% for allianceCharacter in allianceCharacters %}
-            <a class="character-link" delay=0 href="">
+            <a class="character-link" delay=0 href="{{allianceCharacter.name}}">
                 <img class="character-img" src="{% static allianceCharacter.pathImg %}">
                 <span class="character-name"> {{ allianceCharacter.name }} </span>
             </a>

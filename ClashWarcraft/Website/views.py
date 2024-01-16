@@ -4,7 +4,7 @@ from CharacterSelect.views import resetTeams
 from Game.views import resetWinner
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
-from .wrapper import getCharacterParameters
+from .wrapper import getCharacterParameters, getCharacterDetails
 
 # Create your views here.
 def homePage(request):
@@ -35,3 +35,8 @@ def characterPage(request):
     }
 
     return render(request, 'WebSite/characterPage.html', parameters)
+
+def characterDetails(request, characterName):
+    charaterParameters = getCharacterDetails(characterName)
+
+    return render(request, 'WebSite/characterDetailsPage.html', charaterParameters)

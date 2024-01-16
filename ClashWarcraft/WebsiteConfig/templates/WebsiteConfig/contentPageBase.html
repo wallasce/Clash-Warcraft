@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static "WebSiteConfig/CSS/contentPageFontStyle.css" %}">
     {% block headerTags%} {% endblock %}
 </head>
-<body>
+<body {% block 'background-in-html' %}{% endblock %}>
     <div class='menu'>
         {% include 'WebSiteConfig/menu.html' %}
     </div>

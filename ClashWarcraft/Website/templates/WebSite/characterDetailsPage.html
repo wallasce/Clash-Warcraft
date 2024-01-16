@@ -1,0 +1,19 @@
+{% extends 'WebsiteConfig/contentPageBase.html' %}
+
+{% load static %}
+
+{% block headerTags%} 
+    <link rel="stylesheet" href="{% static "WebSite/CSS/charaterDetailsPageStyle.css" %}">
+{% endblock %}
+
+{% block title %} {{ name }} {% endblock %}
+{% block 'background-in-html' %}
+    style = "background-image: url('{% static  backgroundPath %}')"
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
