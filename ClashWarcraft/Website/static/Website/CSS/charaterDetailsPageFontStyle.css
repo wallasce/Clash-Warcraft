@@ -1,9 +1,40 @@
-.title {
+.container-heading {
     color: rgba(255, 255, 255, 1);
-    font-size: 5rem;
-    font-weight: 800;
     letter-spacing: 0.03em;
-    line-height: 0.85;
     text-align: center;
     text-transform: uppercase;
+}
+
+.title {
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 0.85;
+}
+
+.sub-title {
+    line-height: 1;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.speciality-list {
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.625rem;
+    letter-spacing: 0.15em;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.speciality-title {
+    color: rgba(227, 164, 33, 1);
+}
+
+.container-history p{
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.28571;
+    letter-spacing: 0.08em;
 }

@@ -22,6 +22,8 @@ def getCharacterDetails(name : str):
     character = Character.objects.all().filter(name = name)[0]
     details = {
         'name' : name,
+        'role' : character.type,
+        'class' : character.kind,
         'backgroundPath' : 'Website/Image/BackgroundClass/' + formatName(character.kind) + '.avif',
         'charImagePath' : 'Website/Image/CharactersPNG/' + formatName(character.name) + '.png',
     }

@@ -17,9 +17,29 @@
         <div class="container-canvas">
             <canvas class="canvas" width="1097" height="283" style="width: 1097px; height: 283.067px; left: -2px; top: -2px;"></canvas>
         </div>
-        <span class="title">{{ name }}</span>
+        <div class="container-heading">
+            <span class="sub-title">title</span>
+            <span class="title">{{ name }}</span>
+        </div>
         <div class="container-image">
             <img class="img-character" src="{% static charImagePath %}">
+        </div>
+        <div class="container-details">
+            <div class="container-speciality">
+                <ul class="speciality-list">
+                    <li class="speciality-class">
+                        <div class="speciality-title">Class</div>
+                        <div>{{ class }}</div>
+                    </li>
+                    <li class="speciality-role">
+                        <div class="speciality-title">Role</div>
+                        <div>{{ role }}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-history">
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of </p>
+            </div>
         </div>
     </div>
 {% endblock %}
