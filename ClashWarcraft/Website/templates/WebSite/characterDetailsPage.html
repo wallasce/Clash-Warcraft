@@ -4,6 +4,7 @@
 
 {% block headerTags%} 
     <link rel="stylesheet" href="{% static "WebSite/CSS/charaterDetailsPageStyle.css" %}">
+    <link rel="stylesheet" href="{% static "WebSite/CSS/charaterDetailsPageFontStyle.css" %}">
 {% endblock %}
 
 {% block title %} {{ name }} {% endblock %}
@@ -12,8 +13,17 @@
 {% endblock %}
 
 {% block content %}
-
+    <div class="container-details-character">
+        <div class="container-canvas">
+            <canvas class="canvas" width="1097" height="283" style="width: 1097px; height: 283.067px; left: -2px; top: -2px;"></canvas>
+        </div>
+        <span class="title">{{ name }}</span>
+        <div class="container-image">
+            <img class="img-character" src="{% static charImagePath %}">
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
+    <script src="{% static "Website/JS/characterDetailsPage.js" %}"></script>
 {% endblock %}

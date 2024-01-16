@@ -2,3 +2,43 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.container-details-character {
+    position: absolute;
+    display: block;
+    margin-top: 5rem;
+    width: 1097px;
+    height: 337.067px;
+}
+
+.container-canvas {
+    position: absolute;
+}
+
+.canvas {
+    position: absolute;
+    display: block;
+}
+
+.title {
+    display: block;
+    margin: -3% auto 0 auto;
+    width: fit-content;
+}
+
+.container-image {
+    position: relative;
+    left: 100%;
+    max-height: 24rem;
+    max-width: 30%;
+    margin-top: -8%;
+    overflow: hidden;
+    transform: translateX(-50%);
+}
+
+.img-character {
+    display: block;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

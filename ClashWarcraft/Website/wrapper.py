@@ -23,6 +23,7 @@ def getCharacterDetails(name : str):
     details = {
         'name' : name,
         'backgroundPath' : 'Website/Image/BackgroundClass/' + formatName(character.kind) + '.avif',
+        'charImagePath' : 'Website/Image/CharactersPNG/' + formatName(character.name) + '.png',
     }
 
     return details
