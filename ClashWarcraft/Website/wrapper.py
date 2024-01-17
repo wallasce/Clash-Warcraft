@@ -1,6 +1,7 @@
 from django.db.models.manager import BaseManager
 
 from Character.models import Character
+from Game.models import Lore
 
 def formatName(name : str):
     formatedName = name.replace("'", "")
@@ -44,4 +45,23 @@ def getCharacterDetails(name : str):
         'charImagePath' : 'Website/Image/CharactersPNG/' + formatName(character.name) + '.png',
     }
 
+    return details
+
+def getLoreData():
+    lores = Lore.objects.all()
+    loresData = []
+
+    for lore in lores:
+        loresData.append({
+            'title' : lore.title,
+            'subtitle' : lore.subtitle,
+            'heading' : lore.heading,
+            'subheading' : lore.subheading,
+            'description' : lore.description,
+        })
+
+    details = {
+        'loresData' : loresData
+    }
+    
     return details
