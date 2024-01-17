@@ -91,3 +91,31 @@ body {
 .container-history p {
     margin-bottom: 0;
 }
+
+.spells-list {
+    display: flex;
+    gap: 1%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.spell {
+    background-color: rgba(0, 0, 0, 1);
+    border: solid;
+    border-color: rgba(80, 65, 55, 1);
+    border-width: 0.1rem;
+    padding: 1rem;
+}
+
+.spell-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.spell-name {
+    margin-left: 5%;
+}
+
+.spell-body {
+}

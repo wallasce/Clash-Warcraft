@@ -31,10 +31,26 @@
     color: rgba(227, 164, 33, 1);
 }
 
-.container-history p{
+.container-history p, .spell {
     color: rgba(255, 255, 255, 1);
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.28571;
     letter-spacing: 0.08em;
+}
+
+
+.spells-header {
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 3.75rem;
+    letter-spacing: 0.05em;
+}
+
+.spell-name {
+    color: rgba(227, 164, 33, 1);
+    font-weight: 600;
+    font-size: 1.44rem;
 }
