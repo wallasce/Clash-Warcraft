@@ -40,3 +40,7 @@ def characterDetails(request, characterName):
     charaterParameters = getCharacterDetails(characterName)
 
     return render(request, 'WebSite/characterDetailsPage.html', charaterParameters)
+
+def campaignPage(request):
+    paramtersPage = {}
+    return render(request, 'WebSite/campaignPage.html', paramtersPage)
