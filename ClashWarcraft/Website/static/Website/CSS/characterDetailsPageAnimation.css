@@ -10,7 +10,7 @@
 
 .title, .sub-title {
     animation-duration: 2500ms;
-    animation-delay: 750ms;
+    animation-delay: 500ms;
     animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
