@@ -54,3 +54,11 @@
     font-weight: 600;
     font-size: 1.44rem;
 }
+
+.cooldown-header {
+    color: rgba(227, 164, 33, 1);
+}
+
+.cooldown-info {
+    font-size: 0.725rem;
+}

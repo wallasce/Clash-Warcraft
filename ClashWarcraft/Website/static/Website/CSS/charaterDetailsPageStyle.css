@@ -105,6 +105,7 @@ body {
     border-color: rgba(80, 65, 55, 1);
     border-width: 0.1rem;
     padding: 1rem;
+    width: 100%;
 }
 
 .spell-head {
@@ -117,5 +118,6 @@ body {
     margin-left: 5%;
 }
 
-.spell-body {
+.cooldown-info {
+    margin-bottom: 3%;
 }

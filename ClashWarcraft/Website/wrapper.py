@@ -25,10 +25,9 @@ def getSkillDetails(character : BaseManager[Character]):
     skills = character.skill.all()
     for skill in skills:
         skillsDetails.append({
-            'name' : 'skill name',
-            'type' : skill.type,
+            'name' : skill.name,
+            'description' : skill.description,
             'cooldown' : skill.cooldown,
-            'baseEffect' : skill.baseEffect,
             'imagePath' : '/Skill/Image/'+ str(skill).replace(' ', '') + '.png',
         })
 

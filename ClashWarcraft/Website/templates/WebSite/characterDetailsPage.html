@@ -55,7 +55,12 @@
                             <div class="spell-name"> {{ skill.name }} </div>
                         </div>
                         <div class="spell-body">
-                            A battle-hardened master of weapons, using mobility and overpowering attacks to strike their opponents down. Preferred Weapon: Two-Handed Axe, Mace, Sword
+                            <div class="cooldown-info">
+                                <span class="cooldown-header">Cooldown</span> : {{ skill.cooldown }} rounds
+                            </div>
+                            <div class="description">
+                                {{ skill.description }}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
