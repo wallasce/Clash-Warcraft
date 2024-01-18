@@ -1,15 +1,15 @@
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 4vh;
     font-weight: 600;
 }
 
 .title {
-    font-size: 3.6rem;
+    font-size: 9vh;
     font-weight: 800;
 }
 
 .button-faction-text {
-    font-size: 1.1rem;
+    font-size: 3vh;
     font-weight: bold;
 }
 

@@ -3,8 +3,8 @@
     border: none;
     display: inline-block;
     left: 50%;
-    margin: 1rem auto 1rem auto;
-    padding: 0 1rem 0 1rem;
+    margin: 4.5vh auto 4.5vh auto;
+    padding: 0 2vw 0 2vw;
     position: relative;
     transform: translateX(-50%);
 }
@@ -43,8 +43,8 @@
 
 .button-faction img {
     display: block;
-    max-height: 12rem;
-    max-width: 10rem;
+    max-height: 30vh;
+    max-width: 25vw;
     position: relative;
 }
 
@@ -58,8 +58,8 @@
 .character-link {
     display: block;
     max-width: 17%;
-    height: 20rem;
-    margin: 1rem 1rem 0 0;
+    height: 50vh;
+    margin: 2.5vh 2.5vh 0 0;
     position: relative;
     overflow: hidden;
     width: 17%;
@@ -68,8 +68,8 @@
 .character-link::after {
     content: "";
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0vh;
+    right: 0vh;
     width: 20%;
     padding-top: 20%;
     background-color: rgba(20, 6, 19, 1);
