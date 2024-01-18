@@ -29,3 +29,21 @@ class Attribute(models.Model):
 
     def __str__(self) -> str:
         return "Attributes of " + self.attributesOf
+    
+    def getAttributes(self) -> list[dict]:
+        attributeDict = []
+        
+        attributeDict.append({
+            'name' : 'armor',
+            'value' : self.armor,
+        })
+        attributeDict.append({
+            'name' : 'power',
+            'value' : self.power,
+        })
+        attributeDict.append({
+            'name' : 'stamina',
+            'value' : self.stamina,
+        })
+
+        return attributeDict

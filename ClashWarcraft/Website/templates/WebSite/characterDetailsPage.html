@@ -66,6 +66,18 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div class="container-attributes">
+            <h2 class="attributes-header"> Attributes </h2>
+            <div class="attributes-list"> 
+                {% for attribute in attributes %}
+                    <p> {{ attribute }} </p>
+                    {{ attribute.armor }}
+                    {{ attribute.power }}
+                    {{ attribute.stamina }}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
