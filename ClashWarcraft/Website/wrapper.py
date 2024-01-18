@@ -1,7 +1,8 @@
 from django.db.models.manager import BaseManager
+import random
 
 from Character.models import Character
-from Game.models import Lore
+from Game.models import Lore, Tutorial
 
 def formatName(name : str):
     formatedName = name.replace("'", "")
@@ -71,3 +72,51 @@ def getLoreData():
     }
     
     return details
+
+def getRandomCharacterName() -> str:
+    characters = Character.objects.all()
+    character = characters[random.randrange(0,len(characters))]
+        
+    return formatName(character.name)
+
+def getRandomSkillName() -> str:
+    characters = Character.objects.all()
+    character = characters[random.randrange(0,len(characters))]
+    skill = random.randrange(0,3)
+
+    return formatName(character.kind) + str(skill)
+
+def getImageTutorial(theme : str) -> str:
+    pathImage = ''
+
+    if (theme == 'deadCard'):
+        pathImage = 'Game/Image/Cards/Dead.png'
+    elif (theme == 'barLife'):
+        pathImage = 'Game/Image/Bars/80.png'
+    elif (theme == 'card'):
+        pathImage = 'Character/Image/' + getRandomCharacterName() + '.png'
+    elif (theme == 'abilities'):
+        pathImage = 'Skill/Image/' + getRandomSkillName() +'.png'
+    
+    return pathImage
+
+def getTutorial():
+    tutorials = Tutorial.objects.all()
+
+    tutorialSteps = []
+
+    for tutorial in tutorials:
+        tutorialSteps.append({
+            'title' : tutorial.title,
+            'subtitle' : tutorial.subtitle,
+            'description' : tutorial.description,
+            'stepNumber' : tutorial.step,
+            'image' : getImageTutorial(tutorial.theme),
+            'background' : 'Website/Image/BackgroundTutorial/' + str(tutorial.step) + '.png',
+        })
+
+    data = {
+        'tutorialSteps' : tutorialSteps,
+    }
+
+    return data

@@ -23,6 +23,7 @@ class Tutorial(models.Model):
     title = models.CharField(max_length=55)
     subtitle = models.CharField(max_length=55)
     description = models.CharField(max_length=1000)
+    theme = models.CharField(max_length=55, default="", blank=True)
 
     def __str__(self) -> str:
         return 'Tutorial - Step ' + str(self.step)
