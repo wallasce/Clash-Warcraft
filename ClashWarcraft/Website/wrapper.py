@@ -42,6 +42,7 @@ def getCharacterDetails(name : str):
         'class' : character.kind,
         'skills' : getSkillDetails(character),
         'attributes' : character.attributes.getAttributes(),
+        'classIconPath' : 'Character/Image/Class/' + formatName(character.kind) + '.png',
         'backgroundPath' : 'Website/Image/BackgroundClass/' + formatName(character.kind) + '.avif',
         'charImagePath' : 'Website/Image/CharactersPNG/' + formatName(character.name) + '.png',
     }
