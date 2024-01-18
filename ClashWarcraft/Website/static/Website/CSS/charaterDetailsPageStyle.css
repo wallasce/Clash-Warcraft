@@ -4,7 +4,7 @@ body {
 }
 
 .container-details-character {
-    height: 283px;
+    height: 100vh;
     margin-top: 10rem;
     position: relative;
     width: 1097px;
@@ -21,7 +21,7 @@ body {
 
 .container-heading {
     position: relative;
-    top: -19%;
+    top: -9%;
 }
 
 .title {
@@ -38,7 +38,7 @@ body {
 .container-image {
     position: relative;
     left: 100%;
-    max-height: 24rem;
+    max-height: 70vh;
     max-width: 25%;
     overflow: hidden;
     top: -30%;
@@ -63,7 +63,7 @@ body {
 .container-speciality {
     display: flex;
     align-items: center;
-    height: 283px;
+    height: 45vh;
     width: 25%;
 }
 
@@ -102,7 +102,7 @@ body {
 .spell {
     background-color: rgba(0, 0, 0, 1);
     border: 0.1rem solid rgba(80, 65, 55, 1);
-    padding: 1rem;
+    padding: 2.7vh;
     width: 100%;
 }
 
