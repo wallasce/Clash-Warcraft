@@ -58,10 +58,14 @@ def getLoreData():
             'heading' : lore.heading,
             'subheading' : lore.subheading,
             'description' : lore.description,
+            'raid' : lore.raid,
+            'loreImg' : 'Website/Image/Lore/' + str(lore.raid) + '.jpg',
+            'buttonPath' : 'Website/Image/LoreButtons/'+ str(lore.raid) + '.png',
+            'loreBackground' : 'Website/Image/BackgroundLore/' + str(lore.raid) + '.png',
         })
 
     details = {
-        'loresData' : loresData
+        'loresData' : loresData,
     }
     
     return details
