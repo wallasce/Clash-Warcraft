@@ -17,3 +17,12 @@ class Lore(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+class Tutorial(models.Model):
+    step = models.IntegerField()
+    title = models.CharField(max_length=55)
+    subtitle = models.CharField(max_length=55)
+    description = models.CharField(max_length=1000)
+
+    def __str__(self) -> str:
+        return 'Tutorial - Step ' + str(self.step)
