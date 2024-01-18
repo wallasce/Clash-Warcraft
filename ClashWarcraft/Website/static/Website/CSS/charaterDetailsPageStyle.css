@@ -101,9 +101,7 @@ body {
 
 .spell {
     background-color: rgba(0, 0, 0, 1);
-    border: solid;
-    border-color: rgba(80, 65, 55, 1);
-    border-width: 0.1rem;
+    border: 0.1rem solid rgba(80, 65, 55, 1);
     padding: 1rem;
     width: 100%;
 }
