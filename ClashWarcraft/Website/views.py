@@ -44,3 +44,7 @@ def characterDetails(request, characterName):
 def campaignPage(request):
     paramtersPage = getLoreData()
     return render(request, 'WebSite/campaignPage.html', paramtersPage)
+
+def gamePlayPage(request):
+    parametersPage = {}
+    return render(request, 'WebSite/gamePlayPage.html', parametersPage)
