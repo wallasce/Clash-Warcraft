@@ -82,7 +82,11 @@ def getRandomCharacterName() -> str:
 def getRandomSkillName() -> str:
     characters = Character.objects.all()
     character = characters[random.randrange(0,len(characters))]
-    skill = random.randrange(0,3)
+    skill = random.randrange(1,4)
+    
+    print(character.type)
+    if(character.type in ['Melee', 'Tank']):
+        return formatName(character.kind) + character.type + str(skill)
 
     return formatName(character.kind) + str(skill)
 
