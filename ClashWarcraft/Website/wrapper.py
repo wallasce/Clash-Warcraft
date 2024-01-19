@@ -17,7 +17,7 @@ def getCharacterParameters(faction : str):
     for character in characters:
         characterParameters.append({
             'name' : character.name,
-            'pathImg' : 'Website/Image/Characters/' + formatName(character.name) + '.jpeg',
+            'pathImg' : 'Website/Image/Characters/' + formatName(character.name) + '.png',
         })
 
     return characterParameters
@@ -45,7 +45,7 @@ def getCharacterDetails(name : str):
         'attributes' : character.attributes.getAttributes(),
         'classIconPath' : 'Character/Image/Class/' + formatName(character.kind) + '.png',
         'backgroundPath' : 'Website/Image/BackgroundClass/' + formatName(character.kind) + '.avif',
-        'charImagePath' : 'Website/Image/CharactersPNG/' + formatName(character.name) + '.png',
+        'charImagePath' : 'Website/Image/CharactersTransparent/' + formatName(character.name) + '.png',
     }
 
     return details
