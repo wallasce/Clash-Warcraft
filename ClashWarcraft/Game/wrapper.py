@@ -31,10 +31,10 @@ def setParametersGame() -> dict:
     if (settings.gameMode == 'pve'):
         settingsPvE = PvESetting.objects.first()
         parameters['rightSide'] = getMobParameters(settingsPvE)
-        parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+str(settingsPvE.raid)+'.jpg'
+        parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+str(settingsPvE.raid)+'.png'
     elif (settings.gameMode == 'pvp'):
         parameters['rightSide'] = getPlayerParameters(1)
-        parameters['backgroundPath'] = 'Game/Image/Background/pvpBackground.jpg'
+        parameters['backgroundPath'] = 'Game/Image/Background/pvpBackground.png'
 
     return parameters
 
@@ -58,11 +58,11 @@ def setParametersResult() -> dict:
         if (winner == 'Player 1'):
             raid = PvESetting.objects.first().raid
             parameters['result'] = 'You Win'
-            parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+ str(raid) +'.jpg'
+            parameters['backgroundPath'] = 'Game/Image/Background/pveBackground'+ str(raid) +'.png'
             parameters['raid'] = raid
         elif (winner == 'Player 2'):
             parameters['result'] = 'You Lose'
-            parameters['backgroundPath'] = 'Game/Image/Background/pveLoseBackground.jpg'
+            parameters['backgroundPath'] = 'Game/Image/Background/pveLoseBackground.png'
 
     return parameters
 
