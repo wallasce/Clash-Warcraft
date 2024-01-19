@@ -1,0 +1,15 @@
+.title {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 800;
+    font-size: 6vh;
+}
+
+.subtitle {
+    color: rgba(227, 164, 33, 1);
+    font-size: 3.5vh;
+}
+
+.text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2.4vh;
+}
