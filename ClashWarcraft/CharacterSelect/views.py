@@ -19,7 +19,7 @@ def selectCharacter(request, factionRequired, typeRequired, player):
     options = [characterOption.name for characterOption in characterOptions]
     options = []
     for characterOption in characterOptions:
-        pathImage = 'Character/Image/' + formatName(characterOption.name) + '.png'
+        pathImage = 'Game/Image/Cards/' + formatName(characterOption.name) + '.png'
         pathClassImage = 'Character/Image/Class/' + formatName(characterOption.kind) + '.png'
         options.append({
             'name' : characterOption.name,

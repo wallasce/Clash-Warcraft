@@ -98,7 +98,7 @@ def getImageTutorial(theme : str) -> str:
     elif (theme == 'barLife'):
         pathImage = 'Game/Image/Bars/80.png'
     elif (theme == 'card'):
-        pathImage = 'Character/Image/' + getRandomCharacterName() + '.png'
+        pathImage = 'Game/Image/Cards/' + getRandomCharacterName() + '.png'
     elif (theme == 'abilities'):
         pathImage = 'Skill/Image/' + getRandomSkillName() +'.png'
     
