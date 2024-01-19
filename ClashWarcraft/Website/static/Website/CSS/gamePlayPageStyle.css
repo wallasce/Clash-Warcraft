@@ -6,6 +6,19 @@ img {
     margin: 0;
 }
 
+.container-game-play {
+    align-items: center;
+    background-size: cover;
+    display: flex;
+    height: 80vh;
+}
+
+.container-game-play-content {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .top-block img {
     left: 50%;
     position: absolute;

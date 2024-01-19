@@ -10,6 +10,13 @@
 {% block title %} How to Play {% endblock %}
 
 {% block content %}
+    <div class="container-game-play" style="background-image:url('{% static  'Website/Image/BackgroundTutorial/Header.jpg' %}');">
+        <div class="container-game-play-content">
+            <div class="subtitle"> Learning the Basics! </div>
+            <div class="title"> Welcome to Clash Warcraft </div>
+        </div>
+    </div>
+
     {% for tutorialStep in tutorialSteps %}
         <div class="top-block">
             <img src={% static "WebSite/Image/Tutorial/top-block.png" %}>
