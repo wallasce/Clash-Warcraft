@@ -9,7 +9,18 @@
 {% block title %} How to Play {% endblock %}
 
 {% block content %}
-   
+    {% for tutorialStep in tutorialSteps %}
+        <div class="container-tutorial-step-{{ tutorialStep.stepNumber }}" style="background-image:url('{% static  tutorialStep.background %}');">
+            <div class="container-tutorial-content">
+                <div class="subtitle"> {{ tutorialStep.subtitle }} </div>
+                <div class="title"> {{ tutorialStep.title }} </div>
+                <div class="description"> {{ tutorialStep.description }} </div>
+            </div>
+            <div class="container-tutorial-image">
+                <img src={% static tutorialStep.image %}>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {% block scripts %}
