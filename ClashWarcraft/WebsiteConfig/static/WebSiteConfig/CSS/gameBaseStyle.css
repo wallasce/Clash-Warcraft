@@ -1,3 +1,8 @@
 body {
     background-size: cover;
+    cursor: url("../Image/Cursor/cursorDefault.cur"),auto;
+}
+
+.clickable:hover {
+    cursor: url("../Image/Cursor/cursorPointer.cur"),auto;
 }
