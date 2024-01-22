@@ -1,12 +1,12 @@
 .container-heading {
     color: rgba(255, 255, 255, 1);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.03vw;
     text-align: center;
     text-transform: uppercase;
 }
 
 .title {
-    font-size: 5rem;
+    font-size: 12.5vh;
     font-style: italic;
     font-weight: 800;
     line-height: 0.85;
@@ -14,14 +14,14 @@
 
 .sub-title {
     line-height: 1;
-    font-size: 1.5rem;
+    font-size: 4vh;
     font-weight: 600;
 }
 
 .speciality-list {
     color: rgba(255, 255, 255, 1);
-    font-size: 0.625rem;
-    letter-spacing: 0.15em;
+    font-size: 1.5vh;
+    letter-spacing: 0.10vw;
     line-height: 1.15;
     text-align: center;
     text-transform: uppercase;
@@ -33,10 +33,10 @@
 
 .container-history p, .spell {
     color: rgba(255, 255, 255, 1);
-    font-size: 0.875rem;
+    font-size: 2.2vh;
     font-weight: 500;
     line-height: 1.28571;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.08vw;
 }
 
 
@@ -45,14 +45,14 @@
     text-transform: uppercase;
     font-style: italic;
     font-weight: 800;
-    font-size: 3.75rem;
-    letter-spacing: 0.05em;
+    font-size: 8.7vh;
+    letter-spacing: 0.25vw;
 }
 
 .spell-name {
     color: rgba(227, 164, 33, 1);
     font-weight: 600;
-    font-size: 1.44rem;
+    font-size: 3.7vh;
 }
 
 .cooldown-header {
@@ -60,13 +60,13 @@
 }
 
 .cooldown-info {
-    font-size: 0.725rem;
+    font-size: 1.9vh;
 }
 
 .attribute-details {
     color: rgba(255, 255, 255, 1);
-    font-size: 1rem;
-    letter-spacing: 0.15em;
+    font-size: 2.5vh;
+    letter-spacing: 0.15vw;
     line-height: 1.15;
     text-align: center;
     text-transform: capitalize;
