@@ -42,33 +42,52 @@
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of </p>
             </div>
         </div>
+    </div>
 
-        <div class="container-spells">
-            <h2 class="spells-header"> Spells </h2>
-            <div class="spells-list"> 
-                {% for skill in skills %}
-                    <div class="spell">
-                        <div class="spell-head">
-                            <div class="spell-image">
-                                <img src="{% static skill.imagePath %}">
-                            </div>
-                            <div class="spell-name"> {{ skill.name }} </div>
+    <div class="container-spells">
+        <span class="title spells-header"> Spells </span>
+        <div class="spells-list"> 
+            {% for skill in skills %}
+                <div class="spell">
+                    <div class="spell-head">
+                        <div class="spell-image">
+                            <img src="{% static skill.imagePath %}">
                         </div>
-                        <div class="spell-body">
-                            <div class="cooldown-info">
-                                <span class="cooldown-header">Cooldown</span> : {{ skill.cooldown }} rounds
-                            </div>
-                            <div class="description">
-                                {{ skill.description }}
-                            </div>
+                        <div class="spell-name"> {{ skill.name }} </div>
+                    </div>
+                    <div class="spell-body">
+                        <div class="cooldown-info">
+                            <span class="cooldown-header">Cooldown</span> : {{ skill.cooldown }} rounds
+                        </div>
+                        <div class="description">
+                            {{ skill.description }}
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
-
-        
     </div>
+
+    <div class="container-attributes">
+        <span class="title attributes-header"> Attributes </span>
+        <div class="class-icon">
+            <img src="{% static classIconPath %}">
+        </div>
+        <div class="attributes-list"> 
+            {% for attribute in attributes %}
+                <div class="attribute-container">
+                    {% with 'Website/Image/AttributeIcons/'|add:attribute.name|add:'.png' as iconPath %}
+                        <img src="{% static iconPath %}">
+                    {% endwith %}
+                    <div class="attribute-details">
+                        <div class="attribute-title"> {{ attribute.name }} </div>
+                        <div> {{ attribute.value }} </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
 {% endblock %}
 
 {% block scripts %}
