@@ -4,6 +4,7 @@ from Skill.models import Skill
 # Create your models here.
 class Character(models.Model):
     name = models.CharField(max_length=50)
+    title = models.CharField(max_length=35, blank=True, default='')
     faction = models.CharField(max_length=8)
     kind = models.CharField(max_length=15)
     type = models.CharField(max_length=6)
@@ -34,15 +35,15 @@ class Attribute(models.Model):
         attributeDict = []
         
         attributeDict.append({
-            'name' : 'armor',
+            'name' : 'Armor',
             'value' : self.armor,
         })
         attributeDict.append({
-            'name' : 'power',
+            'name' : 'Power',
             'value' : self.power,
         })
         attributeDict.append({
-            'name' : 'stamina',
+            'name' : 'Stamina',
             'value' : self.stamina,
         })
 

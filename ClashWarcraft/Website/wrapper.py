@@ -39,6 +39,7 @@ def getCharacterDetails(name : str):
     character = Character.objects.all().filter(name = name)[0]
     details = {
         'name' : name,
+        'title' : character.title,
         'role' : character.type,
         'class' : character.kind,
         'skills' : getSkillDetails(character),

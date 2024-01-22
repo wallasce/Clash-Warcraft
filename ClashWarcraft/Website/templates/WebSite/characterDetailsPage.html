@@ -19,7 +19,7 @@
             <canvas class="canvas" width="1097" height="283" style="width: 1097px; height: 283.067px; left: -2px; top: -2px;"></canvas>
         </div>
         <div class="container-heading">
-            <span class="sub-title">title</span>
+            <span class="sub-title"> {{ title }}</span>
             <span class="title">{{ name }}</span>
         </div>
         <div class="container-image">
@@ -67,20 +67,7 @@
             </div>
         </div>
 
-        <div class="container-attributes">
-            <h2 class="attributes-header"> Attributes </h2>
-            <div class="attributes-list"> 
-                <div class="class-icon">
-                    <img src="{% static classIconPath %}">
-                </div>
-                {% for attribute in attributes %}
-                    <div class="attribute-details">
-                        <div class="attribute-title"> {{ attribute.name }} </div>
-                        <div> {{ attribute.value }} </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        
     </div>
 {% endblock %}
 
