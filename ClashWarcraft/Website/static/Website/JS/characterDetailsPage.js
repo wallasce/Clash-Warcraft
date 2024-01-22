@@ -12,8 +12,8 @@ function drawSquare() {
     ctx.moveTo(beginX, 0);
     ctx.lineTo(0, 0);
     ctx.lineTo(0, 283);
-    ctx.lineTo(1097, 283);
-    ctx.lineTo(1097, 0);
+    ctx.lineTo(1128, 283);
+    ctx.lineTo(1128, 0);
     ctx.lineTo(endX, 0);
     ctx.strokeStyle = "white";
     ctx.lineWidth = 3;
