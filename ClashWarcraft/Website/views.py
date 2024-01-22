@@ -23,11 +23,11 @@ def characterPage(request):
     parameters = {
         'factions' : [
             {
-                'value' : 'Horde',
-                'path' : pathImageFaction + 'horde.png'
-            },{
                 'value' : 'Alliance',
                 'path' : pathImageFaction + 'alliance.png'
+            },{
+                'value' : 'Horde',
+                'path' : pathImageFaction + 'horde.png'
             }
         ],
         'hordeCharacters' : hordeParameters,

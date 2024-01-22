@@ -25,7 +25,7 @@ function selectFactionToShow(faction) {
 }
 
 function initialize(){
-    selectFactionToShow('Horde');
+    selectFactionToShow('Alliance');
 
     let buttons = document.getElementsByClassName('button-faction');
 
