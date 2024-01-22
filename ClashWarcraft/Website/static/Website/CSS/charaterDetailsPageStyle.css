@@ -119,3 +119,21 @@ body {
 .cooldown-info {
     margin-bottom: 3%;
 }
+
+.class-icon {
+    height: 100%;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        margin-right: 20vw;
+    }
+}
+
+.attributes-list {
+    align-items: center;
+    border: 0.1rem solid rgba(80, 65, 55, 1);
+    gap: 5vw;
+    display: flex;
+    height: 20vh;
+}

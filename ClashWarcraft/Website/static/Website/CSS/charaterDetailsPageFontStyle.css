@@ -40,7 +40,7 @@
 }
 
 
-.spells-header {
+.spells-header, .attributes-header {
     color: rgba(255, 255, 255, 1);
     text-transform: uppercase;
     font-style: italic;
@@ -61,4 +61,17 @@
 
 .cooldown-info {
     font-size: 0.725rem;
+}
+
+.attribute-details {
+    color: rgba(255, 255, 255, 1);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: capitalize;
+    
+    .attribute-title {
+        color: rgba(227, 164, 33, 1);
+    }
 }
