@@ -19,11 +19,11 @@
 .nav-link::after, .first-nav-link::before {
     background: linear-gradient(to bottom, transparent 0%, #4a5150 65%, transparent 100%);
     content: " ";
-    height: 80%;
+    height: 100%;
     position: absolute;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 2%;
+    width: 2px;
 }
 
 .nav-link::after {
