@@ -5,6 +5,7 @@ from Skill.models import Skill
 class Character(models.Model):
     name = models.CharField(max_length=50)
     title = models.CharField(max_length=35, blank=True, default='')
+    story = models.CharField(max_length=550, blank=True, default='')
     faction = models.CharField(max_length=8)
     kind = models.CharField(max_length=15)
     type = models.CharField(max_length=6)

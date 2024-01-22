@@ -40,6 +40,7 @@ def getCharacterDetails(name : str):
     details = {
         'name' : name,
         'title' : character.title,
+        'story' : character.story,
         'role' : character.type,
         'class' : character.kind,
         'skills' : getSkillDetails(character),
