@@ -15,3 +15,5 @@ class homePageCard(models.Model):
             'subtitle' : self.subtitle,
             'description' : self.description
         }
+
+        return data
