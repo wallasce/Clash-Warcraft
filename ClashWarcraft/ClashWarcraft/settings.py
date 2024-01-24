@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     "PvESettings",
     "Website",
     "WebsiteConfig",
-    "WebsiteContentPage",
-    "WebsiteTemplate",
+    "WebsiteContent",
 ]
 
 MIDDLEWARE = [
