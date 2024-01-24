@@ -15,16 +15,12 @@ def homePage(request):
     deleteCards()
     resetWinner()
 
-    homePagePanel = homePagePanel.objects.all()
-    panelsList = []
-    for panel in homePagePanel:
-        panelsList.append(panel.getData())
-
-    parameters = {
-        'panelsContent' : panelsList,
+    homePagePanels = homePagePanel.objects.all()
+    context = {
+        'panelsContent' : homePagePanels,
     }
 
-    return render(request, 'WebSite/homePage.html', parameters)
+    return render(request, 'WebSite/homePage.html', context)
 
 def characterPage(request):
     pathImageFaction = 'GameSettings/Image/FactionSelect/'
