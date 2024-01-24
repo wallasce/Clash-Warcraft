@@ -77,11 +77,39 @@ img {
     img:hover {
         box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 0, 128, 1);
     }
+
+    .container-tutorial-image {
+        transform: translateX(-13%);
+        width: 50%;
+
+        img {
+            float: left;
+            margin: 0vh 0.5vw;
+        } 
+
+        :last-child {
+            position: absolute;
+        }
+
+        :last-child:hover, :first-child:hover {
+            box-shadow: none;
+        }
+    }
 }
 
 .container-tutorial-step-3 {
     img:hover {
         box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 0, 128, 1);
+    }
+}
+
+.container-tutorial-step-4 .container-tutorial-image {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+
+    :last-child {
+        width: 15vw;
     }
 }
         

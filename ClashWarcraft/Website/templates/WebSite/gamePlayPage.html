@@ -28,7 +28,9 @@
                 <div class="text"> {{ tutorialStep.description }} </div>
             </div>
             <div class="container-tutorial-image">
-                <img src={% static tutorialStep.image %}>
+                {% for image in tutorialStep.images %}
+                    <img src={% static image %}>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}

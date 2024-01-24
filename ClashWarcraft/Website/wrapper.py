@@ -81,29 +81,46 @@ def getRandomCharacterName() -> str:
         
     return formatName(character.name)
 
-def getRandomSkillName() -> str:
+def getRandomSkills() -> list[str]:
     characters = Character.objects.all()
     character = characters[random.randrange(0,len(characters))]
-    skill = random.randrange(1,4)
     
-    print(character.type)
-    if(character.type in ['Melee', 'Tank']):
-        return formatName(character.kind) + character.type + str(skill)
+    skills = character.skill.all()
+    
+    skillsPath = []
+    for skill in skills:
+        skillsPath.append('Skill/Image/'+ formatName(str(skill)) +'.png')
+    skillsPath.append('Game/Image/Icons/cd.png')
 
-    return formatName(character.kind) + str(skill)
+    return skillsPath
 
-def getImageTutorial(theme : str) -> str:
-    pathImage = ''
+def getRandomPercentageBarLife() -> str:
+    percentage = random.randrange(0,10) * 10
+
+    return str(percentage)
+
+def getRandomPromotion() -> str:
+    image = random.randrange(1,5)
+
+    return 'Promotion' + str(image)
+
+def getImageTutorial(theme : str) -> list[str]:
+    pathImage = []
 
     if (theme == 'deadCard'):
-        pathImage = 'Game/Image/Cards/Dead.png'
+        pathImage.append('Game/Image/Cards/Dead.png')
     elif (theme == 'barLife'):
-        pathImage = 'Game/Image/Bars/80.png'
+        pathImage.append('Game/Image/Cards/' + getRandomCharacterName() + '.png')
+        pathImage.append('Game/Image/Bars/'+ getRandomPercentageBarLife() +'.png')
     elif (theme == 'card'):
-        pathImage = 'Game/Image/Cards/' + getRandomCharacterName() + '.png'
+        pathImage.append('Game/Image/Cards/' + getRandomCharacterName() + '.png')
     elif (theme == 'abilities'):
-        pathImage = 'Skill/Image/' + getRandomSkillName() +'.png'
-    
+        pathImage = getRandomSkills()
+    elif (theme == 'end'):
+        pathImage.append('Website/Image/GamePlay/TeamDead.png')
+    elif (theme == 'promotion'):
+        pathImage.append('Website/Image/GamePlay/' + getRandomPromotion() + '.png')
+
     return pathImage
 
 def getTutorial():
@@ -117,7 +134,7 @@ def getTutorial():
             'subtitle' : tutorial.subtitle,
             'description' : tutorial.description,
             'stepNumber' : tutorial.step,
-            'image' : getImageTutorial(tutorial.theme),
+            'images' : getImageTutorial(tutorial.theme),
             'background' : 'Website/Image/BackgroundTutorial/' + str(tutorial.step) + '.png',
         })
 
