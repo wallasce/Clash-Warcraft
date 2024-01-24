@@ -3,3 +3,14 @@
 {% load static %}
 
 {% block title %} Clash Warcraft - Overview {% endblock %}
+
+{% block headerTags %}
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/homePagePanel.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/homePagePanel.css" %}">
+{% endblock %}
+
+{% block content %}
+    {% for panel in panelsContent %}
+        {% include "WebsiteContent/homePagePanel.html" with parameters=panel %}
+    {% endfor %}
+{% endblock %}

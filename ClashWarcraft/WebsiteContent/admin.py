@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import homePageCard
+from .models import homePagePanel
 
-admin.site.register(homePageCard)
+admin.site.register(homePagePanel)

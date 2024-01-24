@@ -4,6 +4,7 @@ from CharacterSelect.views import resetTeams
 from Game.views import resetWinner
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
+from WebsiteContent.models import homePagePanel
 from .wrapper import getCharacterParameters, getCharacterDetails, getLoreData, getTutorial
 
 # Create your views here.
@@ -13,7 +14,17 @@ def homePage(request):
     resetPve()
     deleteCards()
     resetWinner()
-    return render(request, 'WebSite/homePage.html')
+
+    homePagePanel = homePagePanel.objects.all()
+    panelsList = []
+    for panel in homePagePanel:
+        panelsList.append(panel.getData())
+
+    parameters = {
+        'panelsContent' : panelsList,
+    }
+
+    return render(request, 'WebSite/homePage.html', parameters)
 
 def characterPage(request):
     pathImageFaction = 'GameSettings/Image/FactionSelect/'
