@@ -15,6 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from Cards.views import applySkill, getCooldowns, isDead, reduceCooldown
@@ -48,4 +50,4 @@ urlpatterns = [
     path("settings/reset", resetSettings, name = 'ResetSettings'),
     path("settings/setCharacter", setCharacter, name = 'Set Character'),
     path("settings/set-winner", setWinner, name = 'SetWinner'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
