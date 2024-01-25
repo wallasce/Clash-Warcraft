@@ -5,6 +5,7 @@ class homePagePanel(models.Model):
     title = models.CharField(max_length=55)
     subtitle = models.CharField(max_length=55)
     description = models.CharField(max_length=1000)
+    link = models.CharField(max_length = 55, blank=True, null=True)
     imageManager = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self) -> str:
