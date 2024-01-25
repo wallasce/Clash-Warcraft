@@ -1,0 +1,27 @@
+.panel-link {
+    text-decoration: none;
+}
+
+.panel-content {
+    text-align: center;
+}
+
+.panel-title {
+    color: rgba(227, 164, 33, 1);
+    font-size: 6vh;
+    font-weight: 700;
+    text-shadow: 0 0 1px transparent,0 1px 2px rgba(0,0,0,.8);
+}
+
+.panel-subtitle {
+    color: rgba(255, 255, 255, 1);
+    font-size: 3.5vh;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.panel-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2.4vh;
+    font-weight: 400;
+}

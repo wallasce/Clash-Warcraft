@@ -1,0 +1,53 @@
+.home-page-panel {
+    border: 0.1rem solid rgba(255, 255, 255, 0.3);
+    height: 80vh;
+    width: 48%;
+}
+
+.home-page-panel:hover {
+    cursor: pointer;
+    border: 0.1rem solid rgba(227, 164, 33, 1);
+}
+
+.panel-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.panel-img {
+    height: 60%;
+    width: 100%;
+    
+    img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.panel-content {
+    align-items: center;
+    background-color: rgba(33, 21, 16, 1);
+    border: 0.1rem solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    width: 100%;
+}
+
+.panel-title {
+    margin: 1% 0;
+}
+
+.panel-subtitle {
+    margin: 1% 0;
+}
+
+.panel-description {
+    margin: 1% 0;
+}

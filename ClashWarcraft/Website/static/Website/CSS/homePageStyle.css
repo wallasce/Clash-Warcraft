@@ -1,0 +1,7 @@
+.home-page-panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5%;
+    row-gap: 10px;
+    width: 100%;
+}
