@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <div class="header-page-{{ parameters.style }}">
+            {% if parameters.background %}
+                <div class="header-page-background">
+                    <img src="{{ parameters.background.image.url }}">
+                </div>
+            {% endif %}
+            <div class="header-page-content">
+                {% if parameters.imageContent %}
+                    <div class="header-page-image">
+                        <img src="{{ parameters.imageContent.image.url }}">
+                    </div>
+                {% endif %}
+
+                <div class="subtitle"> {{ parameters.subtitle }} </div>
+                <div class="title"> {{ parameters.title }} </div>
+    
+                {% if parameters.description %}
+                    <div class="title"> {{ parameters.description }} </div>
+                {% endif %}
+    
+                {% for button in parameters.buttons.all %}
+                    {% include "WebsiteContent/button.html" with parameters=button %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
