@@ -1,7 +1,7 @@
 .home-page-panel {
     border: 0.1rem solid rgba(255, 255, 255, 0.3);
     height: 80vh;
-    width: 48%;
+    width: 49.5%;
 }
 
 .home-page-panel:hover {
@@ -24,6 +24,7 @@
     width: 100%;
     
     img {
+        filter: contrast(1.1);
         height: 100%;
         object-fit: cover;
         width: 100%;
