@@ -20,3 +20,16 @@ class button(models.Model):
 
     def __str__(self) -> str:
         return 'Button ' + self.style + ' on ' + self.page + ': ' + self.text
+    
+class HeaderPage(models.Model):
+    title = models.CharField(max_length=55)
+    subtitle = models.CharField(max_length=55)
+    description = models.CharField(max_length=155, blank=True, null=True)
+    imageContent = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, blank=True, null=True, related_name='ImageUploaded2ContentImage')
+    background = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, blank=True, null=True)
+    buttons = models.ManyToManyField(button)
+    page = models.CharField(max_length = 55, blank=True, null=True)
+    style = models.CharField(max_length = 55, blank=True, null=True)
+
+    def __str__(self) -> str:
+        return 'Header Page: ' + self.title

@@ -4,7 +4,7 @@ from CharacterSelect.views import resetTeams
 from Game.views import resetWinner
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
-from WebsiteContent.models import homePagePanel
+from WebsiteContent.models import homePagePanel, HeaderPage
 from .wrapper import getCharacterParameters, getCharacterDetails, getLoreData, getTutorial
 
 # Create your views here.
@@ -16,7 +16,9 @@ def homePage(request):
     resetWinner()
 
     homePagePanels = homePagePanel.objects.all()
+    headerPage = HeaderPage.objects.get(page = 'HomePage')
     context = {
+        'headerPage' : headerPage,
         'panelsContent' : homePagePanels,
     }
 
