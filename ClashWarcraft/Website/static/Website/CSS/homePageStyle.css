@@ -1,3 +1,13 @@
+.content {
+    margin: 0!important;
+}
+
+.header-page {
+    margin-bottom: 5vh;
+    height: 100vh;
+    width: 100%;
+}
+
 .home-page-panels {
     display: flex;
     flex-wrap: wrap;

@@ -1,11 +1,12 @@
+{% load static %}
+
 <html>
+    <head>
+        <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/button.css" %}">
+        <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/button.css" %}">
+    </head>
     <body>
-        <div class="header-page-{{ parameters.style }}">
-            {% if parameters.background %}
-                <div class="header-page-background">
-                    <img src="{{ parameters.background.image.url }}">
-                </div>
-            {% endif %}
+        <div class="header-page-container header-page-{{ parameters.style }}" style="background-image:url('{{ parameters.background.image.url }}');">
             <div class="header-page-content">
                 {% if parameters.imageContent %}
                     <div class="header-page-image">
@@ -13,16 +14,20 @@
                     </div>
                 {% endif %}
 
-                <div class="subtitle"> {{ parameters.subtitle }} </div>
-                <div class="title"> {{ parameters.title }} </div>
+                <div class="header-page-subtitle"> {{ parameters.subtitle }} </div>
+                <div class="header-page-title"> {{ parameters.title }} </div>
     
                 {% if parameters.description %}
-                    <div class="title"> {{ parameters.description }} </div>
+                    <div class="header-page-description"> {{ parameters.description }} </div>
                 {% endif %}
     
-                {% for button in parameters.buttons.all %}
-                    {% include "WebsiteContent/button.html" with parameters=button %}
-                {% endfor %}
+                {% if parameters.buttons %}
+                    <div class="header-page-buttons">
+                        {% for button in parameters.buttons.all %}
+                            {% include "WebsiteContent/button.html" with parameters=button %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </body>

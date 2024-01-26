@@ -7,10 +7,15 @@
 {% block headerTags %}
     <link rel="stylesheet" href="{% static "WebSite/CSS/homePageStyle.css" %}">
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/homePagePanel.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/headerPage.css" %}">
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/homePagePanel.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/headerPage.css" %}">
 {% endblock %}
 
 {% block content %}
+    <div class="header-page">
+        {% include "WebsiteContent/headerPage.html" with parameters=headerPage %}
+    </div>    
     <div class="home-page-panels">
         {% for panel in panelsContent %}
             {% include "WebsiteContent/homePagePanel.html" with parameters=panel %}

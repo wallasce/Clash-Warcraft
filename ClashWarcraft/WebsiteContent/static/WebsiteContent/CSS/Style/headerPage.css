@@ -1,0 +1,40 @@
+.header-page-container {
+    background-size: cover;
+}
+
+.header-page-centered {
+    height: 100%;
+    width: 100%;
+}
+
+.header-page-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    height: 100%;
+    width: 100%;
+}
+
+.header-page-image {
+    height: fit-content;
+    width: 30%;
+
+    img {
+        filter: contrast(1.1) brightness(1.1);
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+    }
+}
+
+.header-page-title, .header-page-subtitle, .header-page-description {
+    margin: 1% 0;
+}
+
+.header-page-buttons {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    width: 100%;
+}
