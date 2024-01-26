@@ -1,10 +1,7 @@
 <html>
     <body>
-        <div class="button button-{{parameters.style}}">
+        <div class="button button-{{parameters.style}}" style="background-image:url('{{ parameters.background.image.url }}');">
             <button onclick="location.href='{{ parameters.link }}'" type="button">
-                {% if parameters.background %}
-                    <div class='button-image'> {{ parameters.background }} </div>
-                {% endif %}
                 {% if parameters.text %}
                     <div class='button-text'> {{ parameters.text }} </div>
                 {% endif %}

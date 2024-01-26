@@ -1,0 +1,7 @@
+.button-text {
+    color: rgba(255, 255, 255, 1);
+    font-family: Semplicita Pro,Open Sans,Arial,Helvetica,sans-serif;
+    font-weight: 400;
+    font-size: 4vh;
+    text-transform: uppercase;
+}
