@@ -33,3 +33,15 @@ class HeaderPage(models.Model):
 
     def __str__(self) -> str:
         return 'Header Page: ' + self.title
+
+class SectionPagePanel(models.Model):
+    title = models.CharField(max_length=55)
+    subtitle = models.CharField(max_length=55)
+    description = models.CharField(max_length=1000)
+    imageSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, related_name='ImageUploaded2ImageSectionPage')
+    backgroundSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE)
+    page = models.CharField(max_length = 55)
+    style = models.CharField(max_length = 55, blank=True, null=True)
+
+    def __str__(self) -> str:
+        return 'Section Page: ' + self.title
