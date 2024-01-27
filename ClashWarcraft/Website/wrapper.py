@@ -52,29 +52,6 @@ def getCharacterDetails(name : str):
 
     return details
 
-def getLoreData():
-    lores = Lore.objects.all()
-    loresData = []
-
-    for lore in lores:
-        loresData.append({
-            'title' : lore.title,
-            'subtitle' : lore.subtitle,
-            'heading' : lore.heading,
-            'subheading' : lore.subheading,
-            'description' : lore.description,
-            'raid' : lore.raid,
-            'loreImg' : 'Website/Image/Lore/' + str(lore.raid) + '.jpg',
-            'buttonPath' : 'Website/Image/LoreButtons/'+ str(lore.raid) + '.png',
-            'loreBackground' : 'Website/Image/BackgroundLore/' + str(lore.raid) + '.png',
-        })
-
-    details = {
-        'loresData' : loresData,
-    }
-    
-    return details
-
 def getRandomCharacterName() -> str:
     characters = Character.objects.all()
     character = characters[random.randrange(0,len(characters))]

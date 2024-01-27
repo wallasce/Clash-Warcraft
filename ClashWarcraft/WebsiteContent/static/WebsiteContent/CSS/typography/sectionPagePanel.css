@@ -1,0 +1,25 @@
+.spp-text-align-left {
+    .section-page-panel-header {
+        text-align: left;
+    }
+}
+
+.section-page-panel-header  {
+    text-shadow: 0.5vh 0.5vh 1vh rgba(0, 0, 0, 1);
+}
+
+.section-page-panel-title {
+    color: rgba(227, 164, 33, 1);
+    font-size: 6vh;
+    font-weight: 800;
+}
+
+.section-page-panel-subtitle {
+    color: rgba(255, 255, 255, 1);
+    font-size: 3.5vh;
+}
+
+.section-page-panel-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2.4vh;
+}

@@ -5,6 +5,9 @@
 {% block headerTags%} 
     <link rel="stylesheet" href="{% static "WebSite/CSS/campaignPageStyle.css" %}">
     <link rel="stylesheet" href="{% static "WebSite/CSS/campaignPageFontStyle.css" %}">
+
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/sectionPagePanel.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/sectionPagePanel.css" %}">
 {% endblock %}
 
 {% block title %} Campaign {% endblock %}
@@ -25,20 +28,9 @@
             {% endfor %}
         </div>
     </div>
-    <div class="lores-container">
-        {% for lore in loresData %}
-            <div id="lore-{{ lore.raid }}" class="lore-container lore-{{ lore.raid }}" style = "background-image: url('{% static  lore.loreBackground %}');">
-                <div class="lore-items">
-                    <div class="header-lore">
-                        <span class="subtitle"> {{ lore.subheading }} </span>
-                        <span class="title"> {{ lore.heading }} </span>
-                        <span class="text"> {{ lore.description }} </span>
-                    </div>
-                    <div class="image-lore">
-                        <img src="{% static lore.loreImg %}">
-                    </div>
-                </div>
-            </div>
+    <div class="campaigns-container">
+        {% for campaign in campaignsData %}
+            {% include "WebsiteContent/sectionPagePanel.html" with parameters=campaign %}
         {% endfor %}
     </div>
 {% endblock %}
