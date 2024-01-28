@@ -1,5 +1,4 @@
 .header-page-content {
-    text-transform: uppercase;
     text-align: center;
 }
 
@@ -16,7 +15,7 @@
 .header-page-subtitle {
     color: rgba(227, 164, 33, 1);
     font-size: 3.8vh;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1;
     letter-spacing: 0.1em;
     text-shadow: 0.5vh 0.5vh 1vh rgba(0, 0, 0, 1)

@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/button.css" %}">
     </head>
     <body>
-        <div class="header-page-container header-page-{{ parameters.style }}" style="background-image:url('{{ parameters.background.image.url }}');">
+        <div class="header-page-container {{ parameters.style }}" style="background-image:url('{{ parameters.background.image.url }}');">
             <div class="header-page-content">
                 {% if parameters.imageContent %}
                     <div class="header-page-image">
@@ -21,7 +21,7 @@
                     <div class="header-page-description"> {{ parameters.description }} </div>
                 {% endif %}
     
-                {% if parameters.buttons %}
+                {% if parameters.buttons.all %}
                     <div class="header-page-buttons">
                         {% for button in parameters.buttons.all %}
                             {% include "WebsiteContent/button.html" with parameters=button %}

@@ -1,17 +1,20 @@
 .header-page-container {
     background-size: cover;
+    width: 100%;
 }
 
-.header-page-centered {
-    height: 100%;
-    width: 100%;
+.header-page-container.hp-80p {
+    height: 80vh;
+}
+.header-page-container.hp-fs {
+    height: 100vh;
 }
 
 .header-page-content {
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: center;
     height: 100%;
     width: 100%;
 }

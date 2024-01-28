@@ -27,7 +27,7 @@ class HeaderPage(models.Model):
     description = models.CharField(max_length=155, blank=True, null=True)
     imageContent = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, blank=True, null=True, related_name='ImageUploaded2ContentImage')
     background = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, blank=True, null=True)
-    buttons = models.ManyToManyField(button)
+    buttons = models.ManyToManyField(button, blank=True)
     page = models.CharField(max_length = 55, blank=True, null=True)
     style = models.CharField(max_length = 55, blank=True, null=True)
 
