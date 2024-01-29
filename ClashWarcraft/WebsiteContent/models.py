@@ -38,10 +38,11 @@ class SectionPagePanel(models.Model):
     title = models.CharField(max_length=55)
     subtitle = models.CharField(max_length=55)
     description = models.CharField(max_length=1000)
-    imageSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, related_name='ImageUploaded2ImageSectionPage')
-    backgroundSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE)
+    preSectionPanel = models.ForeignKey(UploadedImage, blank=True, null=True, on_delete=models.CASCADE, related_name='ImageUploaded2preSectionPanel')
+    imagesSectionPage = models.ManyToManyField(UploadedImage, blank=True)
+    backgroundSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, related_name='ImageUploaded2BackgroundSection')
     page = models.CharField(max_length = 55)
-    style = models.CharField(max_length = 55, blank=True, null=True)
+    style = models.CharField(max_length = 100, blank=True, null=True)
 
     def __str__(self) -> str:
         return 'Section Page: ' + self.title

@@ -1,8 +1,86 @@
 .spp-image-fs {
-    .section-page-panel-image {
+    .section-page-panel-images {
         filter: contrast(1.2);
         height: 99.9%;
         width: 55%;
+
+        img{
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+}
+
+.spp-img-default {
+    .section-page-panel-images {
+        margin-right: 5.5%;
+        max-height: 100%;
+        position: relative;
+        top: 0;
+        width: 50%;
+
+        img {
+            left: 50%;
+            max-height: 65vh;
+            object-fit: contain;
+            overflow: hidden;
+            position: relative;
+            transform: translateX(-50%);
+            width: auto;
+        }
+    }
+}
+
+.spp-many-img-skills {
+    .section-page-panel-images {
+        transform: translateX(-13%);
+        width: 50%;
+
+        img {
+            float: left;
+            margin: 0vh 0.5vw;
+        } 
+
+        :last-child {
+            position: absolute;
+        }
+
+        :last-child:hover, :first-child:hover {
+            box-shadow: none;
+        }
+    }
+}
+
+.spp-many-img-column {
+    .section-page-panel-images {
+        display: flex;
+
+        flex-direction: column;
+        gap: 1vh;
+
+        :last-child {
+            width: 15vw;
+        }
+    }
+}
+
+.spp-img-shadow-green .section-page-panel-images img {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 128, 0, 1);
+}
+
+.spp-img-hv-blue .section-page-panel-images img:hover {
+    box-shadow: 0rem 0.2rem 1rem 0.5rem rgba(0, 0, 128, 1);
+}
+
+.pre-section-panel {
+    position: relative;
+    top: -0.3%;
+
+    img {
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
     }
 }
 
@@ -33,7 +111,7 @@
     margin-bottom: 5%;
 }
 
-.section-page-panel-image img{
+.section-page-panel-images img{
     height: 100%;
     object-fit: cover;
     width: 100%;

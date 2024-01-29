@@ -4,6 +4,12 @@
     }
 }
 
+.spp-text-align-center {
+    .section-page-panel-header {
+        text-align: center;
+    }
+}
+
 .section-page-panel-header  {
     text-shadow: 0.5vh 0.5vh 1vh rgba(0, 0, 0, 1);
 }
