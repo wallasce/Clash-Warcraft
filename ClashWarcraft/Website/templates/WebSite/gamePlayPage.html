@@ -4,7 +4,6 @@
 
 {% block headerTags%} 
     <link rel="stylesheet" href="{% static "WebSite/CSS/gamePlayPageStyle.css" %}">
-    <link rel="stylesheet" href="{% static "WebSite/CSS/gamePlayPageFontStyle.css" %}">
 
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/headerPage.css" %}">
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/headerPage.css" %}">
@@ -22,8 +21,4 @@
     {% for sectionPagePanel in sectionPagePanels %}
         {% include "WebsiteContent/sectionPagePanel.html" with parameters=sectionPagePanel %}
     {% endfor %}
-{% endblock %}
-
-{% block scripts %}
-    
 {% endblock %}
