@@ -5,7 +5,7 @@ from Game.views import resetWinner
 from GameSettings.views import resetSettings
 from PvESettings.views import resetPve
 from WebsiteContent.models import homePagePanel, HeaderPage, SectionPagePanel
-from .wrapper import getCharacterParameters, getCharacterDetails, getTutorial
+from .wrapper import getCharacterParameters, getCharacterDetails
 
 # Create your views here.
 def homePage(request):
@@ -59,5 +59,10 @@ def campaignPage(request):
     return render(request, 'WebSite/campaignPage.html', context)
 
 def gamePlayPage(request):
-    parametersPage = getTutorial()
-    return render(request, 'WebSite/gamePlayPage.html', parametersPage)
+    headerPage = HeaderPage.objects.get(page = 'Game Play')
+    sectionPagePanel = SectionPagePanel.objects.all().filter(page = 'Game Play')
+    context = {
+        'headerPage' : headerPage,
+        'sectionPagePanels' : sectionPagePanel,
+    }
+    return render(request, 'WebSite/gamePlayPage.html', context)

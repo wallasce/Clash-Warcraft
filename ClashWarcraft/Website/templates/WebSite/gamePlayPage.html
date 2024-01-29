@@ -5,34 +5,22 @@
 {% block headerTags%} 
     <link rel="stylesheet" href="{% static "WebSite/CSS/gamePlayPageStyle.css" %}">
     <link rel="stylesheet" href="{% static "WebSite/CSS/gamePlayPageFontStyle.css" %}">
+
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/headerPage.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/headerPage.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/sectionPagePanel.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/sectionPagePanel.css" %}">
 {% endblock %}
 
 {% block title %} How to Play {% endblock %}
 
 {% block content %}
-    <div class="container-game-play" style="background-image:url('{% static  'Website/Image/BackgroundTutorial/Header.jpg' %}');">
-        <div class="container-game-play-content">
-            <div class="subtitle"> Learning the Basics! </div>
-            <div class="title"> Welcome to Clash Warcraft </div>
-        </div>
-    </div>
+    <div class="header-page">
+        {% include "WebsiteContent/headerPage.html" with parameters=headerPage %}
+    </div>    
 
-    {% for tutorialStep in tutorialSteps %}
-        <div class="top-block">
-            <img src={% static "WebSite/Image/Tutorial/top-block.png" %}>
-        </div>
-        <div class="container-tutorial-step container-tutorial-step-{{ tutorialStep.stepNumber }}" style="background-image:url('{% static  tutorialStep.background %}');">
-            <div class="container-tutorial-content">
-                <div class="subtitle"> {{ tutorialStep.subtitle }} </div>
-                <div class="title"> {{ tutorialStep.title }} </div>
-                <div class="text"> {{ tutorialStep.description }} </div>
-            </div>
-            <div class="container-tutorial-image">
-                {% for image in tutorialStep.images %}
-                    <img src={% static image %}>
-                {% endfor %}
-            </div>
-        </div>
+    {% for sectionPagePanel in sectionPagePanels %}
+        {% include "WebsiteContent/sectionPagePanel.html" with parameters=sectionPagePanel %}
     {% endfor %}
 {% endblock %}
 
