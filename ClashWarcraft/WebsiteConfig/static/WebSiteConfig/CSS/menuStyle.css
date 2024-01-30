@@ -1,5 +1,19 @@
+.logo-game {
+    height: 12vh;
+    left: 5vw;
+    top: -1vh;
+    position: absolute;
+    z-index: 10;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
 .navbar {
     background: rgba(36, 42, 58, 1);
+    position: relative;
     height: 9.5vh;
 }
 
