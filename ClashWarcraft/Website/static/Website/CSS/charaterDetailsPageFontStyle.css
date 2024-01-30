@@ -28,7 +28,7 @@
 }
 
 .speciality-title {
-    color: rgba(227, 164, 33, 1);
+    color: rgba(238, 159, 0, 1);
 }
 
 .container-history p, .spell {
@@ -50,13 +50,13 @@
 }
 
 .spell-name {
-    color: rgba(227, 164, 33, 1);
+    color: rgba(238, 159, 0, 1);
     font-weight: 600;
     font-size: 3.7vh;
 }
 
 .cooldown-header {
-    color: rgba(227, 164, 33, 1);
+    color: rgba(238, 159, 0, 1);
 }
 
 .cooldown-info {
@@ -72,6 +72,6 @@
     text-transform: capitalize;
     
     .attribute-title {
-        color: rgba(227, 164, 33, 1);
+        color: rgba(238, 159, 0, 1);
     }
 }

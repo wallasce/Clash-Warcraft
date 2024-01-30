@@ -87,7 +87,7 @@
 .character-link:hover {
     .character-name {
         background-color: rgba(0, 102, 128, 1);
-        color: rgba(227, 164, 33, 1);
+        color: rgba(238, 159, 0, 1);
     }
 
     .character-img {
