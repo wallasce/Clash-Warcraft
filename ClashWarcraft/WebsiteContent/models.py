@@ -42,6 +42,7 @@ class SectionPagePanel(models.Model):
     imagesSectionPage = models.ManyToManyField(UploadedImage, blank=True)
     backgroundSectionPage = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, related_name='ImageUploaded2BackgroundSection')
     page = models.CharField(max_length = 55)
+    sectionID = models.CharField(max_length = 55, blank=True, null=True)
     style = models.CharField(max_length = 100, blank=True, null=True)
 
     def __str__(self) -> str:
