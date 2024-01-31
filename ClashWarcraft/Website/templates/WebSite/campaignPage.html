@@ -4,8 +4,8 @@
 
 {% block headerTags%} 
     <link rel="stylesheet" href="{% static "WebSite/CSS/campaignPageStyle.css" %}">
-    <link rel="stylesheet" href="{% static "WebSite/CSS/campaignPageFontStyle.css" %}">
-
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/headerPage.css" %}">
+    <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/headerPage.css" %}">
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Style/sectionPagePanel.css" %}">
     <link rel="stylesheet" href="{% static "WebsiteContent/CSS/Typography/sectionPagePanel.css" %}">
 {% endblock %}
@@ -13,20 +13,8 @@
 {% block title %} Campaign {% endblock %}
 
 {% block content %}
-    <div class="campaign-header">
-        <img class="campaign-header-image" src="{% static  'Website/Image/BackgroundLore/header.png' %}">
-        <div class="campaign-header-container">
-            <span class="subtitle"> Embark on an Epic Journey </span>
-            <span class="title"> Unraveling the History and Challenges of Azeroth </span>
-            <span class="text"> Face epic challenges, unravel the intricate plot, and become part of the legendary saga that shaped the fate of the world in World of Warcraft, within an epic campaign composed of four consecutive raids. </span>
-        </div>
-        <div class="buttons-container">
-            {% for lore in loresData %}
-                <a class="goto-link" href="#lore-{{ lore.raid }}">
-                    <img class="goto-image" src="{% static lore.buttonPath %}">
-                </a>
-            {% endfor %}
-        </div>
+    <div class="header-page">
+        {% include "WebsiteContent/headerPage.html" with parameters=headerPage %}
     </div>
     <div class="campaigns-container">
         {% for campaign in campaignsData %}

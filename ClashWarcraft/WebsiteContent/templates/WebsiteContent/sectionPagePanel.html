@@ -1,6 +1,6 @@
 <html>
     <body>
-        <div class="section-page-panel-container {{ parameters.style }}" style="background-image:url('{{ parameters.backgroundSectionPage.image.url }}');">
+        <div id="{{ parameters.sectionID }}" class="section-page-panel-container {{ parameters.style }}" style="background-image:url('{{ parameters.backgroundSectionPage.image.url }}');">
             {% if parameters.preSectionPanel %}
                 <div class="pre-section-panel">
                     <img src={{parameters.preSectionPanel.image.url}}>

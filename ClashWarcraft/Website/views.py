@@ -51,9 +51,11 @@ def characterDetails(request, characterName):
     return render(request, 'WebSite/characterDetailsPage.html', charaterParameters)
 
 def campaignPage(request):
+    headerPage = HeaderPage.objects.get(page = 'Campaign')
     sectionPagePanels = SectionPagePanel.objects.all().filter(page = 'Campaign')
     context = {
         'campaignsData' : sectionPagePanels,
+        'headerPage' : headerPage,
     }
 
     return render(request, 'WebSite/campaignPage.html', context)

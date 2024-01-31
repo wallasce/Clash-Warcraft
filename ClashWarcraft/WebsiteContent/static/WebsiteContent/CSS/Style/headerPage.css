@@ -10,6 +10,16 @@
     height: 100vh;
 }
 
+.hp-many-buttons {
+    .header-page-buttons {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 15% 0 15%;
+        width: 50%;
+    }
+}
+
 .header-page-content {
     align-items: center;
     display: flex;
