@@ -19,7 +19,7 @@ class button(models.Model):
     style = models.CharField(max_length=55)
 
     def __str__(self) -> str:
-        return 'Button ' + self.style + ' on ' + self.page + ': ' + self.text
+        return 'Button on ' + self.page + ': ' + self.text
     
 class HeaderPage(models.Model):
     title = models.CharField(max_length=55)
