@@ -1,0 +1,10 @@
+{% load static %}
+
+<html>
+    <body>
+        <a class="card-cw-link" delay=0 href="{{parameters.name}}">
+            <img class="card-cw-img" src="{% static parameters.pathImg %}">
+            <span class="card-cw-name"> {{ parameters.name }} </span>
+        </a>
+    </body>
+</html>
