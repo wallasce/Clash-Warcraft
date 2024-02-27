@@ -102,39 +102,3 @@ img {
     height: 50vh;
     width: 83vw;
 }
-
-.spells-header {
-    width: 100%;
-}
-
-.spells-header {
-    margin-bottom: 1%;
-}
-
-.spells-list {
-    display: flex;
-    gap: 1%;
-    margin-bottom: 2%;
-    width: 100%;
-}
-
-.spell {
-    background-color: rgba(0, 0, 0, 1);
-    border: 0.1rem solid rgba(80, 65, 55, 1);
-    padding: 2.7vh;
-    width: 100%;
-}
-
-.spell-head {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5%;
-}
-
-.spell-name {
-    margin-left: 5%;
-}
-
-.cooldown-info {
-    margin-bottom: 3%;
-}

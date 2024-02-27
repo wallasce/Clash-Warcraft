@@ -45,27 +45,7 @@
     </div>
 
     <div class="container-spells">
-        <span class="title spells-header"> Spells </span>
-        <div class="spells-list"> 
-            {% for skill in skills %}
-                <div class="spell">
-                    <div class="spell-head">
-                        <div class="spell-image">
-                            <img src="{% static skill.imagePath %}">
-                        </div>
-                        <div class="spell-name"> {{ skill.name }} </div>
-                    </div>
-                    <div class="spell-body">
-                        <div class="cooldown-info">
-                            <span class="cooldown-header">Cooldown</span> : {{ skill.cooldown }} rounds
-                        </div>
-                        <div class="description">
-                            {{ skill.description }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        {% include "WebsiteContent/spellListCW.html" with parameters=skills %}
     </div>
 
     <div class="container-attributes">

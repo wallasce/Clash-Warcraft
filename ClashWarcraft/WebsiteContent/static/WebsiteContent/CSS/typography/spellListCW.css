@@ -1,0 +1,13 @@
+.spell-name {
+    color: rgba(238, 159, 0, 1);
+    font-weight: 600;
+    font-size: 3.7vh;
+}
+
+.cooldown-header {
+    color: rgba(238, 159, 0, 1);
+}
+
+.cooldown-info {
+    font-size: 1.9vh;
+}
