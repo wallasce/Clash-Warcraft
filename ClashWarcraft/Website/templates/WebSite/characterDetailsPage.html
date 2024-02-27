@@ -14,35 +14,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-details-character">
-        <div class="container-canvas">
-            <canvas class="canvas" width="1128" height="283" style="width: 1128px; height: 283.067px; left: -2px; top: -2px;"></canvas>
-        </div>
-        <div class="container-heading">
-            <span class="sub-title"> {{ title }}</span>
-            <span class="title">{{ name }}</span>
-        </div>
-        <div class="container-image">
-            <img class="img-character" src="{% static charImagePath %}">
-        </div>
-        <div class="container-details">
-            <div class="container-speciality">
-                <ul class="speciality-list">
-                    <li class="speciality-class">
-                        <div class="speciality-title">Class</div>
-                        <div>{{ class }}</div>
-                    </li>
-                    <li class="speciality-role">
-                        <div class="speciality-title">Role</div>
-                        <div>{{ role }}</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="container-history">
-                <p> {{ story }} </p>
-            </div>
-        </div>
-    </div>
+    {% include "WebsiteContent/characterDetailsCW.html" with title=title name=name charImagePath=charImagePath class=class role=role %}
 
     <div class="container-spells">
         {% include "WebsiteContent/spellListCW.html" with parameters=skills %}
