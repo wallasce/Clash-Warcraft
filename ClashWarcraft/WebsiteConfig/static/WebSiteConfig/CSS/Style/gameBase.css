@@ -6,3 +6,7 @@ body {
 .clickable:hover {
     cursor: url("../Image/Cursor/cursorPointer.cur"),auto;
 }
+
+.title{
+    width: 100%;
+}
