@@ -6,39 +6,27 @@ button {
 
 }
 
-h1 {
-    color: white;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 4rem;
-    text-align: center;
-}
-
 .card {
     background-color: rgba(0, 0, 0, 0)!important;
     border: none;
-    max-width: 25rem;
+    max-width: 30vw;
 }
 
 .card img {
     display: block;
-    max-height: 29rem;
-    max-width: 25rem;
+    max-height: 70vh;
+    max-width: 35vw;
+    object-fit: contain;
     margin: auto;
 }
 
 .card-text{
-    color: white;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 2.5rem;
     left: 50%; 
-    padding: 10px 20px; 
     position: absolute;
     top: 92%; 
-    text-align: center;
-    text-transform: uppercase;
     transform: translate(-50%, -50%); 
 }
 
 .row{
-    margin-left: 5rem;
+    margin-left: 5vw;
 }

@@ -19,7 +19,7 @@
         <source src="{% static "Game/Sound/two.ogg" %}" type="audio/ogg">
     </audio> 
 
-    <h1> Choose Faction </h1>
+    <div class="title"> Choose Faction </div>
 
     <div class="container">
         <div class="container">
@@ -27,11 +27,11 @@
                 {% for faction in factions %}
                     <div class="col">
                         <div class="card">
-                            <button value={{ faction.value }} type="submit">
+                            <button class="clickable" value={{ faction.value }} type="submit">
                                 <img class="card-img-top" src="{% static faction.path %}">
                             </button>    
                             <div class="card-body">
-                            <p class="card-text">{{ faction.value }}</p>
+                            <div class="card-text action">{{ faction.value }}</div>
                             </div>
                         </div>
                     </div>
