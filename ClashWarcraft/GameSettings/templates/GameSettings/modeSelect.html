@@ -15,7 +15,7 @@
         <source src="{% static "Game/Sound/one.ogg" %}" type="audio/ogg">
     </audio> 
 
-    <h1> Choose Game Mode </h1>
+    <div class="title"> Choose Game Mode </div>
 
     <div class="container">
         <div class="container">
@@ -23,11 +23,11 @@
                 {% for type in types %}
                     <div class="col">
                         <div class="card">
-                            <button value={{ type.value }} type="submit">
+                            <button class="clickable" value={{ type.value }} type="submit">
                                 <img class="card-img-top" src="{% static type.path %}">
                             </button>    
                             <div class="card-body">
-                            <p class="card-text">{{ type.value }}</p>
+                            <div class="card-text action">{{ type.value }}</div>
                             </div>
                         </div>
                     </div>
