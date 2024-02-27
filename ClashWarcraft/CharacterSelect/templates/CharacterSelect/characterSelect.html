@@ -20,13 +20,13 @@
         <source src="{% static "Game/Sound/two.ogg" %}" type="audio/ogg">
     </audio> 
 
-    <h1> Player {{ player }}, choose your {{ type }} </h1>
+    <div class="title"> Player {{ player }}, choose your {{ type }} </div>
 
     <div class="container">
         <div class="row">
             {% for option in options %}
                 <div class="col">
-                    <button class='card' value={{ option.name }} type="submit">
+                    <button class="clickable card" value={{ option.name }} type="submit">
                         <img class="class-icon" src="{% static option.pathClassImage %}">
                         <img src="{% static option.pathImage %}">
                     </button>    

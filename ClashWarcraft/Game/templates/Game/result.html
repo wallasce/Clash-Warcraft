@@ -20,7 +20,7 @@
 
 {% csrf_token %}
 <div class="container">
-    <h1 class = "text-{{ mode }}"> {{ result }} </h1>
+    <div class="title"> {{ result }} </div>
     <div class="col buttons">
         {% if mode == 'pvp' or result == 'You Lose' %}
             {% include "Game/buttonTemplate.html" with value='playAgain' path='Game/Image/Buttons/buttonAgain.png' %}
