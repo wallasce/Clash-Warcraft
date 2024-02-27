@@ -103,7 +103,7 @@ img {
     width: 83vw;
 }
 
-.spells-header, .attributes-header {
+.spells-header {
     width: 100%;
 }
 
@@ -137,63 +137,4 @@ img {
 
 .cooldown-info {
     margin-bottom: 3%;
-}
-
-.attributes-header {
-    margin-bottom: -5%;
-}
-
-.class-icon {
-    height: 20vh;
-    left: 50%;
-    margin-bottom: -9vh;
-    position: relative;
-    transform: translateX(-50%);
-    width: fit-content;
-
-    img {
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.attributes-list {
-    align-items: center;
-    background-color: rgba(0, 0, 0, 1);
-    border: 0.1rem solid rgba(80, 65, 55, 1);
-    gap: 5vw;
-    display: flex;
-    flex-wrap: wrap;
-    height: 30vh;
-    justify-content: center;
-    width: 100%;
-}
-
-.attribute-container {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    margin: 9vh 0;
-    width: 20vw;
-
-    img {
-        max-height: 12vh;
-        margin-right: 1vw;
-    }
-}
-
-.attributes-list::after, .attributes-list::before {
-    background: linear-gradient(to bottom, transparent 0%, #4a5150 65%, transparent 100%);
-    content: " ";
-    height: 70%;
-    position: relative;
-    width: 1px;
-}
-
-.attributes-list::before {
-    left: 27.5vw;
-}
-
-.attributes-list::after {
-    left: -27.5vw;
 }

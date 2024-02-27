@@ -69,23 +69,7 @@
     </div>
 
     <div class="container-attributes">
-        <span class="title attributes-header"> Attributes </span>
-        <div class="class-icon">
-            <img src="{% static classIconPath %}">
-        </div>
-        <div class="attributes-list"> 
-            {% for attribute in attributes %}
-                <div class="attribute-container">
-                    {% with 'Website/Image/AttributeIcons/'|add:attribute.name|add:'.png' as iconPath %}
-                        <img src="{% static iconPath %}">
-                    {% endwith %}
-                    <div class="attribute-details">
-                        <div class="attribute-title"> {{ attribute.name }} </div>
-                        <div> {{ attribute.value }} </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        {% include "WebsiteContent/attributesListCW.html" with parameters=attributes %}
     </div>
     
 {% endblock %}
