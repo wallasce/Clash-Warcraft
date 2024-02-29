@@ -3,7 +3,12 @@ button {
     border: none;
     display: inline-block;
     position: relative;
+}
 
+button:hover {
+    img {
+        filter: brightness(1.1);
+    }
 }
 
 .card {
@@ -14,6 +19,7 @@ button {
 
 .card img {
     display: block;
+    filter: contrast(1.2);
     max-height: 70vh;
     max-width: 35vw;
     object-fit: contain;

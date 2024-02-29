@@ -7,7 +7,12 @@ button {
     border: none;
     display: inline-block;
     position: relative;
+}
 
+button:hover {
+    img {
+        filter: brightness(1.2);
+    }
 }
 
 .card {
@@ -17,6 +22,7 @@ button {
 
 .card img {
     display: block;
+    filter: contrast(1.1);
     height: auto;
     max-height: 30rem;
     max-width: 30rem;
