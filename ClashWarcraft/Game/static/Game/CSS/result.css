@@ -1,5 +1,5 @@
 .buttons {
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 .buttons, .row {
@@ -12,8 +12,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     filter: contrast(1.1);
-    margin: 1vh 0 1vh 0;
     height: 10vh;
+    margin: 1vh 0 1vh 0;
     width: 25vw;
 }
 
