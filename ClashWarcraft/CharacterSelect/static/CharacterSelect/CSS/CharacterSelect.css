@@ -5,7 +5,7 @@
     filter: contrast(1.1);
     left: 50%;
     transform: translateX(-50%);
-    max-width: 25rem;
+    max-width: 25vw;
     padding: 0;
     position: relative;
 }
@@ -17,8 +17,8 @@
 
 .character-image {
     display: block;
-    max-height: 25rem;
-    max-width: 16rem;
+    max-height: 70vh;
+    max-width: 25vw;
 }
 
 .class-icon {
@@ -30,6 +30,6 @@
 }
 
 .row{
-    margin-left: 5rem;
-    margin-top: 3rem;
+    margin-left: 5vw;
+    margin-top: 7vh;
 }
