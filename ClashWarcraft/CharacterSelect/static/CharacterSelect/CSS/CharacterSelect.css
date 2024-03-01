@@ -15,17 +15,17 @@
     filter: brightness(1.1) contrast(1.2);
 }
 
-.card img {
+.character-image {
     display: block;
     max-height: 25rem;
     max-width: 16rem;
 }
 
 .class-icon {
-    max-height: 6rem;
-    max-width: 6rem;
-    top: -2rem;
-    left: auto;
+    max-height: 15vh;
+    max-width: 10vw;
+    top: -5vh;
+    left: 0;
     position: absolute;
 }
 
