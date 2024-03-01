@@ -6,3 +6,11 @@
     max-width: fit-content;
     max-height: fit-content;
 }
+
+.btn img {
+    filter: contrast(1.1);
+}
+
+.btn img:hover {
+    filter: brightness(1.1);
+}

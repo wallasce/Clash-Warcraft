@@ -2,6 +2,7 @@
     background-color: rgba(0, 0, 0, 0)!important;
     border: none;
     display: inline-block;
+    filter: contrast(1.1);
     left: 50%;
     transform: translateX(-50%);
     max-width: 25rem;
@@ -11,6 +12,7 @@
 
 .card:hover {
     box-shadow: 0.5rem 0rem 5rem 1rem rgba(0, 0, 128, 1);
+    filter: brightness(1.1) contrast(1.2);
 }
 
 .card img {
