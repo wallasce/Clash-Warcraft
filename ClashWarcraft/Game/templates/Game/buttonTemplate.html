@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="row">
-    <button class="btn" value={{ value }} type="submit">
-        <img src={% static path %}>
+    <button class="btn clickable" value={{ value }} type="submit" style="background-image:url('{% static "Game/Image/Buttons/button.png" %}');">
+        <div class="button-text"> {{ text }} </div>
     </button>
 </div>

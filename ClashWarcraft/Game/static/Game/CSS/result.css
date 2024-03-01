@@ -2,15 +2,25 @@
     margin-top: 15%;
 }
 
-.buttons, .row, .btn {
+.buttons, .row {
     max-width: fit-content;
     max-height: fit-content;
 }
 
-.btn img {
+.btn {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     filter: contrast(1.1);
+    margin: 1vh 0 1vh 0;
+    height: 10vh;
+    width: 25vw;
 }
 
-.btn img:hover {
+.btn:hover {
     filter: brightness(1.1);
+    
+    .button-text {
+        color: rgba(238, 159, 0, 1);
+    }
 }

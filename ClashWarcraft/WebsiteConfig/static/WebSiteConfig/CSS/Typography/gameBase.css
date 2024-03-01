@@ -1,4 +1,4 @@
-.title, .action {
+.title, .action, .button-text {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
     text-shadow: 0.5vh 0.5vh 1vh rgba(0, 0, 0, 1);
@@ -20,4 +20,12 @@
     line-height: 1;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+.button-text {
+    color: rgba(255, 255, 255, 1);
+    font-size: 5vh;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.1em;
 }
