@@ -2,7 +2,6 @@ from django.db.models.manager import BaseManager
 import random
 
 from Character.models import Character
-from Game.models import Lore, Tutorial
 
 def formatName(name : str):
     formatedName = name.replace("'", "")

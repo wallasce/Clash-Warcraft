@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Winner, Lore, Tutorial
+from .models import Winner
 
 # Register your models here.
 admin.site.register(Winner)
-admin.site.register(Lore)
-admin.site.register(Tutorial)
